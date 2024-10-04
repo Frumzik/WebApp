@@ -1,41 +1,57 @@
-.container {
-    width: 290px;
+.header__container {
+    min-width: 335px;
     margin: 0 auto;
-    background-color: rgb(181, 211, 212);
+    border: 1px solid var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    background: #cbebf1;
     border-radius: 10px;
     padding: 0px 10px 0px 10px;
 }
 .header {
-    margin-top: 20px;
+    margin-top: 54px;
     &__inner {
-        min-height: 70px;
+        height: 10.2vh;
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        gap: 10px;
         align-items: center;
+        overflow:hidden ;
     }
 }
 .logo {
+    width: 9.1vw;
+    height: 4.2vh;
     img {
-        width: 25px;
-        height: 25px;
+        width: 9.1vw;
+        height: 4.2vh;
     }
 }
 .about {
-    font-size: 8px;
+    font-size: 10px;
     &__name {
         text-transform: uppercase;
+        font-family: Catamaran;
+        font-weight: 400;
+        width: 133px;
+        min-height: 11px;
     }
 
     &__balancegive {
-        height: 20px;
-        width: 112px;
-        padding-top: 3px;
-        background-color: #fff;
-        border-radius: 20px;
+        padding: 5px 9px;
+        font-family: Onest;
+        min-height: 14px;
+        width: 125px;
+        background: var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
+        border-radius: 10px;
         text-align: center;
-
+        font-weight: 400;
         a {
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            padding: 5px;
+            margin: -5px;
             text-decoration: none;
             color: black;
             text-transform: lowercase;
@@ -43,31 +59,204 @@
     }
 
     &__balance {
-        background-color: #fff;
-        height: 30px;
-        width: 60px;
-        font-size: 9px;
+        font-family: Onest;
         display: flex;
+        background: var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
+        width: 65px;
+        font-weight: 400;
+        font-size: 10px;
+        height: 38px;
+        padding: 7px 14px;
         justify-content: center;
         align-items: center;
         border-radius: 10px;
-        .star {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
+        pointer-events: none;
+        cursor: default;
+        a {
+            margin-top: 2px;
         }
     }
 }
 .options {
     display: flex;
+    justify-content: space-between;
 }
-.notification {
-}
+
 .settings {
     margin-left: 5px;
 }
 
 img {
-    height: 20px;
-    width: 20px;
+    height: 3.1vh;
+    width: 6.7vw;
+}
+.container {
+    min-width: 335px;
+    margin: 0 auto;
+}
+
+.advertising {
+    margin-top: 10px;
+    &__blocks {
+        min-height: 76px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        &_1,
+        &_2,
+        &_3,
+        &_4 {
+            width: 20.3vw;
+            height: 9.4vh;
+            border-radius: 10px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            background: var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
+        }
+    }
+}
+
+.motivation {
+    margin-top: 10px;
+    height: 12.3vh;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #cbebf1;
+    background: linear-gradient(112deg, #fffef6 21.46%, #edebf7 107.28%);
+    box-shadow: 0px 4px 4px 0px #dbdbdb inset;
+    gap: 10px;
+    &__logo {
+        &-icon {
+            width: 21.6vw;
+            height: 10vh;
+        }
+    }
+    &__text {
+        width: 55.5vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        &_title {
+            color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
+            font-family: Firs;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        &_subtitle {
+            color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
+            font-family: Catamaran;
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 400;
+        }
+    }
+}
+
+.progress {
+    display: block;
+    min-width: 335px;
+    height: 15.5vh;
+    margin-top: 10px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    border: 1px solid #cbebf1;
+    background: linear-gradient(102deg, #fffef6 11.35%, #edebf7 102.05%);
+    box-shadow: 0px 4px 4px 0px #f1eff7 inset;
+    text-align: left;
+    text-decoration: none; /* Убираем подчеркивание у ссылки */
+    color: black; /* Цвет текста */
+    &__title {
+        color: #344b57;
+        font-family: Firs;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        height: 1.8vh;
+    }
+    &__bar {
+        width: 100%;
+        border-radius: 50px;
+        background: #fbfffe;
+        height: 3.2vh;
+        margin: 15px 0;
+        &-fill {
+            height: 100%;
+            border-radius: 50px;
+            background: #cbebf1;
+            width: 30%;
+        }
+    }
+    &__subtitle {
+        color: #344b57;
+        font-family: Firs;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        height: 1.8vh;
+        svg {
+            position: relative;
+            top: 2px;
+            margin-right: 5px;
+        }
+    }
+}
+
+.menu {
+    font-family: Firs;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 11.7vh 11.7vh;
+    gap: 10px;
+    &__blocks {
+        min-width: 163px;
+        padding: 40px 28px;
+        border-radius: 10px;
+        text-align: center;
+        border: 1px solid var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
+        background: #cbebf1;
+        box-shadow: 0px 4px 4px 0px #bedadf inset;
+        text-decoration: none;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        color: #344b57;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        align-items:center;
+        svg {
+            position: relative;
+            top: 2px;
+            left: 5px;
+        }
+    }
+}
+
+.footer {
+    margin-top: 10px;
+    min-width: 335px;   
+    padding: 6px 30px;
+    border-radius: 50px;
+    background: #f5f5f5;
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &_1,
+        &_2,
+        &_3,
+        &_4,
+        &_5 {
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
 }
