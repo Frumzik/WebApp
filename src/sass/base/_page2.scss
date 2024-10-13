@@ -1,5 +1,5 @@
 .about__game {
-    min-width: 335px;
+    width: 90vw;
     padding: 15px 10px;
     margin-top: 10px;
     border-radius: 10px;
@@ -9,30 +9,27 @@
     &-title {
         color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
         font-family: Firs;
-        font-size: 15px;
-        height: 15px;
-        font-style: normal;
+        font-size: 4vw;
         font-weight: 500;
+        height: 15px;
     }
     &-subtitle {
         margin-top: 10px;
         color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
         font-family: Catamaran;
-        font-size: 10px;
-        font-style: normal;
+        font-size: 2.7vw;
         font-weight: 400;
-        width: 264px;
-        min-height: 60px;
         text-align: start;
     }
 }
 
 .block {
+    width: 90vw;
     display: flex;
     align-items: center;
     text-decoration: none;
     color: inherit;
-    height: 67px;
+    height: 8vh;
     padding: 15px 10px;
     margin-top: 10px;
     border-radius: 10px;
@@ -42,208 +39,141 @@
 }
 
 .series__block-logo img {
-    width: 36px;
-    height: 35.143px;
     margin-right: 10px;
+    margin-top: 5px;
 }
 
 .main-text {
     flex-grow: 1;
     &__title {
         font-family: Firs;
-        font-size: 15px;
-        font-style: normal;
+        font-size: 3.6vw;
         font-weight: 500;
     }
     &__subtitle {
         color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
         font-family: Firs;
-        font-size: 10px;
-        font-style: normal;
+        font-size: 2.4vw;
         font-weight: 400;
     }
 }
-// .modal {
-// display: none; /* Скрыто по умолчанию */
-// position: fixed;
-// z-index: 1;
-// left: 0;
-// top: 0;
-// width: 100%;
-// height: 100%;
-// background-color: rgba(0, 0, 0, 0.5);
-// }
 
-// .modal-content {
-// border-radius: 10px;
-// border: 1px solid #1e96b1;
-// background: linear-gradient(102deg, #fffef6 11.35%, #cbebf1 102.05%);
-// margin: 113px 40px 113px 40px;
-// padding: 30px;
-// height: 586px;
-// width: 292px;
-// }
-
-// .modal-header {
-//     margin-bottom: 10px;
-//     display: flex;
-//     align-items: center;
-// }
-
-// .logo {
-// width: 36px;
-// height: 36px;
-// }
-
-// .modal-image {
-// width: 229px;
-// height: 155px;
-// display: block;
-// margin: 0 auto;
-// margin-bottom: 15px;
-// }
-
-// .modal-text {
-// width: 228px;
-// height: 257px;
-// margin: 0 auto;
-// text-align: center;
-// margin-bottom: 15px;
-// }
-
-// .buy-button {
-//     width: 180px;
-//     height: 34px;
-//     background-color: #ff4500;
-//     color: white;
-//     border: none;
-//     cursor: pointer;
-//     display: block;
-//     margin: 0 auto;
-//     border-radius: 5px;
-// }
-
-// .close {
-//     color: #aaa;
-//     float: right;
-//     font-size: 28px;
-//     font-weight: bold;
-//     cursor: pointer;
-// }
-////////////////////////////////////////////////////////////////
-
+/* Модальное окно */
 .modal {
-    display: none;
+    display: none; /* По умолчанию скрыто */
     position: fixed;
-    z-index: 1;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .modal-content {
+    width: 80vw; /* Адаптация ширины */
+    height: 85vh; /* Адаптация высоты */
+    max-width: 292px; /* Фиксированная ширина при больших экранах */
+    max-height: 586px;
     border-radius: 10px;
     border: 1px solid #1e96b1;
     background: linear-gradient(102deg, #fffef6 11.35%, #cbebf1 102.05%);
-    margin: 113px auto;
     padding: 30px;
-    border-radius: 8px;
-    height: 586px;
-    width: 292px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .modal-header {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
 }
-.modal-title {
+
+.image__logo {
+    width: 10vw;
+    max-width: 38px;
+    height: auto;
+    margin-right: 5px;
+}
+
+.title {
+    font-size: 3.6vw;
+    margin: 0;
     color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
     text-align: center;
     font-family: Firs;
-    font-size: 15px;
     font-style: normal;
     font-weight: 500;
 }
-.modal-subtitle {
+
+.subtitle {
+    font-size: 2.2vw;
+    margin: 0;
     color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
     text-align: center;
     font-family: Firs;
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
-    text-transform: uppercase;
-}
-.modal-toptext {
-    display: flex;
-    flex-direction: column;
-}
-.modal-logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
-.modal-image {
-    width: 229px;
-    height: 140px;
-    display: block;
-    margin: 0 auto;
-    margin-top: 15px;
 }
 
-.modal-inner {
-    margin-top: 15px;
-    width: 206px;
-    height: 257px;
-    display: flex;
-    width: 206px;
-    flex-direction: column;
-    justify-content: center;
+/* Картинка */
+.modal-image {
+    width: 61vw;
+    height: 20vh;
+    max-width: 229px;
+    max-height: 145px;
+    margin-bottom: 2.31vh;
 }
-.modal-intro {
-    color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
-    font-family: Catamaran;
-    font-size: 10px;
-    font-style: normal;
-    font-weight: 400;
-}
+
 .modal-text {
+    width: 100%;
+    font-size: 2.5vw;
+    color: #000;
+}
+
+.text {
+    margin-bottom: 8px;
     color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
     font-family: Catamaran;
-    font-size: 10px;
-    font-style: normal;
+    font-size: 2.5vw;
     font-weight: 400;
+}
+
+.list {
+    margin-left: 10px;
+    margin-bottom: 8px;
     ol {
-        padding: 0 0 0 8px;
-        margin-top: 8px;
+        list-style: decimal;
     }
 }
-.modal-steps{
-    margin-top: 10px;
-}
-.modal-practise{
-    margin-top: 10px;
-}
-.no-scroll {
-    overflow: hidden;
-}
-.modal-btn{
-    display: flex;
-    justify-content: center; 
-}
-.buy-button {
-    width: 180px;   
-    padding: 8px 19px;
-    border-radius: 10px;
+
+/* Кнопка */
+.buy-btn {
+    width: 48vw; /* Адаптивная ширина кнопки */
+    max-width: 180px; /* Фиксированная ширина при больших экранах * /* Адаптивные отступы */
+    padding: 10px 19px;
+    background-color: #1e96b1;
+    color: white;
+    font-size: 2.5vw;
     border: 1px solid #1e96b1;
-    background: #1e96b1;
-    margin-top: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 7px;
     color: var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
     text-align: center;
     font-family: Onest;
-    font-size: 10px;
-    font-style: normal;
+    font-size: 2.5vw;
     font-weight: 400;
-    text-decoration: none;
+}
+
+/* Закрытие окна при клике на фон */
+.modal:active {
+    display: none;
 }

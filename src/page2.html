@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IGame</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
@@ -14,15 +15,15 @@
     <header class="header">
         <div class="header__container">
             <div class="header__inner">
-                <div class="logo"><a href="#">
+                <div class="logo"><a href="#" id="avatarLink">
                         <img src="icons/Ellipse 1.svg" alt="logo">
                     </a></div>
                 <div class="about">
-                    <div class="about__name">ALEXANDER GAINUTDINOV</div>
-                    <div class="about__balancegive"><a href="page2.html">пополнить баланс</a></div>
+                    <div class="about__name"><span id="userName"></span></div>
+                    <div class="about__balancegive"><a href="#">пополнить баланс</a></div>
                 </div>
-                <div class="about__balance">5000 <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="15"
-                            height="15" viewBox="0 0 15 15" fill="none">
+                <div class="balance"><span id="balance"></span><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                            viewBox="0 0 15 15" fill="none">
                             <path
                                 d="M3.64062 13.125L4.65625 8.73438L1.25 5.78125L5.75 5.39062L7.5 1.25L9.25 5.39062L13.75 5.78125L10.3437 8.73438L11.3594 13.125L7.5 10.7969L3.64062 13.125Z"
                                 fill="#FBE30E" />
@@ -57,8 +58,8 @@
                 и счастливым</div>
         </div>
     </section>
-    <section>
-        <a href="#" class="block">
+    <section class="prefotter">
+        <a href="#" class="block" id="openModal">
             <div class="series__block-logo">
                 <img src="icons/Group.svg" alt="Логотип">
             </div>
@@ -159,10 +160,10 @@
         <div class="container">
             <div class="footer">
                 <ul class="footer__list">
-                    <li class="footer__list_1"><a href="#"><img src="icons/footer/home.svg" alt="home"></a></li>
+                    <li class="footer__list_1"><a href="index.html"><img src="icons/footer/home.svg" alt="home"></a></li>
                     <li class="footer__list_2"><a href="#"><img src="icons/footer/task.svg" alt="task"></a></li>
-                    <li class="footer__list_3"><a href="#"><img src="icons/footer/play.svg" alt="play"></a></li>
-                    <li class="footer__list_4"><a href="#"><img src="icons/footer/add.svg" alt="add"></a></li>
+                    <li class="footer__list_3"><a href="page2.html"><img src="icons/footer/play.svg" alt="play"></a></li>
+                    <li class="footer__list_4"><a href="page3.html"><img src="icons/footer/add.svg" alt="add"></a></li>
                     <li class="footer__list_5"><a href="#"><img src="icons/footer/calendar.svg" alt="calendar"></a></li>
                 </ul>
             </div>
@@ -171,88 +172,37 @@
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close" id="close"></span>
             <div class="modal-header">
-            <img class="modal-logo" src="icons/Group.svg" alt="Логотип">
-            <div class="modal-toptext">
-            <h2 class="modal-title">СЕРИЯ 4</h2>
-            <h2 class="modal-subtitle">«Куда я?»</h2>
-        </div>
-        </div>
-            <img src="icons/image.png" alt="Изображение" class="modal-image">
-            <div class="modal-inner">
-                <div class="modal-intro">В этой серии вы узнаете, как бороздить просторы вселенских океанов и выходить на новые уровни бытия</div>
-                
-                <div class="modal-text">
-                    <div class="modal-steps" >Вы будете проходить:</div>
-                <ol>
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                </ol>
-                <div class="modal-practise">Практики:</div>
-                <ol>
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                </ol>
+                <img src="icons/Group2.svg" alt="Логотип" class="image__logo">
+                <div class="titles">
+                    <h2 class="title">СЕРИЯ 4</h2>
+                    <h3 class="subtitle">«Куда я?»</h3>
                 </div>
-                
             </div>
-            <div class="modal-btn">
-            <a href="#" class="buy-button">Купить</a>
-            </div>
-            <span class="close" id="closeModal"></span> 
-        </div>
-    </div>
-
-    <!-- ------------------------------------------------ -->
-<!-- 
-    <div class="containerr">
-        <div class="block">Блок 1</div>
-        <div class="block">Блок 2</div>
-        <div class="block">Блок 3</div>
-        <div class="block">Блок 4</div>
-        <div class="block">Блок 5</div>
-        <div class="block">Блок 6</div>
-    </div>
-
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <span class="close" id="close"></span>
-            <div class="modal-header">
-            <img class="modal-logo" src="" alt="Логотип">
-            <div class="modal-toptext">
-            <h2 class="modal-title"></h2>
-            <h2 class="modal-subtitle"></h2>
-        </div>
-        </div>
-            <img class="modal-image" src="" alt="Изображение">
-            <div class="modal__inner">
-                <div class="modal-intro"></div>
-                <div class="modal-steps"></div>
-                <ol>
-                    <li class="modal-steps-list"></li>
-                    <li class="modal-steps-list"></li>
-                    <li class="modal-steps-list"></li>
-                    <li class="modal-steps-list"></li>
-                    <li class="modal-steps-list"></li>
+            <img src="icons/image.png" alt="Картинка" class="modal-image">
+            <div class="modal-text">
+                <p class="text">В этой серии вы узнаете, как бороздить просторы вселенских океанов и выходить на новые
+                    уровни бытия.</p>
+                <p class="text">Вы будете проходить:</p>
+                <ol class="list">
+                    <li>Это</li>
+                    <li>Это</li>
+                    <li>Это</li>
+                    <li>Это</li>
+                    <li>Это</li>
                 </ol>
-                <div class="modal-practise"></div>
-                <ol>
-                    <li class="modal-practise-list"></li>
-                    <li class="modal-practise-list"></li>
-                    <li class="modal-practise-list"></li>
-                    <li class="modal-practise-list"></li>
-                    <li class="modal-practise-list"></li>
+                <p class="text">Практики:</p>
+                <ol class="list">
+                    <li>Это</li>
+                    <li>Это</li>
+                    <li>Это</li>
+                    <li>Это</li>
+                    <li>Это</li>
                 </ol>
             </div>
+            <button class="buy-btn">Купить</button>
         </div>
-    </div> -->
+    </div>
 
 
     <script src="js/script.js"></script>

@@ -48,10 +48,7 @@ dd {
 // }
 
 /* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
-ul[class],
-ol[class] {
-    list-style: none;
-}
+
 
 
 /* Указываем понятную периодичность в потоке данных у article*/
@@ -76,8 +73,11 @@ select {
 }
 @import "base/mainpage";
 @import "base/page2";
+@import "base/page3";
 @import "base/media";
-
+html{
+    font-size: 16px;
+}
 body{
     margin: 0px 20px 0 20px;
 }

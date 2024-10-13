@@ -1,5 +1,5 @@
 .header__container {
-    min-width: 335px;
+    width: 90vw;
     margin: 0 auto;
     border: 1px solid var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
@@ -8,40 +8,34 @@
     padding: 0px 10px 0px 10px;
 }
 .header {
-    margin-top: 54px;
+    margin-top: 2vh;
     &__inner {
-        height: 10.2vh;
+        height: 11.14vh;
         width: 100%;
         display: flex;
         justify-content: space-between;
-        gap: 10px;
         align-items: center;
-        overflow:hidden ;
     }
 }
 .logo {
-    width: 9.1vw;
-    height: 4.2vh;
-    img {
-        width: 9.1vw;
-        height: 4.2vh;
+        img{
+    margin-top: 7px;
     }
 }
 .about {
-    font-size: 10px;
+    font-size: 2.7vw;
+    width: 34.4vw;
     &__name {
         text-transform: uppercase;
         font-family: Catamaran;
         font-weight: 400;
-        width: 133px;
-        min-height: 11px;
+        margin-left: 2px;
     }
 
     &__balancegive {
-        padding: 5px 9px;
+        padding: 0.5vh 9px;
         font-family: Onest;
-        min-height: 14px;
-        width: 125px;
+        height: 3.22vh;
         background: var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
         border-radius: 10px;
         text-align: center;
@@ -57,15 +51,15 @@
             text-transform: lowercase;
         }
     }
-
-    &__balance {
+}
+    .balance {
         font-family: Onest;
         display: flex;
         background: var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
-        width: 65px;
+        width: 17.33vw;
         font-weight: 400;
-        font-size: 10px;
-        height: 38px;
+        font-size: 2.7vw;
+        height: 5.85vh;
         padding: 7px 14px;
         justify-content: center;
         align-items: center;
@@ -75,41 +69,37 @@
         a {
             margin-top: 2px;
         }
+    
     }
-}
 .options {
     display: flex;
     justify-content: space-between;
 }
+.notification{
+    height: 3.36vh;
+    width: 6.67vw;
 
+}
 .settings {
     margin-left: 5px;
-}
-
-img {
-    height: 3.1vh;
-    width: 6.7vw;
-}
-.container {
-    min-width: 335px;
-    margin: 0 auto;
+    height: 3.36vh;
+        width: 6.67vw;
 }
 
 .advertising {
     margin-top: 10px;
+    width: 89.3vw;
     &__blocks {
-        min-height: 76px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-
         &_1,
         &_2,
         &_3,
         &_4 {
             width: 20.3vw;
-            height: 9.4vh;
+            height: 10.2vh;
             border-radius: 10px;
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
             background: var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
@@ -119,7 +109,8 @@ img {
 
 .motivation {
     margin-top: 10px;
-    height: 12.3vh;
+    height: 17.43vh;
+    width: 89.3vw;
     padding: 15px 10px;
     display: flex;
     justify-content: space-around;
@@ -129,14 +120,7 @@ img {
     background: linear-gradient(112deg, #fffef6 21.46%, #edebf7 107.28%);
     box-shadow: 0px 4px 4px 0px #dbdbdb inset;
     gap: 10px;
-    &__logo {
-        &-icon {
-            width: 21.6vw;
-            height: 10vh;
-        }
-    }
     &__text {
-        width: 55.5vw;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -144,14 +128,13 @@ img {
         &_title {
             color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
             font-family: Firs;
-            font-size: 15px;
+            font-size: 3.5vw;
             font-weight: 500;
         }
         &_subtitle {
             color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
             font-family: Catamaran;
-            font-size: 10px;
-            font-style: normal;
+            font-size: 2.2vw;
             font-weight: 400;
         }
     }
@@ -159,31 +142,30 @@ img {
 
 .progress {
     display: block;
-    min-width: 335px;
-    height: 15.5vh;
+    width: 89.3vw;
+    height: 18vh;
     margin-top: 10px;
-    padding: 20px 10px;
+    padding: 2.31vh 10px 20px 10px;
     border-radius: 10px;
     border: 1px solid #cbebf1;
     background: linear-gradient(102deg, #fffef6 11.35%, #edebf7 102.05%);
     box-shadow: 0px 4px 4px 0px #f1eff7 inset;
     text-align: left;
-    text-decoration: none; /* Убираем подчеркивание у ссылки */
-    color: black; /* Цвет текста */
+    text-decoration: none; 
+    color: black; 
     &__title {
         color: #344b57;
-        font-family: Firs;
-        font-size: 15px;
+        font-family: Firs;        
+        font-size: 4vw;
         font-style: normal;
         font-weight: 500;
-        height: 1.8vh;
     }
     &__bar {
         width: 100%;
         border-radius: 50px;
         background: #fbfffe;
-        height: 3.2vh;
-        margin: 15px 0;
+        height: 3.49vh;
+        margin: 2vh 0;
         &-fill {
             height: 100%;
             border-radius: 50px;
@@ -193,11 +175,9 @@ img {
     }
     &__subtitle {
         color: #344b57;
-        font-family: Firs;
-        font-size: 15px;
-        font-style: normal;
+        font-family: Firs;       
+        font-size: 4vw;
         font-weight: 500;
-        height: 1.8vh;
         svg {
             position: relative;
             top: 2px;
@@ -205,16 +185,16 @@ img {
         }
     }
 }
-
 .menu {
     font-family: Firs;
     margin-top: 10px;
+    width: 89.3vw;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 11.7vh 11.7vh;
-    gap: 10px;
+    grid-template-rows: 12.9vh 12.9vh;
+    gap: 1vh;
     &__blocks {
-        min-width: 163px;
+        width: 43.47vw;
         padding: 40px 28px;
         border-radius: 10px;
         text-align: center;
@@ -226,7 +206,7 @@ img {
         display: flex;
         justify-content: center;
         color: #344b57;
-        font-size: 15px;
+        font-size: 4vw;
         font-style: normal;
         font-weight: 500;
         align-items:center;
@@ -239,8 +219,11 @@ img {
 }
 
 .footer {
-    margin-top: 10px;
-    min-width: 335px;   
+    position: fixed;
+    bottom: 0;
+    height: 6.98vh;
+    z-index: 2;
+    width: 89.3vw;
     padding: 6px 30px;
     border-radius: 50px;
     background: #f5f5f5;
@@ -248,14 +231,15 @@ img {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        list-style-type: none;
         &_1,
         &_2,
         &_3,
         &_4,
         &_5 {
             img {
-                width: 40px;
-                height: 40px;
+                width: 10.67vw;
+                height: 5.37vh;
             }
         }
     }
