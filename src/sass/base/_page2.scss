@@ -1,7 +1,7 @@
 .about__game {
-    width: 90vw;
-    padding: 15px 10px;
-    margin-top: 10px;
+    width: 89.3vw;
+    padding: 1.85vh 10px;
+    margin-top:  1.3vh;
     border-radius: 10px;
     border: 1px solid #cbebf1;
     background: linear-gradient(112deg, #fffef6 21.46%, #edebf7 107.28%);
@@ -24,14 +24,13 @@
 }
 
 .block {
-    width: 90vw;
+    width: 89.3vw;
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: inherit;
     height: 8vh;
-    padding: 15px 10px;
-    margin-top: 10px;
+    padding: 1.85vh 10px;
+    margin-top:  1.3vh;
     border-radius: 10px;
     border: 1px solid #cbebf1;
     background: linear-gradient(102deg, #fffef6 11.35%, #cbebf1 102.05%);
@@ -58,9 +57,9 @@
     }
 }
 
-/* Модальное окно */
+
 .modal {
-    display: none; /* По умолчанию скрыто */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -73,9 +72,9 @@
 }
 
 .modal-content {
-    width: 80vw; /* Адаптация ширины */
-    height: 85vh; /* Адаптация высоты */
-    max-width: 292px; /* Фиксированная ширина при больших экранах */
+    width: 80vw;
+    height: 85vh;
+    max-width: 292px;
     max-height: 586px;
     border-radius: 10px;
     border: 1px solid #1e96b1;
@@ -123,7 +122,7 @@
     font-weight: 400;
 }
 
-/* Картинка */
+
 .modal-image {
     width: 61vw;
     height: 20vh;
@@ -154,10 +153,10 @@
     }
 }
 
-/* Кнопка */
+
 .buy-btn {
-    width: 48vw; /* Адаптивная ширина кнопки */
-    max-width: 180px; /* Фиксированная ширина при больших экранах * /* Адаптивные отступы */
+    width: 48vw;
+    max-width: 180px; 
     padding: 10px 19px;
     background-color: #1e96b1;
     color: white;
@@ -173,7 +172,7 @@
     font-weight: 400;
 }
 
-/* Закрытие окна при клике на фон */
+
 .modal:active {
     display: none;
 }
