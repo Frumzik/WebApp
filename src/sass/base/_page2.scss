@@ -1,7 +1,7 @@
 .about__game {
-    width: 89.3vw;
+    width: 100%;
     padding: 1.85vh 10px;
-    margin-top:  1.29vh;
+    margin-top: 1.29vh;
     border-radius: 10px;
     border: 1px solid #cbebf1;
     background: linear-gradient(112deg, #fffef6 21.46%, #edebf7 107.28%);
@@ -24,13 +24,13 @@
 }
 
 .block {
-    width: 89.3vw;
+    width: 100%;
     display: flex;
     align-items: center;
     text-decoration: none;
     height: 8vh;
     padding: 1.85vh 10px;
-    margin-top:  1.3vh;
+    margin-top: 1.3vh;
     border-radius: 10px;
     border: 1px solid #cbebf1;
     background: linear-gradient(102deg, #fffef6 11.35%, #cbebf1 102.05%);
@@ -38,6 +38,8 @@
 }
 
 .series__block-logo img {
+    width: 36px;
+    height: 36px;
     margin-right: 10px;
     margin-top: 5px;
 }
@@ -57,7 +59,6 @@
     }
 }
 
-
 .modal {
     display: none;
     position: fixed;
@@ -72,10 +73,8 @@
 }
 
 .modal-content {
-    width: 80vw;
-    height: 85vh;
-    max-width: 292px;
-    max-height: 586px;
+    width: 292px;
+    height: 586px;
     border-radius: 10px;
     border: 1px solid #1e96b1;
     background: linear-gradient(102deg, #fffef6 11.35%, #cbebf1 102.05%);
@@ -95,8 +94,7 @@
 }
 
 .image__logo {
-    width: 10vw;
-    max-width: 38px;
+    width: 38px;
     height: auto;
     margin-right: 5px;
 }
@@ -122,12 +120,9 @@
     font-weight: 400;
 }
 
-
 .modal-image {
-    width: 61vw;
-    height: 20vh;
-    max-width: 229px;
-    max-height: 145px;
+    width: 229px;
+    height: 145px;
     margin-bottom: 2.31vh;
 }
 
@@ -135,6 +130,7 @@
     width: 100%;
     font-size: 2.5vw;
     color: #000;
+    line-height: 1.3;
 }
 
 .text {
@@ -153,10 +149,8 @@
     }
 }
 
-
 .buy-btn {
-    width: 48vw;
-    max-width: 180px; 
+    width: 40vw;
     padding: 10px 19px;
     background-color: #1e96b1;
     color: white;
@@ -171,7 +165,6 @@
     font-size: 2.5vw;
     font-weight: 400;
 }
-
 
 .modal:active {
     display: none;

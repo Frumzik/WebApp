@@ -1,0 +1,1290 @@
+@media (min-width: 376px) {
+    .menu__blocks {
+        width: 100%;
+    }
+}
+@media (max-width: 576px) {
+    body {
+        margin: 0px 20px 0 20px;
+    }
+    .footer {
+        width: 92vw;
+        left: 4vw;
+    }
+    .progress__subtitle {
+        svg {
+            top: 4;
+        }
+    }
+}
+@media (min-width: 577px) {
+    body {
+        margin: 0px 10% 0 10%;
+    }
+    .about {
+        width: 27.4vw;
+        &__name {
+            font-size: 1.88vw;
+        }
+        &__balancegive {
+            height: 3.8vh;
+            font-size: 2.3vw;
+        }
+    }
+    .logo {
+        margin-left: 2vw;
+    }
+    .balance {
+        font-size: 2.4vw;
+        width: 15.33vw;
+        svg {
+            width: 2vw;
+        }
+    }
+    .motivation {
+        &__text {
+            &_title {
+                font-size: 2.8vw;
+            }
+            &_subtitle {
+                font-size: 2vw;
+            }
+        }
+    }
+    .progress {
+        &__title {
+            font-size: 3vw;
+        }
+        &__bar {
+            height: 4vh;
+            margin: 1.4vh 0;
+        }
+        &__subtitle {
+            font-size: 3vw;
+            svg {
+                top: 1;
+            }
+        }
+    }
+    .menu {
+        &__blocks {
+            font-size: 2.7vw;
+            svg {
+            }
+        }
+    }
+    .footer {
+        width: 80vw;
+        left: 10.5vw;
+        margin-bottom: 14px;
+    }
+
+    .about__game {
+        &-title {
+            font-size: 2.8vw;
+        }
+        &-subtitle {
+            font-size: 2vw;
+        }
+    }
+    .main-text {
+        &__title {
+            font-size: 2.8vw;
+        }
+        &__subtitle {
+            font-size: 2vw;
+        }
+    }
+    .modal-content {
+        width: 53vw;
+        height: 80vh;
+    }
+    .modal-header {
+        margin-bottom: 1.7vh;
+    }
+    .modal-image {
+        width: 45vw;
+        height: 20vh;
+        margin-bottom: 1.7vh;
+    }
+    .modal-text {
+        font-size: 1.6vw;
+    }
+
+    .image__logo {
+        width: 6.5vw;
+        margin-right: 1vw;
+    }
+    .title {
+        font-size: 2.8vw;
+    }
+    .subtitle {
+        font-size: 2vw;
+    }
+    .text {
+        max-width: 320px;
+        font-size: 1.6vw;
+    }
+
+    .buy-btn {
+        width: 35vw;
+        font-size: 2vw;
+    }
+
+    .h2-referal {
+        font-size: 2.8vw;
+    }
+    .referal-programm__p {
+        font-size: 2.3vw;
+        p {
+            margin-bottom: 1vh;
+        }
+    }
+    .referal-link {
+        &__maintext {
+        }
+        &__p {
+            p {
+                font-size: 2.3vw;
+            }
+        }
+        &__btn {
+            width: 100%;
+            height: 4.8vh;
+            font-size: 2.3vw;
+        }
+    }
+
+    .conclusion {
+        &__maintext {
+            margin-bottom: 1.4vh;
+        }
+    }
+    .currency-block {
+        width: 100%;
+        height: 4.8vh;
+        margin-top: 2vh;
+    }
+    .currency-amount {
+        img {
+            position: relative;
+            top: 0;
+        }
+    }
+
+    .currency {
+        margin-top: 2vh;
+        img {
+            width: 8vw;
+        }
+    }
+    .amount-input {
+        padding-left: 3.3vw;
+        font-size: 2.3vw;
+    }
+    .amount-input::placeholder {
+        font-size: 2.3vw;
+    }
+    .withdraw-button {
+        font-size: 2.3vw;
+    }
+
+    .swiper-slide__image {
+        width: 80vw;
+        height: 40vh;
+    }
+    .text-container {
+        margin-top: 3vw;
+        width: 73vw;
+        font-size: 2.8vw;
+        p:last-child {
+            margin-top: 1.5vw;
+        }
+    }
+    .buttons-container {
+        margin-top: 3vh;
+    }
+    .buttons-container__btn {
+        width: 73vw;
+    }
+    .exercise {
+        width: 73vw;
+        font-size: 3.5vw;
+    }
+    .exercise-text {
+        margin-top: 5vh;
+        width: 73vw;
+        font-size: 3.5vw;
+        line-height: 30px;
+        p {
+            margin-bottom: 2vh;
+        }
+        p:last-child {
+            margin-bottom: 25px;
+        }
+    }
+    .response-block {
+        width: 73vw;
+        height: 30.61vh;
+    }
+    .response-label {
+        font-size: 3.5vw;
+    }
+    .response-input {
+    }
+    .response-button {
+        height: 5vh;
+    }
+}
+@media (min-width: 768px) {
+    .advertising__blocks {
+        width: 140px;
+        height: 86px;
+    }
+    .options {
+        width: 11vw;
+        margin-right: 1.5vw;
+    }
+    .logo {
+        margin-left: 1.5vw;
+    }
+    .balance {
+        svg {
+            width: 3vw;
+        }
+    }
+    .about {
+        &__name {
+            font-size: 1.7vw;
+        }
+        &__balancegive {
+            padding-top: 3px;
+            height: 3.7vh;
+            font-size: 2vw;
+        }
+    }
+    .motivation {
+        &__text {
+            &_title {
+                font-size: 2.1vw;
+            }
+            &_subtitle {
+                font-size: 1.6vw;
+            }
+        }
+    }
+    .progress {
+        &__title {
+            font-size: 2.77vw;
+        }
+        &__bar {
+            height: 3.7vh;
+            margin: 1.2vh 0;
+        }
+        &__subtitle {
+            font-size: 2.77vw;
+            svg {
+                top: 1;
+            }
+        }
+    }
+    .progress__subtitle {
+        svg {
+            width: 3vw;
+        }
+    }
+    .menu {
+        &__blocks {
+            font-size: 2.5vw;
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    .about__game {
+        &-title {
+            font-size: 2.1vw;
+        }
+        &-subtitle {
+            font-size: 1.6vw;
+        }
+    }
+    .main-text {
+        &__title {
+            font-size: 2.1vw;
+        }
+        &__subtitle {
+            font-size: 1.6vw;
+        }
+    }
+    .modal-content {
+        width: 49vw;
+        height: 80vh;
+    }
+    .modal-header {
+        margin-bottom: 1.7vh;
+    }
+    .modal-image {
+        width: 42vw;
+        height: 24vh;
+        margin-bottom: 1.7vh;
+    }
+    .modal-text {
+        font-size: 1.4vw;
+    }
+
+    .image__logo {
+        width: 5vw;
+        margin-right: 1vw;
+    }
+    .title {
+        font-size: 2.2vw;
+    }
+    .subtitle {
+        font-size: 1.4vw;
+    }
+    .text {
+        max-width: 400px;
+        font-size: 1.4vw;
+    }
+
+    .buy-btn {
+        width: 32vw;
+        font-size: 1.6vw;
+    }
+
+    .h2-referal {
+        font-size: 2.4vw;
+    }
+    .referal-programm__maintext {
+        img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+    .referal-programm__p {
+        font-size: 1.85vw;
+        p {
+            margin-bottom: 0.5vh;
+        }
+    }
+    .referal-link {
+        &__maintext {
+            margin-bottom: 0.5vh;
+            img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        &__p {
+            p {
+                margin-bottom: 0.8vh;
+                font-size: 2vw;
+            }
+        }
+        &__btn {
+            width: 100%;
+            height: 4.8vh;
+            font-size: 2vw;
+        }
+    }
+
+    .conclusion {
+        &__maintext {
+            margin-bottom: 1.4vh;
+        }
+    }
+    .conclusion__maintext {
+        margin-bottom: 0.8vh;
+        img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+    .currency-block {
+        width: 100%;
+        height: 4.8vh;
+        margin-top: 1vh;
+    }
+    .dollar-equivalent {
+        font-size: 2.4vw;
+    }
+    .currency-amount {
+        font-size: 2.4vw;
+
+        img {
+            position: relative;
+            top: 0;
+        }
+    }
+
+    .currency {
+        margin-top: 1.7vh;
+        height: 4.8vh;
+        img {
+            width: 47px;
+            height: 46px;
+        }
+    }
+    .amount-input {
+        padding-left: 3.3vw;
+        font-size: 2.3vw;
+    }
+    .amount-input::placeholder {
+        font-size: 2.3vw;
+    }
+    .withdraw-button {
+        font-size: 2.3vw;
+    }
+    .swiper-slide__image {
+        width: 85vw;
+        height: 40vh;
+    }
+    .text-container {
+        margin-top: 4vw;
+        width: 75vw;
+        font-size: 3vw;
+        p:last-child {
+            margin-top: 1.5vw;
+        }
+    }
+    .buttons-container {
+        margin-top: 3vh;
+    }
+    .buttons-container__btn {
+        width: 75vw;
+    }
+}
+@media (min-width: 992px) {
+    .logo {
+        margin-left: 2vw;
+    }
+
+    body {
+        margin: 0 15% 0 15%;
+    }
+    .options {
+        width: 10vw;
+        margin-right: 2vw;
+    }
+    .about {
+        width: 25.4vw;
+        &__name {
+            font-size: 1.6vw;
+        }
+        &__balancegive {
+            height: 3.7vh;
+            padding-top: 0.4vh;
+            font-size: 1.6vw;
+        }
+    }
+    .balance {
+        font-size: 2vw;
+        width: 14.33vw;
+    }
+    .progress {
+        padding: 2.31vh 3.5vw 20px 2.8vw;
+        &__title {
+            font-size: 2vw;
+        }
+        &__bar {
+            height: 3.7vh;
+            margin: 1.2vh 0;
+        }
+        &__subtitle {
+            font-size: 2vw;
+            svg {
+                left: 0;
+                top: 1;
+            }
+        }
+    }
+    .motivation {
+        &__text {
+            &_title {
+                font-size: 2vw;
+            }
+            &_subtitle {
+                font-size: 1.5vw;
+            }
+        }
+    }
+    .menu {
+        &__blocks {
+            font-size: 2.3vw;
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    .progress__subtitle {
+        svg {
+            width: 2vw;
+        }
+    }
+    .footer {
+        width: 70.5vw;
+        left: 14.7vw;
+    }
+    .about__game {
+        &-title {
+            font-size: 1.8vw;
+        }
+        &-subtitle {
+            font-size: 1.3vw;
+        }
+    }
+    .main-text {
+        &__title {
+            font-size: 1.8vw;
+        }
+        &__subtitle {
+            font-size: 1.3vw;
+        }
+    }
+    .modal-content {
+        width: 450px;
+        height: 80vh;
+    }
+    .modal-header {
+        margin-bottom: 1.7vh;
+    }
+    .modal-image {
+        width: 390px;
+        height: 25vh;
+        margin-bottom: 1.7vh;
+    }
+    .modal-text {
+        font-size: 1.2vw;
+    }
+
+    .image__logo {
+        width: 4vw;
+        margin-right: 1vw;
+    }
+    .title {
+        font-size: 1.5vw;
+    }
+    .subtitle {
+        font-size: 1vw;
+    }
+    .text {
+        font-size: 1.2vw;
+    }
+
+    .buy-btn {
+        width: 30vw;
+        font-size: 1.3vw;
+    }
+
+    .h2-referal {
+        font-size: 1.8vw;
+    }
+    .referal-programm__maintext {
+        img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+    .referal-programm__p {
+        font-size: 1.45vw;
+        p {
+            margin-bottom: 0.6vh;
+        }
+    }
+    .referal-link {
+        &__maintext {
+            margin-bottom: 0.6vh;
+            img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        &__p {
+            p {
+                margin-bottom: 0.6vh;
+                font-size: 1.7vw;
+            }
+        }
+        &__btn {
+            width: 100%;
+            height: 4.3vh;
+            font-size: 1.7vw;
+        }
+    }
+
+    .conclusion {
+    }
+    .conclusion__maintext {
+        margin-bottom: 0.6vh;
+        img {
+            width: 35px;
+                height: 35px;
+        }
+    }
+    .currency-block {
+        width: 100%;
+        height: 4.3vh;
+        margin-top: 1vh;
+    }
+    .dollar-equivalent {
+        font-size: 2vw;
+    }
+    .currency-amount {
+        font-size: 2vw;
+        img {
+            position: relative;
+            top: 0;
+        }
+    }
+
+    .currency {
+        margin-top: 1.7vh;
+        height: 4.8vh;
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .amount-input {
+        padding-left: 3vw;
+        font-size: 1.7vw;
+    }
+    .amount-input::placeholder {
+        font-size: 1.7vw;
+    }
+    .withdraw-button {
+        font-size: 1.7vw;
+    }
+    .swiper-slide__image {
+        width: 75vw;
+        height: 40vh;
+    }
+    .text-container {
+        margin-top: 2vw;
+        width: 65vw;
+        font-size: 2.3vw;
+        line-height: 30px;
+        p:last-child {
+            margin-top: 1vw;
+        }
+    }
+    .buttons-container {
+        margin-top: 2vh;
+    }
+    .buttons-container__btn {
+        font-size: 2vw;
+        width: 65vw;
+    }
+    .exercise {
+        width: 63vw;
+        font-size: 3vw;
+    }
+    .exercise-text {
+        margin-top: 3.6vh;
+        width: 63vw;
+        font-size: 2.5vw;
+        line-height: 35px;
+        p {
+            margin-bottom: 1vh;
+        }
+        p:last-child {
+            margin-bottom: 25px;
+        }
+    }
+    .response-block {
+        width: 63vw;
+        height: 27.61vh;
+    }
+    .response-label {
+        font-size: 2.5vw;
+    }
+    .response-input {
+        font-size: 2.5vw;
+    }
+    .response-button {
+        font-size: 2.5vw;
+        height: 6vh;
+    }
+}
+@media (min-width: 1280px) {
+    body {
+        overflow: auto;
+        margin: 0 25% 0 25%;
+    }
+    .header {
+        margin-top: 5px;
+    }
+    .options {
+        width: 10.5vw;
+        margin-right: 2vw;
+    }
+
+    .about {
+        width: 17vw;
+        &__name {
+            font-size: 1.1vw;
+        }
+        &__balancegive {
+            height: 3.4vh;
+            padding-top: 0.1vh;
+            font-size: 1.1vw;
+        }
+    }
+    .balance {
+        font-size: 1.1vw;
+        width: 10.33vw;
+        svg {
+            width: 2vw;
+        }
+    }
+    .advertising__blocks {
+        height: 70px;
+    }
+    .motivation {
+        &__text {
+            gap: 0px;
+            &_title {
+                font-size: 1.3vw;
+            }
+            &_subtitle {
+                font-size: 0.9vw;
+            }
+        }
+        &__logo-icon {
+            width: 150px;
+            margin-right: 80px;
+        }
+    }
+    .progress {
+        padding: 2.31vh 3vw 20px 2vw;
+        &__title {
+            font-size: 1.3vw;
+        }
+        &__bar {
+            height: 4vh;
+            margin: 1vh 0;
+        }
+        &__subtitle {
+            font-size: 1.4vw;
+            svg {
+                left: 0;
+                top: 0;
+                width: 1.5vw;
+                margin-right: 0;
+            }
+        }
+    }
+    .menu {
+        gap: 2vh;
+        &__blocks {
+            font-size: 1.3vw;
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+    .footer {
+        width: 51.2vw;
+        left: 24.5vw;
+        margin-bottom: 8px;
+        &__list {
+            &_1,
+            &_2,
+            &_3,
+            &_4,
+            &_5 {
+                img {
+                    width: 7.67vw;
+                }
+            }
+        }
+    }
+    .about__game {
+        &-title {
+            font-size: 1.4vw;
+        }
+        &-subtitle {
+            font-size: 1.05vw;
+        }
+    }
+    .main-text {
+        &__title {
+            font-size: 1.15vw;
+        }
+        &__subtitle {
+            font-size: 0.9vw;
+        }
+    }
+    .modal-content {
+        width: 400px;
+        height: 93vh;
+        padding: 15px;
+    }
+    .modal-header {
+        margin-bottom: 1.7vh;
+    }
+    .modal-image {
+        width: 340px;
+        height: 25vh;
+        margin-bottom: 1.7vh;
+    }
+    .modal-text {
+        font-size: 0.9vw;
+        margin-left: 2px;
+        width: 340px;
+    }
+
+    .image__logo {
+        width: 3.2vw;
+        margin-right: 1vw;
+    }
+    .title {
+        font-size: 1.3vw;
+    }
+    .subtitle {
+        font-size: 1vw;
+    }
+    .text {
+        font-size: 0.9vw;
+    }
+
+    .buy-btn {
+        width: 20vw;
+        font-size: 1vw;
+    }
+    .h2-referal {
+        font-size: 1.2vw;
+    }
+    .referal-programm__maintext {
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    .referal-programm__p {
+        font-size: 1vw;
+        p {
+            margin-bottom: 0.3vh;
+        }
+    }
+    .referal-link {
+        &__maintext {
+            margin-bottom: 0.3vh;
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        &__p {
+            p {
+                margin-bottom: 0.3vh;
+                font-size: 1vw;
+            }
+        }
+        &__btn {
+            width: 100%;
+            height: 5vh;
+            font-size: 1vw;
+        }
+    }
+
+    .conclusion__maintext {
+        margin-bottom: 0.6vh;
+        img {
+            width: 2.4vw;
+        }
+    }
+    .currency-block {
+        width: 100%;
+        height: 6vh;
+        margin-top: 1vh;
+    }
+    .dollar-equivalent {
+        font-size: 1.3vw;
+    }
+    .currency-amount {
+        font-size: 1.3vw;
+        img {
+            position: relative;
+            top: 2px;
+        }
+    }
+    .conclusion {
+        height: 28vh;
+    }
+    .currency {
+        margin-top: 1.5vh;
+        height: 6vh;
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .amount-input {
+        padding-left: 2.5vw;
+        font-size: 1.1vw;
+    }
+    .amount-input::placeholder {
+        font-size: 1.1vw;
+    }
+    .withdraw-button {
+        padding-top: 5px;
+        font-size: 1vw;
+    }
+
+    .swiper-slide__image {
+        width: 45vw;
+        height: 40vh;
+    }
+    .text-container {
+        margin-top: 1vw;
+        width: 40vw;
+        font-size: 1.6vw;
+        line-height: 27px;
+        p:last-child {
+            margin-top: 0.5vw;
+        }
+    }
+    .buttons-container {
+        margin-top: 2vh;
+    }
+    .buttons-container__btn {
+        font-size: 1.6vw;
+        width: 40vw;
+    }
+    .exercise {
+        width: 45vw;
+        font-size: 1.6vw;
+    }
+    .exercise-text {
+        margin-top: 3.6vh;
+        width: 45vw;
+        font-size: 1.4vw;
+        line-height: 30px;
+        p {
+            margin-bottom: 1vh;
+        }
+        p:last-child {
+            margin-bottom: 30px;
+        }
+    }
+    .response-block {
+        width: 45vw;
+        height: 35vh;
+    }
+    .response-label {
+        font-size: 1.4vw;
+    }
+    .response-input {
+        font-size: 1.4vw;
+    }
+    .response-button {
+        font-size: 1.4vw;
+        height: 6vh;
+    }
+}
+@media (min-width: 1440px) {
+    body {
+        margin: 0 25% 0 25%;
+    }
+    .swiper-slide__image {
+        width: 50vw;
+        height: 45vh;
+    }
+    .text-container {
+        margin-top: 1.5vw;
+        width: 40vw;
+        font-size: 1.6vw;
+        line-height: 40px;
+        p:last-child {
+            margin-top: 0.5vw;
+        }
+    }
+    .logo {
+        margin-left: 2vw;
+    }
+    .options {
+        width: 10vw;
+        margin-right: 2vw;
+    }
+    .about {
+        width: 15.4vw;
+        &__name {
+            font-size: 1.05vw;
+        }
+        &__balancegive {
+            height: 3.7vh;
+            padding-top: 0.4vh;
+            font-size: 1.05vw;
+        }
+    }
+    .advertising__blocks {
+        height: 100px;
+    }
+    .balance {
+        font-size: 1vw;
+        width: 8vw;
+        svg {
+            width: 2vw;
+        }
+    }
+    .motivation {
+        &__text {
+            &_title {
+                font-size: 1.5vw;
+            }
+            &_subtitle {
+                font-size: 1vw;
+            }
+        }
+    }
+    .progress {
+        padding: 2.31vh 3.5vw 20px 2vw;
+        &__title {
+            font-size: 1.5vw;
+        }
+        &__bar {
+            height: 4vh;
+            margin: 1vh 0;
+        }
+        &__subtitle {
+            font-size: 1.5vw;
+            svg {
+                left: 0;
+                top: 1;
+            }
+        }
+    }
+    .menu {
+        gap: 1vh;
+        &__blocks {
+            font-size: 1.6vw;
+            svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+    .progress__subtitle {
+        svg {
+            width: 2vw;
+        }
+    }
+    .about__game {
+        &-title {
+            font-size: 1.2vw;
+        }
+        &-subtitle {
+            font-size: 0.95vw;
+        }
+    }
+    .main-text {
+        &__title {
+            font-size: 1.2vw;
+        }
+        &__subtitle {
+            font-size: 0.95vw;
+        }
+    }
+    .modal-content {
+        width: 450px;
+        height: 80vh;
+    }
+    .modal-header {
+        margin-bottom: 1.7vh;
+    }
+    .modal-image {
+        width: 390px;
+        height: 25vh;
+        margin-bottom: 1.7vh;
+    }
+    .modal-text {
+        font-size: 0.8vw;
+    }
+
+    .image__logo {
+        width: 3vw;
+        margin-right: 0.6vw;
+    }
+    .title {
+        font-size: 1.3vw;
+    }
+    .subtitle {
+        font-size: 1vw;
+    }
+    .text {
+        font-size: 1vw;
+    }
+
+    .buy-btn {
+        width: 24vw;
+        font-size: 1vw;
+    }
+    .h2-referal {
+        font-size: 1.4vw;
+        margin-bottom: 0.2vh;
+    }
+    .referal-programm__maintext {
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    .referal-programm__p {
+        font-size: 1.1vw;
+        p {
+            margin-bottom: 0.2vh;
+        }
+    }
+    .referal-link {
+        &__maintext {
+            margin-bottom: 0.2vh;
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        &__p {
+            p {
+                margin-bottom: 0.2vh;
+                font-size: 1.1vw;
+            }
+        }
+        &__btn {
+            width: 100%;
+            height: 4.6vh;
+            font-size: 1.1vw;
+        }
+    }
+
+    .conclusion {
+    }
+    .conclusion__maintext {
+        margin-bottom: 0.2vh;
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    .currency-block {
+        width: 100%;
+        height: 4.6vh;
+        margin-top: 1vh;
+    }
+    .dollar-equivalent {
+        font-size: 1vw;
+    }
+    .currency-amount {
+        font-size: 1.2vw;
+        img {
+            position: relative;
+            top: 0;
+        }
+    }
+
+    .currency {
+        margin-top: 2vh;
+        height: 4.6vh;
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .amount-input {
+        padding-left: 2.5vw;
+        font-size: 1.1vw;
+    }
+    .amount-input::placeholder {
+        font-size: 1.1vw;
+    }
+    .withdraw-button {
+        font-size: 1.1vw;
+    }
+    .footer {
+        width: 50.2vw;
+        left: 24.9vw;
+        margin-bottom: 1vh;
+        &__list {
+            &_1,
+            &_2,
+            &_3,
+            &_4,
+            &_5 {
+                img {
+                    margin-top: 0.2vh;
+                    width: 8.4vw;
+                    height: 60px;
+                }
+            }
+        }
+    }
+    .exercise {
+        width: 40vw;
+        font-size: 1.6vw;
+    }
+    .exercise-text {
+        margin-top: 3.6vh;
+        width: 40vw;
+        font-size: 1.4vw;
+        line-height: 30px;
+        p {
+            margin-bottom: 1vh;
+        }
+        p:last-child {
+            margin-bottom: 30px;
+        }
+    }
+    .response-block {
+        width: 40vw;
+        height: 35vh;
+    }
+    .response-label {
+        font-size: 1.4vw;
+    }
+    .response-input {
+        font-size: 1.4vw;
+    }
+    .response-button {
+        font-size: 1.4vw;
+        height: 6vh;
+    }
+}
+@media (min-width: 1600px) {
+    .modal-content {
+        width: 450px;
+        height: 80vh;
+    }
+    .modal-header {
+        margin-bottom: 1.7vh;
+    }
+    .modal-image {
+        width: 390px;
+        height: 25vh;
+        margin-bottom: 1.7vh;
+    }
+    .modal-text {
+        font-size: 0.75vw;
+    }
+
+    .image__logo {
+        width: 2.8vw;
+        margin-right: 0.6vw;
+    }
+    .title {
+        font-size: 1.2vw;
+    }
+    .subtitle {
+        font-size: 0.9vw;
+    }
+    .text {
+        font-size: 0.9vw;
+    }
+    .buy-btn {
+        width: 16vw;
+        font-size: 1vw;
+    }
+}

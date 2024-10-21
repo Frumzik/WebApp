@@ -39,19 +39,6 @@ dl,
 dd {
     margin: 0;
 }
-
-/* Выставляем основные настройки по-умолчанию для body */
-// body {
-//     scroll-behavior: smooth;
-//     text-rendering: optimizeSpeed;
-//     line-height: 1.5;
-// }
-
-/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
-
-
-
-/* Указываем понятную периодичность в потоке данных у article*/
 article > * + * {
     margin-top: 1em;
 }
@@ -62,7 +49,15 @@ textarea,
 select {
     font: inherit;
 }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -74,10 +69,8 @@ select {
 @import "base/mainpage";
 @import "base/page2";
 @import "base/page3";
+@import "base/page4";
 @import "base/media";
 html{
     font-size: 16px;
-}
-body{
-    margin: 0px 20px 0 20px;
 }
