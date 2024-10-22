@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("supportLink").href = data.supportLink;
 
         for (let i = 0; i < newsArray.length; i++) {
-          let newsElement = `<a href="${newsArray[i].telegraphLink}" class="advertising__blocks" style="height: inherit;"><img src='${newsArray[i].imageLink}' style='height: inherit; border-radius: 20px;'></a>`;
+          let newsElement = `<a href="${newsArray[i].telegraphLink}" class="advertising__blocks" style="height: inherit;"><img src='${newsArray[i].imageLink}' style='height: inherit; border-radius: 10px;width:100%;'></a>`;
           document.getElementById("newsContainer").innerHTML += newsElement;
         }
       })
