@@ -1,3 +1,39 @@
+
+const modal = document.getElementById("modal");
+const btn = document.getElementById("open-modal");
+const span = document.getElementsByClassName("custom-close")[0];
+const paymentOption = document.getElementById("payment-option");
+const cryptoPaymentCheckbox = document.getElementById("crypto-payment");
+const amountInput = document.getElementById("amount");
+
+
+amountInput.addEventListener("input", function (event) {
+
+    this.value = this.value.replace(/[^0-9.]/g, '');
+});
+
+btn.onclick = function() {
+    modal.style.display = "block";
+
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+
+    }
+}
+
+paymentOption.onclick = function() {
+    cryptoPaymentCheckbox.checked = !cryptoPaymentCheckbox.checked; 
+    paymentOption.classList.toggle("active", cryptoPaymentCheckbox.checked);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const currentPath = window.location.pathname;
     const initData = btoa(window.Telegram.WebApp.initData);

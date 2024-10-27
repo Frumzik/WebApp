@@ -1,20 +1,20 @@
 const swiper = new Swiper(".swiper-container", {
   direction: "horizontal",
-  loop: false,
   slidesPerView: 1,
   spaceBetween: 0,
   loop: false,
 });
 
 
-// const videoPlayer = videojs("fullscreen-video");
-// const icon1 = document.getElementById("icon1");
 
-// swiper.on("slideChange", function () {
-//   if (!videoPlayer.paused()) {
-//     videoPlayer.pause();
-//   }
-// });
+const videoPlayer = videojs("fullscreen-video");
+const icon1 = document.getElementById("icon1");
+
+swiper.on("slideChange", function () {
+  if (!videoPlayer.paused()) {
+    videoPlayer.pause();
+  }
+});
 
 
 document.addEventListener("keydown", function (event) {
@@ -27,19 +27,19 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-// videoPlayer.on("play", function () {
-//   swiper.allowTouchMove = false; 
-//   icon1.style.display = "none";
-// });
+videoPlayer.on("play", function () {
+  swiper.allowTouchMove = false; 
+  icon1.style.display = "none";
+});
 
 
-// videoPlayer.on("pause", function () {
-//   swiper.allowTouchMove = true; 
-//   icon1.style.display = "block";
-// });
+videoPlayer.on("pause", function () {
+  swiper.allowTouchMove = true; 
+  icon1.style.display = "block";
+});
 
 
-// videoPlayer.on("ended", function () {
-//   swiper.allowTouchMove = true;
-//   icon1.style.display = "block";
-// });
+videoPlayer.on("ended", function () {
+  swiper.allowTouchMove = true;
+  icon1.style.display = "block";
+});

@@ -19,18 +19,7 @@
     background: linear-gradient(102deg, #fffef6 11.35%, #edebf7 102.05%);
     padding: 0;
 }
-.video-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
 
-.swiper-slide__video {
-    width: 100vw; /* Немного меньше полной ширины */
-    height: 100vh; /* Можно адаптировать под нужный размер */
-}
 .swiper-slide__image {
     width: 100vw;
     height: 44.5vh;
@@ -175,4 +164,3 @@
     border-radius: 10px;
     background: linear-gradient(271deg, #edebf7 -35.22%, #ecd3f8 37.21%, #cbebf1 168.81%);
 }
-

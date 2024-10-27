@@ -21,6 +21,30 @@
     body {
         margin: 0px 10% 0 10%;
     }
+    .registration-title {
+        font-size: 18px;
+        margin-bottom: 2vh;
+    }
+    input::placeholder {
+        color: var(--Prototype-Dark-Grey, #5d5d5d);
+        font-family: Catamaran;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+    }
+    .text-underline {
+        font-size: 15px;
+    }
+    .formbtn {
+        font-size: 15px;
+        height: 6vh;
+    }
+    .question {
+        font-size: 20px;
+    }
+    .login {
+        font-size: 15px;
+    }
     .about {
         width: 27.4vw;
         &__name {
@@ -31,10 +55,14 @@
             font-size: 2.3vw;
         }
     }
+    .footer.footer__series {
+        bottom: 0px;
+    }
     .logo {
         margin-left: 2vw;
-        img{
-            width: 40px;height: 40px;
+        img {
+            width: 40px;
+            height: 40px;
         }
     }
     .balance {
@@ -84,6 +112,9 @@
         width: 80vw;
         left: 10.5vw;
         margin-bottom: 14px;
+    }
+    .footer__series {
+        bottom: 0;
     }
 
     .about__game {
@@ -254,8 +285,9 @@
     }
     .logo {
         margin-left: 1.5vw;
-        img{
-            width: 43px;height: 43px;
+        img {
+            width: 43px;
+            height: 43px;
         }
     }
     .balance {
@@ -465,20 +497,40 @@
     .buttons-container__btn {
         width: 75vw;
     }
+    .custom-modal-content {
+        h2 {
+            font-size: 18px;
+        }
+    }
+    .cryptopay {
+        span {
+            font-size: 15px;
+        }
+    }
+    .submit-btn {
+        font-size: 15px;
+    }
+    .mount-input{
+        font-size: 14px;
+    }
 }
 @media (min-width: 992px) {
     .logo {
         margin-left: 2vw;
-        img{
-            width: 45px;height: 45px;
+        img {
+            width: 45px;
+            height: 45px;
         }
-        
     }
-    .advertising__blocks{
+    .advertising__blocks {
         height: 100px;
     }
     body {
         margin: 0 15% 0 15%;
+    }
+    .formbtn {
+        font-size: 15px;
+        height: 40px;
     }
     .options {
         width: 10vw;
@@ -637,7 +689,7 @@
         margin-bottom: 0.6vh;
         img {
             width: 35px;
-                height: 35px;
+            height: 35px;
         }
     }
     .currency-block {
@@ -970,8 +1022,9 @@
         margin-top: 2vh;
     }
     .buttons-container__btn {
-        font-size: 1.6vw;
+        font-size: 1.3vw;
         width: 40vw;
+        height: 6.5vh;
     }
     .exercise {
         width: 45vw;
@@ -1007,6 +1060,11 @@
 @media (min-width: 1440px) {
     body {
         margin: 0 25% 0 25%;
+    }
+    .buttons-container__btn {
+        font-size: 1.5vw;
+        width: 40vw;
+        height: 5.5vh;
     }
     .swiper-slide__image {
         width: 50vw;
