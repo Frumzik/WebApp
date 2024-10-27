@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
-<body  style="overflow: hidden;margin: 0;padding: 0;">
+<body style="overflow: hidden;margin: 0;padding: 0;">
+
     <body>
         <div class="slider-container">
             <div class="swiper-container">
@@ -45,15 +46,24 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="swiper-slide video-slide">
-                        <video id="fullscreen-video" class="video-js fullscreen-video vjs-default-skin" controls
+                    <div class="swiper-slide">
+                        <!-- <video id="fullscreen-video" class="video-js fullscreen-video vjs-default-skin" controls
                             preload="auto" autoplay muted data-setup='{}'>
-                            <source src="img/IMG_1705.MOV" type="video/mp4" />
-                        </video>
-                        <div class="icon-overlay" id="icon1">
-                            <img src="icons/swipe.svg" alt="icon" />
+                            <source src="img/https://vk.com/video-218972619_456239017?ref_domain=yandex-video.naydex.net" type="video/mp4" />
+                        </video> -->
+                        <div class="video-wrapper">
+                            <iframe src="https://vk.com/video_ext.php?oid=-218972619&id=456239017&hash=somehash"
+
+                                class="swiper-slide__video" 
+                                frameborder="0" 
+                                allowfullscreen>
+                            </iframe>
+                            </div>
+                            <div class="icon-overlay" id="icon1">
+                                <img src="icons/swipe.svg" alt="icon" />
+                            </div>
                         </div>
-                    </div>
+                    
                     <div class="swiper-slide">
                         <div class="text-container" style="margin-top: 45px;">
                             <p>Ты гуляешь в старом городе — последние часы отпуска, совсем скоро самолет доставит тебя в
