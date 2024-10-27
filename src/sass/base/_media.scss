@@ -173,9 +173,9 @@
         margin-top: 2vh;
     }
     .currency-amount {
-        img {
+        svg {
             position: relative;
-            top: 0;
+            top: 5px;
         }
     }
 
@@ -423,9 +423,9 @@
     .currency-amount {
         font-size: 2.4vw;
 
-        img {
+        svg {
             position: relative;
-            top: 0;
+            top: 4px;
         }
     }
 
@@ -646,13 +646,13 @@
         margin-top: 1vh;
     }
     .dollar-equivalent {
-        font-size: 2vw;
+        font-size: 1.5vw;
     }
     .currency-amount {
         font-size: 2vw;
-        img {
+        svg {
             position: relative;
-            top: 0;
+            top: 3px;
         }
     }
 
@@ -921,11 +921,11 @@
         margin-top: 1vh;
     }
     .dollar-equivalent {
-        font-size: 1.3vw;
+        font-size: 1.2vw;
     }
     .currency-amount {
         font-size: 1.3vw;
-        img {
+        svg {
             position: relative;
             top: 2px;
         }
@@ -1197,9 +1197,9 @@
     }
     .currency-amount {
         font-size: 1.2vw;
-        img {
+        svg {
             position: relative;
-            top: 0;
+            top: 4px;
         }
     }
 

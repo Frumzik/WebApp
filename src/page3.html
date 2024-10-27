@@ -14,9 +14,9 @@
     <header class="header">
         <div class="header__container">
             <div class="header__inner">
-                <div class="logo"><a href="#" id="avatarLink">
-                        <img src="icons/Ellipse 1.svg" alt="logo">
-                    </a></div>
+                <div class="logo">
+                    <img src="" id="avatarLink" style="border-radius: 100%;">
+                    </div>
                 <div class="about">
                     <div class="about__name"><span id="userName"></span></div>
                     <div class="about__balancegive"><a href="#">пополнить баланс</a></div>
@@ -63,15 +63,13 @@
         <div class="referal-link">
             <div class="referal-link__maintext">
                 <img src="icons/link.svg" alt="link">
-                <h2 class="h2-referal">https://miro.com/app/board/uXj</h2>
+                <h2 class="h2-referal"><span id="referralLink"></span></h2>
             </div>
             <div class="referal-link__p">
                 <h2 class="h2-referal">Как стать частью миссии и запустить изменения в твое﻿м окружении?</h2>
                 <p>Скопируй свою персональную ссылку и отправь ее другу.</p>
             </div>
-            <a class="referal-link__btn" href="#">
-                Скопировать
-            </a>
+            <button class="referal-link__btn" id="copyBtn">Скопировать</button>
         </div>
     </section>
     <section>
@@ -83,16 +81,19 @@
             <h2 class="h2-referal">Твоя благодарность от Игровой Вселенной:</h2>
             <div class="currency-block">
                 <div class="currency-amount">
-                    <span id="currency-amount">1000<img src="icons/goldstar.svg" alt="star"></span>
+                    <span id="referralBalance"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+                        <path d="M4.86875 15.75L6.0875 10.4813L2 6.9375L7.4 6.46875L9.5 1.5L11.6 6.46875L17 6.9375L12.9125 10.4813L14.1312 15.75L9.5 12.9562L4.86875 15.75Z" fill="#FBE30E"/>
+                    </svg>
                 </div>
                 <div class="dollar-equivalent">
-                    ~$<span id="dollar-equivalent">600</span>
+                    ~$<span id="referralBalanceInDollars"></span>
                 </div>
             </div>
             <div class="currency">
                 <div class="currency-container">
-                    <input type="number" id="amount-input"  placeholder="Сумма" class="amount-input" />
-                    <button id="withdraw-button" class="withdraw-button">Вывести</button>
+                    <input type="number" id="inputNumber"  placeholder="Сумма" class="amount-input" min="1" step="1" required />
+                    <button id="submitBtn" class="withdraw-button">Вывести</button>
                 </div>
                 <a href="#"><img src="icons/transaction.svg" alt="transaction"></a>
             </div>
@@ -108,7 +109,7 @@
         </ul>
     </div>
     </footer>
-    <script src="js/script.js"></script>
+    <script src="js/page3.js" defer></script>
 </body>
 
 </html>
