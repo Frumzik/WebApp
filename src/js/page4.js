@@ -6,41 +6,40 @@ const swiper = new Swiper(".swiper-container", {
   loop: false,
 });
 
-// // Инициализация Video.js плеера
+
 // const videoPlayer = videojs("fullscreen-video");
 // const icon1 = document.getElementById("icon1");
-// // Обработчик события смены слайда
+
 // swiper.on("slideChange", function () {
-//   // Останавливаем видео при смене слайда
 //   if (!videoPlayer.paused()) {
-//     videoPlayer.pause(); // Остановить видео при смене слайда
+//     videoPlayer.pause();
 //   }
 // });
 
-// Обработчик клавиатурных событий
+
 document.addEventListener("keydown", function (event) {
-  // Обработка стрелок
+
   if (event.code === "ArrowRight") {
-    swiper.slideNext(); // Переход к следующему слайду
+    swiper.slideNext(); 
   } else if (event.code === "ArrowLeft") {
-    swiper.slidePrev(); // Переход к предыдущему слайду
+    swiper.slidePrev(); 
   }
 });
 
-// // Отключаем свайпы, когда видео играет
+
 // videoPlayer.on("play", function () {
-//   swiper.allowTouchMove = false; // Отключаем свайпы, пока видео играет
+//   swiper.allowTouchMove = false; 
 //   icon1.style.display = "none";
 // });
 
-// // Разрешаем свайпы, когда видео на паузе
+
 // videoPlayer.on("pause", function () {
-//   swiper.allowTouchMove = true; // Разрешаем свайпы, когда видео на паузе
+//   swiper.allowTouchMove = true; 
 //   icon1.style.display = "block";
 // });
 
-// // Разрешаем свайпы после завершения видео
+
 // videoPlayer.on("ended", function () {
-//   swiper.allowTouchMove = true; // Разрешаем свайпы после завершения видео
+//   swiper.allowTouchMove = true;
 //   icon1.style.display = "block";
 // });
