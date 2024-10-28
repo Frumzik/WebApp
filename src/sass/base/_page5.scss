@@ -27,11 +27,15 @@
     width: 100%;
     height: 4.5vh;
     padding-left: 20px;
+    padding-right: 20px;
     margin-bottom: 10px;
     border-radius: 40px;
     border: 1px solid #dccee3;
     outline: none;
     font-family: Catamaran;
+}
+.cheking__pass{
+    padding-right: 45px;
 }
 input::placeholder {
     color: var(--Prototype-Dark-Grey, #5d5d5d);
