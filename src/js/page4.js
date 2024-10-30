@@ -5,11 +5,13 @@ const swiper = new Swiper(".swiper-container", {
   loop: false,
   on: {
     slideChange: function () {
-      const footer = document.querySelector(".footer");
-      if (swiper.activeIndex === 1) {
-        footer.style.display = "none";
+      const footer = document.querySelector('.footer');
+      const activeSlideId = this.slides[this.activeIndex].id;
+      
+      if (activeSlideId === 'slide1' || activeSlideId === 'slide4' || activeSlideId === 'slide5') {
+        footer.style.display = 'block'; 
       } else {
-        footer.style.display = "block";
+        footer.style.display = 'none';
       }
     },
   },
