@@ -18,11 +18,11 @@
     }
 }
 .logo {
-    img{
-    width: 34px;
-    height: 34px;
+    img {
+        border-radius: 100%;
+        width: 34px;
+        height: 34px;
     }
-
 }
 .about {
     font-size: 2.7vw;
@@ -346,7 +346,7 @@
     font-family: Onest;
     font-size: 10px;
 }
-.btn-1{
+.btn-1 {
     display: flex;
     justify-content: center;
 }
