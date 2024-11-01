@@ -278,6 +278,15 @@
     }
 }
 @media (min-width: 768px) {
+    .answer-answer {
+        p{
+            font-size: 15px;
+        }
+        
+    }
+    .answer-answer-title {
+        font-size: 20px;
+    }
     .advertising__blocks {
         width: 120px;
         height: 86px;
@@ -516,11 +525,19 @@
     .submit-btn {
         font-size: 15px;
     }
-    .mount-input{
+    .mount-input {
         font-size: 14px;
     }
 }
 @media (min-width: 992px) {
+    .answer-answer {
+        p{
+            font-size: 20px;
+        }
+    }
+    .answer-answer-title {
+        font-size: 25px;
+    }
     .logo {
         margin-left: 2vw;
         img {
@@ -790,6 +807,16 @@
     body {
         overflow: auto;
         margin: 0 25% 0 25%;
+    }
+    .answer-answer {
+        p{
+            font-size: 13px;
+        }
+        
+    }
+    .answer-answer-title {
+        margin-top: 15px;
+        font-size: 18px;
     }
     .header {
         margin-top: 5px;
@@ -1074,6 +1101,15 @@
 @media (min-width: 1440px) {
     body {
         margin: 0 25% 0 25%;
+    }
+    .answer-answer {
+        p{
+            font-size: 15px;
+        }
+        
+    }
+    .answer-answer-title {
+        font-size: 25px;
     }
     .buttons-container__btn {
         font-size: 1.5vw;
