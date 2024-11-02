@@ -2,10 +2,22 @@
     .menu__blocks {
         width: 100%;
     }
+
+    .video-half-size {
+        height: 28%;
+        width: 100%;
+    }
+
+    .video-full-size {
+        height: 90%;
+        width: 100%;
+    }
+
 }
 @media (max-width: 576px) {
     body {
         margin: 0px 20px 0 20px;
+        height: 100vh;
     }
     .footer {
         width: 92vw;
@@ -20,7 +32,19 @@
 @media (min-width: 577px) {
     body {
         margin: 0px 10% 0 10%;
+        height: 100vh;
     }
+
+    .video-half-size {
+        height: 40%;
+        width: 100%;
+    }
+
+    .video-full-size {
+        height: 90%;
+        width: 76%;
+    }
+
     .registration-title {
         font-size: 18px;
         margin-bottom: 2vh;
@@ -287,6 +311,17 @@
     .answer-answer-title {
         font-size: 20px;
     }
+
+    .video-half-size {
+        height: 60%;
+        width: 100%;
+    }
+
+    .video-full-size {
+        height: 90%;
+        width: 75%;
+    }
+
     .advertising__blocks {
         width: 120px;
         height: 86px;
@@ -538,6 +573,17 @@
     .answer-answer-title {
         font-size: 25px;
     }
+
+    .video-half-size {
+        height: 50%;
+        width: 50%;
+    }
+
+    .video-full-size {
+        height: 90%;
+        width: 85%;
+    }
+
     .logo {
         margin-left: 2vw;
         img {
@@ -550,6 +596,7 @@
     }
     body {
         margin: 0 15% 0 15%;
+        height: 100vh;
     }
     .formbtn {
         font-size: 15px;
@@ -804,9 +851,20 @@
     }
 }
 @media (min-width: 1280px) {
+    .video-half-size {
+        height: 50%;
+        width: 55%;
+    }
+
+    .video-full-size {
+        height: 90%;
+        width: 30%;
+    }
+
     body {
         overflow: auto;
         margin: 0 25% 0 25%;
+        height: 100vh;
     }
     .answer-answer {
         p{
@@ -1099,8 +1157,19 @@
     }
 }
 @media (min-width: 1440px) {
+    .video-half-size {
+        height: 50%;
+        width: 55%;
+    }
+
+    .video-full-size {
+        height: 90%;
+        width: 30%;
+    }
+
     body {
         margin: 0 25% 0 25%;
+        height: 100vh;
     }
     .answer-answer {
         p{
@@ -1385,6 +1454,16 @@
     }
 }
 @media (min-width: 1600px) {
+    .video-half-size {
+        height: 50%;
+        width: 55%;
+    }
+
+    .video-full-size {
+        height: 90%;
+        width: 30%;
+    }
+
     .modal-content {
         width: 450px;
         height: 80vh;

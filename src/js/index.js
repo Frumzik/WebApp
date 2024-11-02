@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (currentPath === "/") {
     fetch("https://test0123481.ru/api/user/profile/?lang=ru", {
-        headers: { Authorization: initData },
+        headers: { 'X-Telegram-Init-Data': initData },
         method: "GET",
     })
         .then((response) => response.json())

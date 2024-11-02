@@ -74,34 +74,15 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="icons/Group2.svg" alt="Логотип" class="image__logo">
+                <img src="icons/Group2.svg" alt="Логотип" class="image__logo" id="modalIcon">
                 <div class="titles">
                     <h2 class="title" id="modalNumber"></h2>
                     <h3 class="subtitle" id="modalName"></h3>
                 </div>
             </div>
             <img src="icons/image.png" alt="Картинка" class="modal-image">
-            <div class="modal-text">
-                <p class="text">В этой серии вы узнаете, как бороздить просторы вселенских океанов и выходить на новые
-                    уровни бытия.</p>
-                <p class="text">Вы будете проходить:</p>
-                <ol class="list">
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                </ol>
-                <p class="text">Практики:</p>
-                <ol class="list">
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                    <li>Это</li>
-                </ol>
-            </div>
-            <button class="buy-btn" id="">Купить</button>
+            <div class="modal-text"><pre id="modal-description"></pre></div>
+            <button class="buy-btn" onclick="buySeries(event)">Купить</button>
         </div>
     </div>
     <script src="js/page2.js" defer></script>
