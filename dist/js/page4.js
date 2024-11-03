@@ -37,13 +37,18 @@ const swiper = new Swiper(".swiper-container", {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  const params = new URLSearchParams({
+    lang: "ru",
+    lang: "en",
+  }).toString();
+
   const initData = btoa(window.Telegram.WebApp.initData);
 
   let url = new URL(window.location.href);
   let series_id = url.searchParams.get("series_id");
   series_id = parseInt(series_id);
 
-  fetch(`https://test0123481.ru/api/series/play/?series_id=${series_id}`, {
+  fetch(`https://test0123481.ru/api/series/play/?series_id=${series_id}&${params}`, {
     headers: {
       "X-Telegram-Init-Data": initData,
       method: "GET",

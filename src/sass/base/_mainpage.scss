@@ -79,6 +79,7 @@
 .notification {
     width: 25px;
     height: 25px;
+    cursor:pointer;
 }
 .settings {
     margin-left: 5px;
@@ -363,4 +364,40 @@
     font-family: Onest;
     font-size: 10px;
     font-style: normal;
+}
+.popup {
+    position: fixed;
+    top: 14vh;
+    right: 20px;
+    min-width: 190px;
+    background: linear-gradient(102deg, #fffef6 11.35%, #edebf7 102.05%);
+    border: 1px solid #cbebf1;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.popup-content {
+    font-family: Onest;
+    color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
+    padding: 10px;
+    font-size: 10px;
+    p{
+        padding-right: 20px;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    font-size: 40px;
+    right: 10px;
+    top: 0;
 }

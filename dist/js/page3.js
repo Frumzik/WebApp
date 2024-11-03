@@ -1,23 +1,26 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     const initData = btoa(window.Telegram.WebApp.initData);
+    let notices = [];
 
     window.Telegram.WebApp.BackButton.show();
-    window.Telegram.WebApp.BackButton.onClick(function (event) {
+    window.Telegram.WebApp.BackButton.onClick(function () {
         window.Telegram.WebApp.BackButton.hide();
         window.location.href = "/page2.html";
     });
 
-    fetch("https://test0123481.ru/api/referral/profile", {
+    fetch("https://test0123481.ru/api/referral/profile/", {
         headers: { 'X-Telegram-Init-Data': initData },
         method: "GET",
     })
     .then((response) => response.json())
     .then((data) => {
         const userName = `${data.user.firstName} ${data.user.lastName}`;
-        const balance = `${data.user.balance}`;
-        const referralLink = `${data.referralLink}`;
-        const referralBalance = `${data.referralBalance}`;
-        const referralBalanceInDollars = `${data.referralBalanceInDollars}`;
+        const balance = data.user.balance;
+        const referralLink = data.referralLink;
+        const referralBalance = data.referralBalance;
+        const referralBalanceInDollars = data.referralBalanceInDollars;
+        notices = data.notices;
 
         document.getElementById("userName").innerHTML = userName;
         document.getElementById("referralLink").innerHTML = referralLink;
@@ -37,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const submitBtn = document.getElementById("submitBtn");
         const inputNumber = document.getElementById("inputNumber");
-
 
         inputNumber.addEventListener("input", function() {
             this.value = this.value.replace(/[^\d]/g, '');
@@ -71,6 +73,48 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error('Ошибка:', error);
             });
         });
+
+        const bellIcon = document.getElementById('bell-icon');
+        bellIcon.src = notices.length > 0
+            ? '../icons/material_symbols_light_notifications_unread_outline_rounded_1.svg'
+            : '../icons/material-symbols-light_notifications-unread-outline-rounded.png';
+
+        document.getElementById('notification-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            const popup = document.getElementById('popup');
+            if (popup.classList.contains('hidden')) {
+                displayNotifications(notices);
+                popup.classList.remove('hidden');
+                updatePopupPosition(popup); 
+            } else {
+                popup.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('close-button').addEventListener('click', function() {
+            document.getElementById('popup').classList.add('hidden');
+        });
     })
     .catch((error) => console.error("Ошибка:", error));
 });
+
+const notificationMessages = {
+    buy: "Покупка",
+    sc: "Успешный вывод",
+    cn: "Отказ в выводе",
+    cr: "Заявка на вывод создана",
+    rf: "Пополнение счета",
+    bn: "Реферальный бонус",
+};
+
+function displayNotifications(notices) {
+    const notificationText = document.getElementById('notification-text');
+    notificationText.innerHTML = ''; 
+    for (let i = 0; i < notices.length; i++) {
+        const p = document.createElement('p');
+        const noticeType = notices[i].text;
+        const message = notificationMessages[noticeType] || "Неизвестное уведомление";
+        p.textContent = message;
+        notificationText.appendChild(p);
+    }
+}
