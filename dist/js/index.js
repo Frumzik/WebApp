@@ -6,6 +6,11 @@ const paymentOption = document.getElementById("payment-option");
 const cryptoPaymentCheckbox = document.getElementById("crypto-payment");
 const amountInput = document.getElementById("amount");
 
+const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 4,
+    spaceBetween: 10, 
+    freeMode: true,
+});
 
 amountInput.addEventListener("input", function (event) {
 
@@ -40,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (currentPath === "/") {
     fetch("https://test0123481.ru/api/user/profile/?lang=ru", {
-        headers: { Authorization: initData },
+        headers: { 'X-Telegram-Init-Data': initData },
         method: "GET",
     })
         .then((response) => response.json())
@@ -56,15 +61,19 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("balance").textContent = balance;
         document.getElementById("name").textContent = `Серия ${number}`;
         document.getElementById("number").textContent = `"${name}"`;
-        document.getElementById("progress").style.width =
-          progressValue * 100 + "%";
+        document.getElementById("progress").style.width = progressValue * 100 + "%";
         document.getElementById("avatarLink").src = data.user.avatarLink;
         document.getElementById("communityLink").href = data.communityLink;
         document.getElementById("iconLink").href = data.iconLink;
         document.getElementById("supportLink").href = data.supportLink;
 
+
         for (let i = 0; i < newsArray.length; i++) {
-            let newsElement = `<a href="${newsArray[i].telegraphLink}" class="advertising__blocks" style="height: inherit;"><img src='${newsArray[i].imageLink}' style='height: inherit; border-radius: 10px;width:100%;'></a>`;
+            let newsElement = `<div class="swiper-slide">
+                                <a href="${newsArray[i].telegraphLink}" class="advertising__blocks">
+                                    <img src='icons' style='height: inherit; border-radius: 10px; width: 100%;'>
+                                </a>
+                            </div>`;
             document.getElementById("newsContainer").innerHTML += newsElement;
         }
         })

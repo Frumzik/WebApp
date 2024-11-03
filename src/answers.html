@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IGame</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://unpkg.com/i18next@latest/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector@latest/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend@latest/i18nextHttpBackend.min.js"></script>
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
@@ -22,16 +25,8 @@
                 </div>
             </div>
             <div class="answer-answer">
-                <h2 class="answer-answer-title">Ваша цель:</h2>
-                <p>Моя цель пройти все уровни игры и узнать себя лучше, отвечая на разные вопросы и приближаясь к себе настоящему</p>
-                <h2 class="answer-answer-title">Вопрос 2</h2>
-                <p>Моя цель пройти все уровни игры и узнать себя лучше, отвечая на разные вопросы и приближаясь к себе настоящему</p>
-                <h2 class="answer-answer-title">Вопрос 3</h2>
-                <p>Моя цель пройти все уровни игры и узнать себя лучше, отвечая на разные вопросы и приближаясь к себе настоящему</p>
-                <h2 class="answer-answer-title">Вопрос 4</h2>
-                <p>Моя цель пройти все уровни игры и узнать себя лучше, отвечая на разные вопросы и приближаясь к себе настоящему</p>
-                <h2 class="answer-answer-title">Вопрос 5</h2>
-                <p>Моя цель пройти все уровни игры и узнать себя лучше, отвечая на разные вопросы и приближаясь к себе настоящему</p>
+                <h2 class="answer-answer-title"><span data-i18n="answers1">Ваша цель:</span></h2>
+                <p data-i18n="userAnswers1">Моя цель пройти все уровни игры и узнать себя лучше, отвечая на разные вопросы и приближаясь к себе настоящему</p>
             </div>
         </div>
     </div>
@@ -49,6 +44,8 @@
         </div>
     </footer>
     <script src="js/page2.js" defer></script>
+    <script src="js/languages.js" defer></script>
+    
 </body>
 
 </html>

@@ -1,9 +1,10 @@
-function sendAnswer(event) {
-}
+
+
+function sendAnswer(event) {}
 
 function switchSlide(event, slideNumber) {
-    const slideIndex = slideNumber;
-    swiper.slideTo(slideIndex);
+  const slideIndex = slideNumber;
+  swiper.slideTo(slideIndex);
 }
 
 const swiper = new Swiper(".swiper-container", {
@@ -14,11 +15,11 @@ const swiper = new Swiper(".swiper-container", {
   allowTouchMove: true,
   on: {
     slideChange: function () {
-     if (this.activeIndex === 0) {
+      if (this.activeIndex === 0) {
         this.slideTo(1);
-     }
+      }
 
-      const footer = document.querySelector('.footer');
+      const footer = document.querySelector(".footer");
 
       if (this.slides.length === 0) {
         swiper.update();
@@ -27,40 +28,40 @@ const swiper = new Swiper(".swiper-container", {
       const activeSlideClasses = this.slides[this.activeIndex].classList;
 
       if (activeSlideClasses.contains("slide-without-footer")) {
-        footer.style.display = 'none';
+        footer.style.display = "none";
       } else {
-        footer.style.display = 'block';
+        footer.style.display = "block";
       }
     },
   },
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const initData = btoa(window.Telegram.WebApp.initData);
+  const initData = btoa(window.Telegram.WebApp.initData);
 
-    let url = new URL(window.location.href);
-    let series_id = url.searchParams.get('series_id');
-    series_id = parseInt(series_id);
+  let url = new URL(window.location.href);
+  let series_id = url.searchParams.get("series_id");
+  series_id = parseInt(series_id);
 
-    fetch(`https://test0123481.ru/api/series/play/?series_id=${series_id}`, {
-        headers: {
-            'X-Telegram-Init-Data': initData,
-            'method': "GET",
-        }
-    })
+  fetch(`https://test0123481.ru/api/series/play/?series_id=${series_id}`, {
+    headers: {
+      "X-Telegram-Init-Data": initData,
+      method: "GET",
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
-        const pages = data['pages'];
-        const container = document.getElementById('main-container');
+      const pages = data["pages"];
+      const container = document.getElementById("main-container");
 
-        //Так swiper не блокирует перелистывание
-        container.innerHTML += `<div class="swiper-slide"></div>`
+      //Так swiper не блокирует перелистывание
+      container.innerHTML += `<div class="swiper-slide"></div>`;
 
-        for (let i = 0; i < pages.length; i++) {
-            let page = pages[i];
+      for (let i = 0; i < pages.length; i++) {
+        let page = pages[i];
 
-            if (page.isAnswerPage) {
-                container.innerHTML += `<div class="swiper-slide slide-without-footer">
+        if (page.isAnswerPage) {
+          container.innerHTML += `<div class="swiper-slide slide-without-footer">
                     <div class="exercise-text"><pre>${page.text}</pre></div>
                     <div class="response-block">
                         <p class="response-label">Запишите свой ответ:</p>
@@ -68,39 +69,48 @@ document.addEventListener("DOMContentLoaded", function () {
                         <button class="response-button" onclick="sendAnswer(event)">Отправить</button>
                     </div>
                 </div>`;
-            } else if (page.text !== '' && page.videoLink === null && page.imageLink !== null) {
-                container.innerHTML += `
+        } else if (
+          page.text !== "" &&
+          page.videoLink === null &&
+          page.imageLink !== null
+        ) {
+          container.innerHTML += `
                 <div class="swiper-slide">
                     <img class="swiper-slide__image" src="${page.imageLink}" alt="Image">
                     <div class="text-container"><pre>${page.text}</pre></div>
                     <div class="buttons-container">
                     </div>
                 </div>
-                `
-
-            } else if (page.text !== '' && page.videoLink === null && page.imageLink === null) {
-                let buttonsHTML = '';
-                for (let buttonIndex = 0; buttonIndex < page.buttons.length; buttonIndex++) {
-                    let button = page.buttons[buttonIndex];
-
-                    buttonsHTML += `
+                `;
+        } else if (
+          page.text !== "" &&
+          page.videoLink === null &&
+          page.imageLink === null
+        ){
+          let buttonsHTML = "";
+          for (
+            let buttonIndex = 0;
+            buttonIndex < page.buttons.length;
+            buttonIndex++
+          ) {
+            let button = page.buttons[buttonIndex];
+            buttonsHTML += `
                         <button class="buttons-container__btn"
                                 onclick="switchSlide(event, ${button.nextPageNumber})">
                             ${button.text}
                         </button>
-                    `
-                }
-
-                container.innerHTML += `
+                    `;
+          }
+          container.innerHTML += `
                 <div class="swiper-slide">
                     <div class="text-container"><pre>${page.text}</pre></div>
                     <div class="buttons-container">
                         ${buttonsHTML}
                     </div>
                 </div>
-                `
-            } else if (page.text === '' && page.videoLink !== null) {
-                container.innerHTML += `
+                `;
+        } else if (page.text === "" && page.videoLink !== null) {
+          container.innerHTML += `
                 <div class="swiper-slide slide-without-footer">
                     <iframe
                     src="${page.videoLink}"
@@ -112,10 +122,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <img src="icons/swipe.svg" alt="icon" />
                 </div>
                 </div>
-                `
-
-            } else if (page.text !== '' && page.videoLink !== null) {
-                container.innerHTML += `
+                `;
+        } else if (page.text !== "" && page.videoLink !== null) {
+          container.innerHTML += `
                 <div class="swiper-slide slide-without-footer">
                     <iframe
                     class="video-half-size"
@@ -125,20 +134,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 </iframe>
                 <div class="text-container"><pre>${page.text}</pre></div>
                 </div>
-                `
-            } else if (page.text === '' && page.videoLink === null && page.imageLink !== null) {
-                container.innerHTML += `
+                `;
+        } else if (
+          page.text === "" &&
+          page.videoLink === null &&
+          page.imageLink !== null
+        ) {
+          container.innerHTML += `
                     <div class="swiper-slide">
                         <img class="swiper-slide__image" src="${page.imageLink}" alt="Image">
                     </div>
-                `
-            }
+                `;
         }
-    })
+      }
+    });
 
-    swiper.update();
-    //Это тоже что бы обойти ошибку
-    setTimeout(switchSlide, 500, null, 1);
+  swiper.update();
+  //Это тоже что бы обойти ошибку
+  setTimeout(switchSlide, 500, null, 1);
 });
 
 document.addEventListener("keydown", function (event) {
@@ -149,48 +162,3 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-
-/*const playPauseBtn = document.getElementById("playPauseBtn");
-const currentTimeDisplay = document.getElementById("currentTime");
-const playerContainer = document.getElementById("player-container");
-
-// Создаем WaveSurfer
-//const wavesurfer = WaveSurfer.create({
-//    container: '#waveform',
-//    waveColor: '#d3d3d3',
-//    progressColor: '#888',
-//    cursorColor: 'transparent',
-//    height: 40,
-//    barWidth: 2,
-//    responsive: true,
-//});
-
-// Загружаем аудиофайл
-//wavesurfer.load('../img/Новая запись 97.m4a');
-
-// Управление воспроизведением и переключение классов для кнопки Play/Pause
-playPauseBtn.addEventListener("click", () => {
-    if (wavesurfer.isPlaying()) {
-        wavesurfer.pause();
-        playerContainer.classList.remove("playing");
-    } else {
-        wavesurfer.play();
-        playerContainer.classList.add("playing");
-    }
-});
-
-// Обновление таймера
-wavesurfer.on("audioprocess", () => {
-    const currentTime = Math.floor(wavesurfer.getCurrentTime());
-    const minutes = Math.floor(currentTime / 60);
-    const seconds = currentTime % 60;
-    currentTimeDisplay.textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-});
-
-// Обновление кнопки по завершении трека
-wavesurfer.on("finish", () => {
-    playerContainer.classList.remove("playing");
-    currentTimeDisplay.textContent = "00:00";
-});
-
-*/

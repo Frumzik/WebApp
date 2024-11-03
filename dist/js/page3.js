@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     fetch("https://test0123481.ru/api/referral/profile", {
-        headers: { Authorization: initData },
+        headers: { 'X-Telegram-Init-Data': initData },
         method: "GET",
     })
     .then((response) => response.json())

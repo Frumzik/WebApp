@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IGame</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://unpkg.com/i18next@latest/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector@latest/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend@latest/i18nextHttpBackend.min.js"></script>
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
@@ -15,30 +18,32 @@
             <div class="form-container">
                 
                 <form id="registration-form">
-                    <div class="registration-title">Войти</div>
-                    <input class="cheking" type="text" id="telegram-nickname" placeholder="Ник в Telegram*" required>
+                    <div class="registration-title"><span data-i18n="log">Войти</span></div>
+                    <input class="cheking" type="text" id="telegram-nickname" data-i18n-placeholder="placeholders.nickname" required>
         
                     <div class="password-container">
-                        <input class="cheking cheking__pass" type="password" id="password" placeholder="Пароль*" required>
+                        <input class="cheking cheking__pass" type="password" id="password" data-i18n-placeholder="placeholders.password" required>
                         <span class="toggle-password" onclick="togglePassword('password')"><img src="icons/Component 2.svg" alt="eyse"></span>
                     </div>
         
                     <div class="checkbox-container">
                         <input  type="checkbox" id="agreement" required>
-                        <div class="text-underline">Запомнить меня</div>
+                        <div class="text-underline" ><span data-i18n="rememberMe">Запомнить меня</span></div>
                     </div>
-                    <button class="formbtn" type="submit">Войти</button>
+                    <button class="formbtn" type="submit"><span data-i18n="log">Войти</span></button>
                 </form>
                 <div class="footer-form">
                     <hr>
                     <div class="footer-form__link">
-                        <div class="question">Нет аккаунта?</div>
-                        <a href="page5.html" class="login">Регистрация</a>
+                        <div class="question"><span data-i18n="questionn2">Нет аккаунта?</span></div>
+                        <a href="page5.html" class="login"><span data-i18n="reg">Регистрация</span></a>
                     </div>
                 </div>
             </div>
         </div>
     <script src="js/page5.js" defer></script>
+    <script src="js/languages.js" defer></script>
+
 </body>
 
 </html>
