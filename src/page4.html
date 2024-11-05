@@ -12,6 +12,7 @@
     <script src="https://unpkg.com/i18next@latest/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@latest/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-http-backend@latest/i18nextHttpBackend.min.js"></script>
+    <script src="/js/general.js"></script>
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
@@ -19,96 +20,12 @@
 
     <div class="swiper-container swiper-page4">
         <div class="swiper-wrapper" id="main-container">
-            <div class="swiper-slide" id="slide1">
-                <img class="swiper-slide__image" src="icons/imagepage.png" alt="Image">
-                <div class="text-container">
-                    <p><span data-i18n="textContainerP1">Ты гуляешь в старом городе — последние часы отпуска, совсем скоро самолет доставит тебя в
-                        привычную жизнь.</span></p>
-                    <p><span data-i18n="textContainerP2">Ты видишь себя в витринах магазинов и чувствуешь энергию перемен. В поездках всегда
-                        кажется, что в наших силах изменить что угодно. Даже свой взгляд на то, как устроен мир.</span>
-                    </p>
-                </div>
-                <div class="buttons-container">
-                    <a href="#" class="buttons-container__btn"><span data-i18n="buttonsContainerBtn1">Кнопка 1</span></a>
-                    <a href="#" class="buttons-container__btn"><span data-i18n="buttonsContainerBtn2">Кнопка 2</span></a>
-                </div>
-            </div>
-            <div class="swiper-slide" id="slide2">
-                <iframe src="https://vk.com/video_ext.php?oid=-218972619&id=456239017" width="90%" height="90%"
-                    frameborder="0" allowfullscreen>
-                </iframe>
-                <div class="icon-overlay" id="icon1">
-                    <img src="icons/swipe.svg" alt="icon" />
-                </div>
-            </div>
-            <div class="swiper-slide" id="slide3">
-                <iframe src="https://vk.com/video_ext.php?oid=-218972619&id=456239017" width="100%" height="50%"
-                    frameborder="0" allowfullscreen>
-                </iframe>
-                <div class="text-container">
-                    <p>Ты гуляешь в старом городе — последние часы отпуска, совсем скоро самолет доставит тебя в
-                        привычную жизнь.</p>
-                    <p>Ты видишь себя в витринах магазинов и чувствуешь энергию перемен. В поездках всегда
-                        кажется, что в наших силах изменить что угодно. Даже свой взгляд на то, как устроен мир.
-                    </p>
-                </div>
-            </div>
-            <div class="swiper-slide swiper-page4" id="slide4">
-
-                <div class="text-container" style="margin-top: 45px;">
-                    <p><span data-i18n="textContainerP5">Ты гуляешь в старом городе — последние часы отпуска, совсем скоро самолет доставит тебя в
-                        привычную жизнь.</span></p>
-                    <p><span data-i18n="textContainerP6">Ты видишь себя в витринах магазинов и чувствуешь энергию перемен. В поездках всегда
-                        кажется, что в наших силах изменить что угодно. Даже свой взгляд на то, как устроен мир.</span>
-                    </p>
-
-                </div>
-                <div class="buttons-container">
-                    <a href="#" class="buttons-container__btn"><span data-i18n="buttonsContainerBtn3">Кнопка 1</span></a>
-                    <a href="#" class="buttons-container__btn"><span data-i18n="buttonsContainerBtn4">Кнопка 2</span></a>
-                </div>
-
-            </div>
-            <div class="swiper-slide" id="slide5">
-                <div id="player-container">
-                    <div id="playPauseBtn" class="play-btn"></div>
-                    <div id="waveform"></div>
-                    <span id="currentTime">00:00</span>
-                </div>
-
-                <div class="text-container" style="margin-top: 45px;">
-                    <p><span data-i18n="textContainerP7">Ты гуляешь в старом городе — последние часы отпуска, совсем скоро самолет доставит тебя в
-                        привычную жизнь.</span></p>
-                    <p><span data-i18n="textContainerP8">Ты видишь себя в витринах магазинов и чувствуешь энергию перемен. В поездках всегда
-                        кажется, что в наших силах изменить что угодно. Даже свой взгляд на то, как устроен мир.</span>
-                    </p>
-
-                </div>
-            </div>
-            <div class="swiper-slide" id="slide6">
-                <div class="exercise" style="margin-top: 12px;"><span data-i18n="exercise">ЗАДАНИЕ 1</span></div>
-                <div class="exercise-text">
-                    <p><span data-i18n="exerciseTextP1">Для получения в реальности желаемого необходимо предпринять конкретные действия, которые
-                        вам подсказывает психика.</span></p>
-                    <p><span data-i18n="exerciseTextP2">Пожалуйста, напиши свою цель одним сообщением ниже и отправь.</span></p>
-                    <p><span data-i18n="exerciseTextP3">Помни, что цель должна быть понятна, выражена в количественных и качественных показателях
-                        и достижима в ближайшем будущем.</span></p>
-                    <p><span data-i18n="exerciseTextP4">Например, ...</span></p>
-                </div>
-                <div class="response-block">
-                    <p class="response-label"><span data-i18n="writeDownYourAnswer">Запишите свой ответ:</span></p>
-                    <textarea class="response-input"></textarea>
-                    <button class="response-button"><span data-i18n="submited">Отправить</span></button>
-                </div>
-
-
-            </div>
         </div>
         <footer>
             <div class="footer" style="margin-bottom: 3px;">
                 <ul class="footer__list">
                     <li class="footer__list_1"><a href="/"><img src="icons/footer/home.svg" alt="home"></a></li>
-                    <li class="footer__list_2"><a href="#"><img src="icons/footer/task.svg" alt="task"></a></li>
+                    <li class="footer__list_2"><a href="saveanswers.html"><img src="icons/footer/task.svg" alt="task"></a></li>
                     <li class="footer__list_3"><a href="page2.html"><img src="icons/footer/play.svg" alt="play"></a>
                     </li>
                     <li class="footer__list_4"><a href="page3.html"><img src="icons/footer/add.svg" alt="add"></a></li>
@@ -121,7 +38,6 @@
     <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/page4.js"></script>
-    <script src="js/languages.js" defer></script>
 
 </body>
 

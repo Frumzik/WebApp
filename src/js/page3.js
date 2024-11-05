@@ -1,19 +1,11 @@
+const initData = btoa(window.Telegram.WebApp.initData);
 
-document.addEventListener("DOMContentLoaded", function () {
-    const initData = btoa(window.Telegram.WebApp.initData);
-    let notices = [];
-
-    window.Telegram.WebApp.BackButton.show();
-    window.Telegram.WebApp.BackButton.onClick(function () {
-        window.Telegram.WebApp.BackButton.hide();
-        window.location.href = "/page2.html";
-    });
-
+function loadApiData() {
     fetch("https://test0123481.ru/api/referral/profile/", {
         headers: { 'X-Telegram-Init-Data': initData },
         method: "GET",
     })
-    .then((response) => response.json())
+    .then((response) => redirectNotAuthorized(response))
     .then((data) => {
         const userName = `${data.user.firstName} ${data.user.lastName}`;
         const balance = data.user.balance;
@@ -49,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let amount = inputNumber.value.trim();
 
             if (!amount) {
-                console.log('Пожалуйста, введите число.');
+                alert('Пожалуйста, введите число.');
                 return;
             }
 
@@ -61,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify({ amount: amount })
             })
             .then(response => {
+                redirectNotAuthorized(response);
                 if (response.ok) {
                     console.log('204 OK');
                 } else if (response.status === 409) {
@@ -74,18 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-        const bellIcon = document.getElementById('bell-icon');
-        bellIcon.src = notices.length > 0
-            ? '../icons/material_symbols_light_notifications_unread_outline_rounded_1.svg'
-            : '../icons/material-symbols-light_notifications-unread-outline-rounded.png';
-
         document.getElementById('notification-link').addEventListener('click', function(event) {
             event.preventDefault();
             const popup = document.getElementById('popup');
             if (popup.classList.contains('hidden')) {
                 displayNotifications(notices);
                 popup.classList.remove('hidden');
-                updatePopupPosition(popup); 
+                updatePopupPosition(popup);
             } else {
                 popup.classList.add('hidden');
             }
@@ -96,6 +84,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     })
     .catch((error) => console.error("Ошибка:", error));
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    initLanguages(loadApiData);
+    const initData = btoa(window.Telegram.WebApp.initData);
+    let notices = [];
+
+    window.Telegram.WebApp.BackButton.show();
+    window.Telegram.WebApp.BackButton.onClick(function () {
+        window.Telegram.WebApp.BackButton.hide();
+        window.location.href = "/page2.html";
+    });
+
 });
 
 const notificationMessages = {

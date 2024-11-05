@@ -11,6 +11,7 @@
     <script src="https://unpkg.com/i18next-browser-languagedetector@latest/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-http-backend@latest/i18nextHttpBackend.min.js"></script>
     <link rel="stylesheet" href="css/style.min.css">
+    <script src="/js/general.js"></script>
 </head>
 
 <body style="background-color:white;">
@@ -26,7 +27,7 @@
             </div>
             <div class="answer-answer">
                 <h2 class="answer-answer-title"><span data-i18n="answers1">Ваша цель:</span></h2>
-                <p data-i18n="userAnswers1">Моя цель пройти все уровни игры и узнать себя лучше, отвечая на разные вопросы и приближаясь к себе настоящему</p>
+                <p data-i18n="userAnswers1" id="answer-text">Моя цель пройти все уровни игры и узнать себя лучше, отвечая на разные вопросы и приближаясь к себе настоящему</p>
             </div>
         </div>
     </div>
@@ -43,9 +44,8 @@
             </div>
         </div>
     </footer>
-    <script src="js/page2.js" defer></script>
     <script src="js/languages.js" defer></script>
-    
+    <script src="js/answer.js" defer></script>
 </body>
 
 </html>

@@ -1,6 +1,23 @@
+const initData = btoa(window.Telegram.WebApp.initData);
 
+function sendAnswer(event) {
+    let currentUrl = window.location.href;
+    let url = new URL(currentUrl);
+    let seriesId = url.searchParams.get('series_id');
+    seriesId = parseInt(seriesId);
+    const answer = document.getElementById('answer-area').value;
 
-function sendAnswer(event) {}
+    fetch('https://test0123481.ru/api/series/answer/', {
+        headers: {'X-Telegram-Init-Data': initData},
+        method: 'POST',
+        body: JSON.stringify({
+            'seriesId': seriesId,
+            'answer': answer,
+        }),
+    });
+
+    window.location.href = 'https://test0123481.ru/saveanswers.html';
+}
 
 function switchSlide(event, slideNumber) {
   const slideIndex = slideNumber;
@@ -36,17 +53,16 @@ const swiper = new Swiper(".swiper-container", {
   },
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const params = new URLSearchParams({
-    lang: "ru",
-    lang: "en",
-  }).toString();
 
-  const initData = btoa(window.Telegram.WebApp.initData);
 
+function loadApiData() {
   let url = new URL(window.location.href);
   let series_id = url.searchParams.get("series_id");
   series_id = parseInt(series_id);
+
+  const params = new URLSearchParams({
+    lang: i18next.language,
+  }).toString();
 
   fetch(`https://test0123481.ru/api/series/play/?series_id=${series_id}&${params}`, {
     headers: {
@@ -54,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       method: "GET",
     },
   })
-    .then((response) => response.json())
+    .then((response) => redirectNotAuthorized(response))
     .then((data) => {
       const pages = data["pages"];
       const container = document.getElementById("main-container");
@@ -70,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="exercise-text"><pre>${page.text}</pre></div>
                     <div class="response-block">
                         <p class="response-label">Запишите свой ответ:</p>
-                        <textarea class="response-input"></textarea>
+                        <textarea class="response-input" id="answer-area"></textarea>
                         <button class="response-button" onclick="sendAnswer(event)">Отправить</button>
                     </div>
                 </div>`;
@@ -157,6 +173,11 @@ document.addEventListener("DOMContentLoaded", function () {
   swiper.update();
   //Это тоже что бы обойти ошибку
   setTimeout(switchSlide, 500, null, 1);
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+   initLanguages(loadApiData);
 });
 
 document.addEventListener("keydown", function (event) {
@@ -166,4 +187,3 @@ document.addEventListener("keydown", function (event) {
     swiper.slidePrev();
   }
 });
-

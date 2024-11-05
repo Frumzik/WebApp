@@ -10,6 +10,7 @@
     <script src="https://unpkg.com/i18next@latest/i18next.min.js"></script>
     <script src="https://unpkg.com/i18next-browser-languagedetector@latest/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-http-backend@latest/i18nextHttpBackend.min.js"></script>
+    <script src="/js/general.js"></script>
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
@@ -35,7 +36,7 @@
                     <a class="notification" id="notification-link">
                         <img src="icons/material-symbols-light_notifications-unread-outline-rounded.svg" alt="notification" id="bell-icon">
                     </a>
-                    <a class="settings">
+                    <a class="settings" href="/auth/login/">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M23 3.53846H0V2H23V3.53846ZM23 9.69231H0V8.15385H23V9.69231ZM23 15.8462H0V14.3077H23V15.8462ZM23 22H0V20.4615H23V22Z"
@@ -69,7 +70,6 @@
             <div id="notification-text"></div>
         </div>
     </div>
-    <script src="js/languages.js" defer></script>
     <script src="js/saveansvers.js" defer></script>
 
 </body>
