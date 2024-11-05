@@ -24,10 +24,8 @@ function updateLanguageContent() {
     document.querySelectorAll("[data-i18n]").forEach((element) => {
         const key = element.getAttribute("data-i18n");
         if (element.tagName === "INPUT") {
-            // Если это input, меняем placeholder
             element.setAttribute("placeholder", i18next.t(key));
         } else {
-            // Иначе просто заменяем текстовое содержимое
             element.textContent = i18next.t(key);
         }
     });
@@ -49,7 +47,6 @@ function initLanguages(after) {
     }, () => {
         updateLanguageContent();
 
-        // Следим за сменой языка
         i18next.on('languageChanged', updateLanguageContent());
     })
     .then(() => after());
