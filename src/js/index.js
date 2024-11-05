@@ -10,6 +10,14 @@ const swiper = new Swiper('.swiper-container', {
     slidesPerView: 4,
     spaceBetween: 10, 
     freeMode: true,
+    breakpoints:{
+        768:{
+            slidesPerView: 5,
+        },
+        992:{
+            slidesPerView: 6,
+        },
+    }
 });
 
 amountInput.addEventListener("input", function (event) {
