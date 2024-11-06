@@ -187,3 +187,12 @@ document.addEventListener("keydown", function (event) {
     swiper.slidePrev();
   }
 });
+
+
+document.querySelectorAll('a').forEach(link => {
+    if (link.classList.contains('no-confirm')) {
+        return;
+    }
+
+    link.addEventListener('click', switchPages);
+});

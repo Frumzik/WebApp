@@ -1,3 +1,24 @@
+function switchPages(event) {
+    try {
+        const currentUrl = window.location.href;
+        let history = sessionStorage.getItem('pageHistory');
+
+        if (history === null) history = [];
+        else history = JSON.parse(history);
+
+        history.push(currentUrl);
+        sessionStorage.setItem('PageHistory', JSON.stringify(history));
+        window.Telegram.WebApp.BackButton.show();
+
+        window.location.href = event.currentTarget.href;
+
+    } catch (error) {
+        window.location.href = event.currentTarget.href;
+    }
+
+}
+
+
 function redirectNotAuthorized(response) {
     if (response.status === 403) {
         window.location.href = '/auth/login/';
@@ -51,3 +72,19 @@ function initLanguages(after) {
     })
     .then(() => after());
 }
+
+window.Telegram.WebApp.BackButton.onClick(() => {
+    let backHistory = sessionStorage.getItem('pageHistory');
+
+    if (backHistory !== null) {
+        backHistory = JSON.parse(backHistory);
+        let backUrl = backHistory.pop();
+
+        if (backHistory.length === 0) window.Telegram.WebApp.BackButton.hide();
+        sessionStorage.setItem('pageHistory', JSON.stringify(backHistory));
+        window.location.href = backUrl;
+    }
+
+    else window.Telegram.WebApp.BackButton.hide();
+
+});

@@ -117,12 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const initData = btoa(window.Telegram.WebApp.initData);
     let notices = [];
 
-    window.Telegram.WebApp.BackButton.show();
-    window.Telegram.WebApp.BackButton.onClick(function () {
-        window.Telegram.WebApp.BackButton.hide();
-        window.location.href = "/page2.html";
-    });
-
 });
 
 const notificationMessages = {
@@ -145,3 +139,11 @@ function displayNotifications(notices) {
         notificationText.appendChild(p);
     }
 }
+
+document.querySelectorAll('a').forEach(link => {
+    if (link.classList.contains('no-confirm')) {
+        return;
+    }
+
+    link.addEventListener('click', switchPages);
+});

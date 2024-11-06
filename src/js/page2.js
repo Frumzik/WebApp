@@ -152,11 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
       rf: "Пополнение счета",
       bn: "Реферальный бонус",
     };
-    window.Telegram.WebApp.BackButton.show();
-    window.Telegram.WebApp.BackButton.onClick(function () {
-        window.Telegram.WebApp.BackButton.hide();
-        window.location.href = "/";
-    });
 
     initLanguages(loadApiData);
 
@@ -202,4 +197,12 @@ if (event.target == modal) {
   closeModal();
 }
 };
+});
+
+document.querySelectorAll('a').forEach(link => {
+    if (link.classList.contains('no-confirm')) {
+        return;
+    }
+
+    link.addEventListener('click', switchPages);
 });

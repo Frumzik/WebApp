@@ -58,12 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentPath = window.location.pathname;
     const initData = btoa(window.Telegram.WebApp.initData);
 
-    window.Telegram.WebApp.BackButton.show();
-    window.Telegram.WebApp.BackButton.onClick(function () {
-        window.Telegram.WebApp.BackButton.hide();
-        window.location.href = "/";
-    });
-
     const modal = document.getElementById("modal");
 
     function closeModal() {
@@ -80,4 +74,12 @@ document.addEventListener("DOMContentLoaded", function () {
         closeModal();
     }
     };
+});
+
+document.querySelectorAll('a').forEach(link => {
+    if (link.classList.contains('no-confirm')) {
+        return;
+    }
+
+    link.addEventListener('click', switchPages);
 });

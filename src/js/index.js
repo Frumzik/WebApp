@@ -121,3 +121,11 @@ const notificationMessages = {
     rf: "Пополнение счета",
     bn: "Реферальный бонус",
 };
+
+document.querySelectorAll('a').forEach(link => {
+    if (link.classList.contains('no-confirm')) {
+        return;
+    }
+
+    link.addEventListener('click', switchPages);
+});
