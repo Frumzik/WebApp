@@ -1,5 +1,5 @@
 
-const modal = document.getElementById("modall");
+const modal = document.getElementById("modal");
 const btn = document.getElementById("open-modal");
 const span = document.getElementsByClassName("custom-close")[0];
 const paymentOption = document.getElementById("payment-option");
@@ -85,7 +85,7 @@ function LoadApiData() {
         for (let i = 0; i < newsArray.length; i++) {
             let newsElement = `<div class="swiper-slide my-slide">
                                 <a href="${newsArray[i].telegraphLink}" class="advertising__blocks">
-                                    <img src='${newsArray[i].imageLink}' style='height: inherit; border-radius: 10px; width: 100%;'>
+                                    <img src='${newsArray[i].imageLink}'>
                                 </a>
                             </div>`;
             document.getElementById("newsContainer").innerHTML += newsElement;
