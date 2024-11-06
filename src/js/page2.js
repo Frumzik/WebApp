@@ -19,7 +19,30 @@ function openModal(event) {
 function closeModal() {
 modal.style.display = "none";
 }
+const modall = document.getElementById("modall");
+const btn = document.getElementById("open-modal");
+const span = document.getElementsByClassName("custom-close")[0];
+amountInput.addEventListener("input", function (event) {
 
+  this.value = this.value.replace(/[^0-9.]/g, '');
+});
+
+btn.onclick = function() {
+  modall.style.display = "block";
+
+}
+
+span.onclick = function() {
+  modall.style.display = "none";
+
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+      modall.style.display = "none";
+
+  }
+}
 function buySeries(event) {
   let series_id = document.getElementById("modal").dataset.series_id;
   fetch("https://test0123481.ru/api/series/buy/", {
