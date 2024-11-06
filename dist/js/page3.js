@@ -1,21 +1,38 @@
+const initData = btoa(window.Telegram.WebApp.initData);
+const modall = document.getElementById("modall");
+const btn = document.getElementById("open-modal");
+const span = document.getElementsByClassName("custom-close")[0];
+amountInput.addEventListener("input", function (event) {
 
-document.addEventListener("DOMContentLoaded", function () {
-    const initData = btoa(window.Telegram.WebApp.initData);
-    let notices = [];
+    this.value = this.value.replace(/[^0-9.]/g, '');
+});
 
-    window.Telegram.WebApp.BackButton.show();
-    window.Telegram.WebApp.BackButton.onClick(function () {
-        window.Telegram.WebApp.BackButton.hide();
-        window.location.href = "/page2.html";
-    });
+btn.onclick = function() {
+    modall.style.display = "block";
 
+}
+
+span.onclick = function() {
+    modall.style.display = "none";
+
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modall.style.display = "none";
+
+    } 
+}
+function loadApiData() {
     fetch("https://test0123481.ru/api/referral/profile/", {
         headers: { 'X-Telegram-Init-Data': initData },
         method: "GET",
     })
-    .then((response) => response.json())
+    .then((response) => redirectNotAuthorized(response))
     .then((data) => {
-        const userName = `${data.user.firstName} ${data.user.lastName}`;
+        const firstName = data.user.firstName.length > 10 ? data.user.firstName.slice(0, 10) : data.user.firstName;
+        const lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
+        const userName = `${firstName} ${lastName}`;
         const balance = data.user.balance;
         const referralLink = data.referralLink;
         const referralBalance = data.referralBalance;
@@ -49,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let amount = inputNumber.value.trim();
 
             if (!amount) {
-                console.log('Пожалуйста, введите число.');
+                alert('Пожалуйста, введите число.');
                 return;
             }
 
@@ -61,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify({ amount: amount })
             })
             .then(response => {
+                redirectNotAuthorized(response);
                 if (response.ok) {
                     console.log('204 OK');
                 } else if (response.status === 409) {
@@ -74,18 +92,13 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-        const bellIcon = document.getElementById('bell-icon');
-        bellIcon.src = notices.length > 0
-            ? '../icons/material_symbols_light_notifications_unread_outline_rounded_1.svg'
-            : '../icons/material-symbols-light_notifications-unread-outline-rounded.png';
-
         document.getElementById('notification-link').addEventListener('click', function(event) {
             event.preventDefault();
             const popup = document.getElementById('popup');
             if (popup.classList.contains('hidden')) {
                 displayNotifications(notices);
                 popup.classList.remove('hidden');
-                updatePopupPosition(popup); 
+                updatePopupPosition(popup);
             } else {
                 popup.classList.add('hidden');
             }
@@ -96,6 +109,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     })
     .catch((error) => console.error("Ошибка:", error));
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    initLanguages(loadApiData);
+    const initData = btoa(window.Telegram.WebApp.initData);
+    let notices = [];
+
 });
 
 const notificationMessages = {
@@ -118,3 +139,11 @@ function displayNotifications(notices) {
         notificationText.appendChild(p);
     }
 }
+
+document.querySelectorAll('a').forEach(link => {
+    if (link.classList.contains('no-confirm')) {
+        return;
+    }
+
+    link.addEventListener('click', switchPages);
+});

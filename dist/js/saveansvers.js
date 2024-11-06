@@ -1,101 +1,19 @@
 const initData = btoa(window.Telegram.WebApp.initData);
 
-const params = new URLSearchParams({
-lang: "ru",
-lang: "en",
-}).toString();
+function loadApiData() {
+    const params = new URLSearchParams({
+        lang: i18next.language,
+    }).toString();
 
-// document.addEventListener("DOMContentLoaded", function () {
-// const currentPath = window.location.pathname;
-// const initData = btoa(window.Telegram.WebApp.initData);
-
-
-// if (currentPath === "/saveanswers.html") {
-//     window.Telegram.WebApp.BackButton.show();
-//     window.Telegram.WebApp.BackButton.onClick(function () {
-//     window.Telegram.WebApp.BackButton.hide();
-//     window.location.href = "/";
-//     });
-
-//     fetch(`https://test0123481.ru/api/series/history/?${params}`, {
-//     headers: { "X-Telegram-Init-Data": initData },
-//     method: "GET",
-//     })
-//     .then((response) => response.json())
-//     .then((data) => {
-//         const userName = `${data.user.firstName} ${data.user.lastName}`;
-//         const balance = data.user.balance;
-//         const anwersArray = data.answers;
-//         const series = anwersArray.series
-//         const answer = anwersArray.answer
-//         notices = data.notices;
-
-//         document.getElementById("userName").innerHTML = userName;
-//         document.getElementById("balance").textContent = balance;
-//         document.getElementById("avatarLink").src = data.user.avatarLink;
-//         let seriesElement;
-//         for (let i = 0; i < anwersArray.series.length; i++) {
-//             seriesElement = `<div class="block" onclick="window.location.href='/answers.html?series_id=${series[i].id}'"
-//                                     data-id=${series[i].id}>
-//                 <div class="series__block-logo" id="iconLink">
-//                     <img src="${series[i].icon_link}" alt="Логотип" class='seriesIcon'>
-//                 </div>
-//                 <div class="main-text">
-//                     <div class="main-text__title"><span></span><span class="seriesNumber">СЕРИЯ ${series[i].number}</span></div>
-//                     <div class="main-text__subtitle seriesName">«${series[i].name}»</div>
-//                 </div>
-//                 <div class="arrow">
-//                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="35" viewBox="0 0 18 35" fill="none">
-//                     <path d="M3.67798 9.59583L5.26948 8.05L13.938 16.4748C14.0777 16.6098 14.1886 16.7703 14.2643 16.9471C14.3399 17.124 14.3789 17.3136 14.3789 17.5051C14.3789 17.6966 14.3399 17.8862 14.2643 18.0631C14.1886 18.2399 14.0777 18.4004 13.938 18.5354L5.26948 26.9646L3.67948 25.4188L11.8155 17.5073L3.67798 9.59583Z" fill="#2A2A2A"/>
-//                 </svg>
-//                 </div>
-//                 <span style="display: none;" class="seriesDescription">${series[i].description}</span>
-//             </div>`;
-            
-//             document.getElementById("seriesContainer").innerHTML += seriesElement;
-//         }
-//         })
-//         .catch((error) => console.error("Ошибка:", error));
-//     }
-
-//     const modal = document.getElementById("modal");
-
-//     function closeModal() {
-//     modal.style.display = "none";
-//     }
-
-//     window.onclick = function (event) {
-//     if (event.target == modal) {
-//         closeModal();
-//     }
-//     };
-//     window.ontouchstart = function (event) {
-//     if (event.target == modal) {
-//         closeModal();
-//     }
-//     };
-// });
-document.addEventListener("DOMContentLoaded", function () {
-    const currentPath = window.location.pathname;
-    const initData = btoa(window.Telegram.WebApp.initData);
-
-    if (currentPath === "/saveanswers.html") {
-      // Отображаем кнопку назад и настраиваем её действие
-    window.Telegram.WebApp.BackButton.show();
-    window.Telegram.WebApp.BackButton.onClick(function () {
-        window.Telegram.WebApp.BackButton.hide();
-        window.location.href = "/";
-    });
-
-      // Выполняем GET-запрос к API для получения данных о пользователе и ответах
     fetch(`https://test0123481.ru/api/series/history/?${params}`, {
         headers: { "X-Telegram-Init-Data": initData },
         method: "GET",
     })
-        .then((response) => response.json())
+        .then((response) => redirectNotAuthorized(response))
         .then((data) => {
-          // Заполняем информацию о пользователе
-        const userName = `${data.user.firstName} ${data.user.lastName}`;
+        const firstName = data.user.firstName.length > 10 ? data.user.firstName.slice(0, 10) : data.user.firstName;
+        const lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
+        const userName = `${firstName} ${lastName}`;
         const balance = data.user.balance;
         document.getElementById("userName").innerHTML = userName;
         document.getElementById("balance").textContent = balance;
@@ -111,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             seriesElement = `
                 <div class="block" onclick="window.location.href='/answers.html?series_id=${series.id}&answer=${encodeURIComponent(answer)}'" data-id=${series.id}>
                 <div class="series__block-logo" id="iconLink">
-                    <img src="${series.icon_link}" alt="Логотип" class='seriesIcon'>
+                    <img src="${series.iconLink}" alt="Логотип" class='seriesIcon'>
                 </div>
                 <div class="main-text">
                     <div class="main-text__title">
@@ -126,13 +44,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <span style="display: none;" class="seriesDescription">${series.description}</span>
                 </div>`;
-            
+
             document.getElementById("seriesContainer").innerHTML += seriesElement;
             }
         });
         })
         .catch((error) => console.error("Ошибка:", error));
-    }
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    initLanguages(loadApiData);
+    const currentPath = window.location.pathname;
+    const initData = btoa(window.Telegram.WebApp.initData);
 
     const modal = document.getElementById("modal");
 
@@ -150,4 +74,12 @@ document.addEventListener("DOMContentLoaded", function () {
         closeModal();
     }
     };
+});
+
+document.querySelectorAll('a').forEach(link => {
+    if (link.classList.contains('no-confirm')) {
+        return;
+    }
+
+    link.addEventListener('click', switchPages);
 });

@@ -85,7 +85,7 @@ function LoadApiData() {
         for (let i = 0; i < newsArray.length; i++) {
             let newsElement = `<div class="swiper-slide my-slide">
                                 <a href="${newsArray[i].telegraphLink}" class="advertising__blocks">
-                                    <img src='${newsArray[i].imageLink}'>
+                                    <img src='${newsArray[i].imageLink}' style='height: inherit; border-radius: 10px; width: 100%;'>
                                 </a>
                             </div>`;
             document.getElementById("newsContainer").innerHTML += newsElement;
