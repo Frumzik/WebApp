@@ -18,6 +18,15 @@ function switchPages(event) {
 
 }
 
+function markLinksAsTelegram() {
+    let settings = document.getElementsByClassName('settings');
+    if (settings.length > 0) {
+        settings = settings[0];
+        if (window.Telegram.WebApp.initData !== '') {
+            settings.href = '/auth/login/?telegram=true';
+        }
+    }
+}
 
 function redirectNotAuthorized(response) {
     if (response.status === 403) {
@@ -87,4 +96,9 @@ window.Telegram.WebApp.BackButton.onClick(() => {
 
     else window.Telegram.WebApp.BackButton.hide();
 
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    markLinksAsTelegram();
 });
