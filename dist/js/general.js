@@ -7,7 +7,7 @@ function switchPages(event) {
         else history = JSON.parse(history);
 
         history.push(currentUrl);
-        sessionStorage.setItem('PageHistory', JSON.stringify(history));
+        sessionStorage.setItem('pageHistory', JSON.stringify(history));
         window.Telegram.WebApp.BackButton.show();
 
         window.location.href = event.currentTarget.href;

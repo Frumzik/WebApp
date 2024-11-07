@@ -6,7 +6,7 @@ const paymentOption = document.getElementById("payment-option");
 const cryptoPaymentCheckbox = document.getElementById("crypto-payment");
 const amountInput = document.getElementById("amount");
 
-const swiper = new Swiper('.swiper-container', {
+const swiper = new Swiper('.swiper-container .swiper-page1', {
     slidesPerView: 4,
     spaceBetween: 10, 
     freeMode: true,

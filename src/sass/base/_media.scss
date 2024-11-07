@@ -19,10 +19,6 @@
         margin: 0px 20px 0 20px;
         height: 100vh;
     }
-    // .footer {
-    //     width: 92vw;
-    //     left: 4vw;
-    // }
     .progress__subtitle {
         svg {
             top: 4;
@@ -33,6 +29,9 @@
     body {
         margin: 0px 10% 0 10%;
         height: 100vh;
+    }
+    .advertising{
+        margin: 0px 10% 0 10%;
     }
     .popup{
         right: 10%;
@@ -574,6 +573,9 @@
         margin: 0 15% 0 15%;
         height: 100vh;
     }
+    .advertising{
+        margin: 0px 15% 0 15%;
+    }
     .popup{
         right: 15%;
     }
@@ -867,6 +869,9 @@
         // overflow: auto;
         margin: 0 25% 0 25%;
         height: 100vh;
+    }
+    .advertising{
+        margin: 0px 25% 0 25%;
     }
     .popup{
         right: 25%;
