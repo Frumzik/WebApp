@@ -74,6 +74,8 @@ function LoadApiData() {
         const progressValue = data.progress;
         const newsArray = data.news;
         notices = data.notices;
+        displayNotifications(notices);
+
 
         document.getElementById("userName").innerHTML = userName;
         document.getElementById("balance").textContent = balance;
@@ -98,12 +100,12 @@ function LoadApiData() {
             event.preventDefault();
             const popup = document.getElementById('popup');
             if (popup.classList.contains('hidden')) {
-                displayNotifications(notices);
                 popup.classList.remove('hidden');
-                updatePopupPosition(popup);
             } else {
                 popup.classList.add('hidden');
             }
+
+            markNoticesAsRead();
         });
 
         document.getElementById('close-button').addEventListener('click', function() {
