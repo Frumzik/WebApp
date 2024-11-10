@@ -12,12 +12,17 @@ function loadApiData() {
         .then((response) => redirectNotAuthorized(response))
         .then((data) => {
         const firstName = data.user.firstName.length > 10 ? data.user.firstName.slice(0, 10) : data.user.firstName;
-        const lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
+        let lastName;
+        if (data.user.lastName === null) lastName = '';
+        else lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
         const userName = `${firstName} ${lastName}`;
         const balance = data.user.balance;
         document.getElementById("userName").innerHTML = userName;
         document.getElementById("balance").textContent = balance;
         document.getElementById("avatarLink").src = data.user.avatarLink;
+        notices = data.notices;
+        displayNotifications(notices);
+
 
         const answersArray = data.answers;
         let seriesElement;
@@ -74,6 +79,18 @@ document.addEventListener("DOMContentLoaded", function () {
         closeModal();
     }
     };
+
+    document.getElementById('notification-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        const popup = document.getElementById('popup');
+        if (popup.classList.contains('hidden')) {
+            popup.classList.remove('hidden');
+        } else {
+            popup.classList.add('hidden');
+        }
+
+        markNoticesAsRead();
+    });
 });
 
 document.querySelectorAll('a').forEach(link => {

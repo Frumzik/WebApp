@@ -41,6 +41,8 @@ function loadApiData() {
         const referralBalance = data.referralBalance;
         const referralBalanceInDollars = data.referralBalanceInDollars;
         notices = data.notices;
+        displayNotifications(notices);
+
 
         document.getElementById("userName").innerHTML = userName;
         document.getElementById("referralLink").innerHTML = referralLink;
@@ -99,12 +101,12 @@ function loadApiData() {
             event.preventDefault();
             const popup = document.getElementById('popup');
             if (popup.classList.contains('hidden')) {
-                displayNotifications(notices);
                 popup.classList.remove('hidden');
-                updatePopupPosition(popup);
             } else {
                 popup.classList.add('hidden');
             }
+
+            markNoticesAsRead();
         });
 
         document.getElementById('close-button').addEventListener('click', function() {
@@ -122,26 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-const notificationMessages = {
-    buy: "Покупка",
-    sc: "Успешный вывод",
-    cn: "Отказ в выводе",
-    cr: "Заявка на вывод создана",
-    rf: "Пополнение счета",
-    bn: "Реферальный бонус",
-};
-
-function displayNotifications(notices) {
-    const notificationText = document.getElementById('notification-text');
-    notificationText.innerHTML = ''; 
-    for (let i = 0; i < notices.length; i++) {
-        const p = document.createElement('p');
-        const noticeType = notices[i].text;
-        const message = notificationMessages[noticeType] || "Неизвестное уведомление";
-        p.textContent = message;
-        notificationText.appendChild(p);
-    }
-}
 
 document.querySelectorAll('a').forEach(link => {
     if (link.classList.contains('no-confirm')) {
