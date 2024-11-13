@@ -63,15 +63,19 @@ function loadApiData() {
     .then((response) => redirectNotAuthorized(response))
     .then((data) => {
       const firstName = data.user.firstName.length > 10 ? data.user.firstName.slice(0, 10) : data.user.firstName;
-      const lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
+      let lastName;
+        if (data.user.lastName === null) lastName = '';
+        else lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
       const userName = `${firstName} ${lastName}`;
       const balance = data.user.balance;
       const series = data.series;
       notices = data.notices;
 
+
       document.getElementById("userName").innerHTML = userName;
       document.getElementById("balance").textContent = balance;
       document.getElementById("avatarLink").src = data.user.avatarLink;
+      displayNotifications(notices);
 
       let seriesWord;
       if (i18next.language === 'ru') seriesWord = 'СЕРИЯ';
@@ -143,29 +147,17 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
       const popup = document.getElementById('popup');
       if (popup.classList.contains('hidden')) {
-        displayNotifications(notices);
         popup.classList.remove('hidden');
-  updatePopupPosition(popup); 
 } else {
   popup.classList.add('hidden');
 }
+
+markNoticesAsRead();
 });
 
 document.getElementById('close-button').addEventListener('click', function() {
 document.getElementById('popup').classList.add('hidden');
 });
-
-function displayNotifications(notices) {
-const notificationText = document.getElementById('notification-text');
-notificationText.innerHTML = ''; 
-for (let i = 0; i < notices.length; i++) {
-  const p = document.createElement('p');
-  const noticeType = notices[i].text;
-  const message = notificationMessages[noticeType] || "Неизвестное уведомление";
-  p.textContent = message;
-  notificationText.appendChild(p);
-}
-}
 
 const modal = document.getElementById("modal");
 

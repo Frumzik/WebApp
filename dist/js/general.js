@@ -18,6 +18,15 @@ function switchPages(event) {
 
 }
 
+function markLinksAsTelegram() {
+    let settings = document.getElementsByClassName('settings');
+    if (settings.length > 0) {
+        settings = settings[0];
+        if (window.Telegram.WebApp.initData !== '') {
+            settings.href = '/auth/login/?telegram=true';
+        }
+    }
+}
 
 function redirectNotAuthorized(response) {
     if (response.status === 403) {
@@ -29,15 +38,47 @@ function redirectNotAuthorized(response) {
     }
 }
 
+const notificationMessages = {
+  buy: "Покупка",
+  sc: "Успешный вывод",
+  cn: "Отказ в выводе",
+  cr: "Заявка на вывод создана",
+  rf: "Пополнение счета",
+  bn: "Реферальный бонус",
+};
+
+function markNoticesAsRead() {
+    let bellIcon = document.getElementById('bell-icon');
+    bellIcon.src = '/icons/material-symbols-light_notifications-unread-outline-rounded.svg';
+
+    const initData = btoa(window.Telegram.WebApp.initData);
+    fetch('https://test0123481.ru/api/user/notice/read/', {
+        'method': 'POST',
+        headers: {'X-Telegram-Init-Data': initData},
+    })
+}
+
 function displayNotifications(notices) {
     const notificationText = document.getElementById('notification-text');
     notificationText.innerHTML = '';
+
+    let readAllMessages = true;
     for (let i = 0; i < notices.length; i++) {
         const p = document.createElement('p');
         const noticeType = notices[i].text;
-        const message = notificationMessages[noticeType] || "Неизвестное уведомление";
-        p.textContent = message;
-        notificationText.appendChild(p);
+        const message = notificationMessages[noticeType];
+
+        if (message !== undefined) {
+            p.textContent = message;
+            notificationText.appendChild(p);
+
+            if (!notices[i].read) readAllMessages = false;
+        }
+    }
+
+    if (!readAllMessages) {
+        let bellIcon = document.getElementById('bell-icon');
+        bellIcon.src = '/icons/material_symbols_light_notifications_unread_outline_rounded_1.svg';
     }
 }
 
@@ -87,4 +128,9 @@ window.Telegram.WebApp.BackButton.onClick(() => {
 
     else window.Telegram.WebApp.BackButton.hide();
 
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    markLinksAsTelegram();
 });

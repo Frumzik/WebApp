@@ -25,7 +25,7 @@
     }
 }
 .about {
-    font-size: 2.7vw;
+    font-size: 10px;
     width: 34.4vw;
     &__name {
         text-transform: uppercase;
@@ -36,18 +36,14 @@
 
     &__balancegive {
         padding: 0.5vh 9px;
+        padding-top: 5px;
         font-family: Onest;
-        height: 3.22vh;
+        height: 24px;
         background: var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
         border-radius: 10px;
         text-align: center;
         font-weight: 400;
         a {
-            display: inline-block;
-            position: relative;
-            z-index: 1;
-            padding: 5px;
-            margin: -5px;
             text-decoration: none;
             color: black;
             text-transform: lowercase;
@@ -61,7 +57,7 @@
     width: 17.33vw;
     font-weight: 400;
     font-size: 2.7vw;
-    height: 5.85vh;
+    height: 38px;
     padding: 7px 14px;
     justify-content: center;
     align-items: center;
@@ -79,14 +75,14 @@
 .notification {
     width: 25px;
     height: 25px;
-    cursor:pointer;
+    cursor: pointer;
 }
 .settings {
     margin-left: 5px;
     width: 25px;
     height: 25px;
 }
-.swiper-page1.swiper-container{
+.swiper-page1.swiper-container {
     width: 100%;
     height: 9.23vh;
     overflow: hidden;
@@ -131,18 +127,18 @@
         &_title {
             color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
             font-family: Firs;
-            font-size: 3.5vw;
+            font-size: 15px;
             font-weight: 500;
         }
         &_subtitle {
             color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
             font-family: Catamaran;
-            font-size: 2.26vw;
+            font-size: 10px;
             font-weight: 400;
         }
     }
 }
-.motivation__logo-icon {
+.motivation__logo {
     height: 81px;
     width: 81px;
 }
@@ -253,6 +249,9 @@
         &_3,
         &_4,
         &_5 {
+            a:focus {
+                outline: none;
+            }
             img {
                 width: 10.67vw;
                 height: 4.93vh;
@@ -312,7 +311,7 @@
     border: 1px solid #cbebf1;
     background: #fff;
     cursor: pointer;
-    transition: border-color 0.3s; 
+    transition: border-color 0.3s;
 }
 .cryptopay {
     display: flex;
@@ -371,6 +370,9 @@
     font-size: 10px;
     font-style: normal;
 }
+.submit-btn:hover {
+    background: #167788;
+}
 .popup {
     position: fixed;
     top: 14vh;
@@ -391,7 +393,7 @@
     color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
     padding: 10px;
     font-size: 10px;
-    p{
+    p {
         padding-right: 20px;
     }
 }

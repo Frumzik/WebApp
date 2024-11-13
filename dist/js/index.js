@@ -63,7 +63,10 @@ function LoadApiData() {
     .then((response) => redirectNotAuthorized(response))
     .then((data) => {
         const firstName = data.user.firstName.length > 10 ? data.user.firstName.slice(0, 10) : data.user.firstName;
-        const lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
+
+        let lastName;
+        if (data.user.lastName === null) lastName = '';
+        else lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
         const userName = `${firstName} ${lastName}`;
         const balance = data.user.balance;
         const name = data.series.name;
@@ -71,6 +74,8 @@ function LoadApiData() {
         const progressValue = data.progress;
         const newsArray = data.news;
         notices = data.notices;
+        displayNotifications(notices);
+
 
         document.getElementById("userName").innerHTML = userName;
         document.getElementById("balance").textContent = balance;
@@ -95,12 +100,12 @@ function LoadApiData() {
             event.preventDefault();
             const popup = document.getElementById('popup');
             if (popup.classList.contains('hidden')) {
-                displayNotifications(notices);
                 popup.classList.remove('hidden');
-                updatePopupPosition(popup);
             } else {
                 popup.classList.add('hidden');
             }
+
+            markNoticesAsRead();
         });
 
         document.getElementById('close-button').addEventListener('click', function() {

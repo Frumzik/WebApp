@@ -2,6 +2,7 @@ const initData = btoa(window.Telegram.WebApp.initData);
 const modall = document.getElementById("modall");
 const btn = document.getElementById("open-modal");
 const span = document.getElementsByClassName("custom-close")[0];
+const amountInput = document.getElementById("amount");
 amountInput.addEventListener("input", function (event) {
 
     this.value = this.value.replace(/[^0-9.]/g, '');
@@ -31,13 +32,17 @@ function loadApiData() {
     .then((response) => redirectNotAuthorized(response))
     .then((data) => {
         const firstName = data.user.firstName.length > 10 ? data.user.firstName.slice(0, 10) : data.user.firstName;
-        const lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
+      let lastName;
+        if (data.user.lastName === null) lastName = '';
+        else lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
         const userName = `${firstName} ${lastName}`;
         const balance = data.user.balance;
         const referralLink = data.referralLink;
         const referralBalance = data.referralBalance;
         const referralBalanceInDollars = data.referralBalanceInDollars;
         notices = data.notices;
+        displayNotifications(notices);
+
 
         document.getElementById("userName").innerHTML = userName;
         document.getElementById("referralLink").innerHTML = referralLink;
@@ -96,12 +101,12 @@ function loadApiData() {
             event.preventDefault();
             const popup = document.getElementById('popup');
             if (popup.classList.contains('hidden')) {
-                displayNotifications(notices);
                 popup.classList.remove('hidden');
-                updatePopupPosition(popup);
             } else {
                 popup.classList.add('hidden');
             }
+
+            markNoticesAsRead();
         });
 
         document.getElementById('close-button').addEventListener('click', function() {
@@ -119,26 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-const notificationMessages = {
-    buy: "Покупка",
-    sc: "Успешный вывод",
-    cn: "Отказ в выводе",
-    cr: "Заявка на вывод создана",
-    rf: "Пополнение счета",
-    bn: "Реферальный бонус",
-};
-
-function displayNotifications(notices) {
-    const notificationText = document.getElementById('notification-text');
-    notificationText.innerHTML = ''; 
-    for (let i = 0; i < notices.length; i++) {
-        const p = document.createElement('p');
-        const noticeType = notices[i].text;
-        const message = notificationMessages[noticeType] || "Неизвестное уведомление";
-        p.textContent = message;
-        notificationText.appendChild(p);
-    }
-}
 
 document.querySelectorAll('a').forEach(link => {
     if (link.classList.contains('no-confirm')) {

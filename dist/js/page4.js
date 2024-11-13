@@ -81,6 +81,18 @@ function loadApiData() {
       for (let i = 0; i < pages.length; i++) {
         let page = pages[i];
 
+        let sendButtonText;
+        let responseLabelText;
+        if (['ru-RU', 'ru-BY', 'ru-KZ', 'ru-UA', 'ru', undefined].includes(i18next.language)) {
+            sendButtonText = 'Отправить';
+            responseLabelText = 'Запишите свой ответ:';
+        }
+
+        else {
+            sendButtonText = 'Send';
+            responseLabelText = 'Write down your answer:';
+        }
+
         if (page.isAnswerPage) {
           container.innerHTML += `<div class="swiper-slide slide-without-footer">
                     <div class="exercise-text"><pre>${page.text}</pre></div>

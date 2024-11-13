@@ -1,3 +1,4 @@
+
 .referal-programm {
     margin-top: 1.23vh;
     width: 100%;
@@ -28,12 +29,12 @@
 .referal-programm__p {
     color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
     font-family: Catamaran;
-    font-size: 2.7vw;
+    font-size: 3vw;
     font-weight: 400;
     margin-top: 1.54vh;
     font-weight: 400;
     p {
-        margin-bottom: 1.23vh;
+        margin-bottom: 0.5vh;
     }
 }
 .referal-programm__p p:last-child {
@@ -43,9 +44,8 @@
 .referal-link {
     margin-top: 1.54vh;
     width: 100%;
-    padding: 1.3vh 2.67vw 1.85vh 4vw;
+    padding: 1.3vh 4vw 1.85vh 4vw;
     border-radius: 10px;
-    //border: 1px solid var(--, #fffef6);
     background: linear-gradient(102deg, #fffef6 11.35%, #cbebf1 102.05%);
     box-shadow: 0px 4px 4px 0px #dbdbdb inset;
     &__maintext {
@@ -62,7 +62,7 @@
         P {
             color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
             font-family: Catamaran;
-            font-size: 2.7vw;
+            font-size: 3vw;
             font-style: normal;
             font-weight: 400;
             margin-bottom: 1.2vh;
@@ -83,13 +83,19 @@
         font-size: 2.7vw;
         font-style: normal;
         font-weight: 400;
-
         width: 100%;
         height: 5.23vh;
         padding: 7px 15px;
         border-radius: 10px;
         border: 1px solid #cbebf1;
         background: #1e96b1;
+        transition: 0.3s ease;
+    }
+    &__btn:focus{
+        outline: none;
+    }
+    &__btn:active{
+    background: #125f6c;
     }
 }
 
@@ -179,7 +185,7 @@
     font-family: Onest;
     font-size: 2.7vw;
     font-weight: 400;
-    outline: none; /* Убираем обводку при фокусе */
+    outline: none;
 }
 .amount-input::placeholder {
     color: #a6a8a7;
@@ -189,15 +195,22 @@
 }
 .withdraw-button {
     width: 50%;
-    border: none;
     padding: 1.23vh 4vw;
     cursor: pointer;
     color: var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
     text-align: center;
     font-family: Onest;
-    font-size: 2.7vw;
+    font-size: 10px;
     font-weight: 400;
     border-radius: 10px;
     border: 1px solid #1e96b1;
     background: #1e96b1;
+    transition: 0.3s ease;
 }
+.withdraw-button:focus{
+    outline: none;
+}
+
+.withdraw-button:active{
+    background: #125f6c;
+    }

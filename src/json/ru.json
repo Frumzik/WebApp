@@ -44,8 +44,7 @@
     "placeholders": {
         "nickname": "Ник в telegram*",
         "email": "Email*",
-        "firstName": "Имя*",
-        "lastName": "Фамилия*",
+        "name": "Имя* Фамилия*",
         "password": "Пароль*",
         "passwordAgain": "Повторите пароль*"
     },
