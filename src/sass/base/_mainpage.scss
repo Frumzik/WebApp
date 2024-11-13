@@ -249,6 +249,11 @@
         &_3,
         &_4,
         &_5 {
+            a{
+                display: block;
+                outline: none;
+                height: 0.1px;
+            }
             a:focus {
                 outline: none;
             }
