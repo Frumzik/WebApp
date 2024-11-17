@@ -864,7 +864,7 @@
         height: 100vh;
     }
     .header__container {
-        padding-left:40px;
+        padding-left:0;
         }
     .advertising{
         margin: 0px 25% 0 25%;
@@ -882,8 +882,6 @@
         height: 90%;
         width: 30%;
     }
-
-
     .answer-answer {
         p{
             font-size: 13px;
@@ -932,10 +930,6 @@
                 font-size: 16px;
                 line-height: 1.2;
             }
-        }
-        &__logo-icon {
-            width: 81px;
-            height: 81px;
         }
     }
 
@@ -1523,7 +1517,7 @@
         font-size: 1vw;
     }
     .header__container {
-        padding-left:40px;
+        padding-left:0px;
         }
         .about {
             &__name {
@@ -1537,5 +1531,12 @@
         }
         .balance {
             height: 60px;
+        }
+        .motivation__logo {
+            img{
+                height: 121px;
+                width: 121px;
+                object-fit: contain;
+            }
         }
 }

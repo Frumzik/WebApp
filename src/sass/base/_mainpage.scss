@@ -139,8 +139,11 @@
     }
 }
 .motivation__logo {
-    height: 81px;
-    width: 81px;
+    img{
+        height: 81px;
+        width: 81px;
+        object-fit: contain;
+    }
 }
 .progress {
     display: block;
@@ -251,11 +254,7 @@
         &_5 {
             a{
                 display: block;
-                outline: none;
-                height: 0.1px;
-            }
-            a:focus {
-                outline: none;
+                -webkit-tap-highlight-color: transparent;
             }
             img {
                 width: 10.67vw;

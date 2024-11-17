@@ -32,7 +32,7 @@ function loadApiData() {
     .then((response) => redirectNotAuthorized(response))
     .then((data) => {
         const firstName = data.user.firstName.length > 10 ? data.user.firstName.slice(0, 10) : data.user.firstName;
-      let lastName;
+        let lastName;
         if (data.user.lastName === null) lastName = '';
         else lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
         const userName = `${firstName} ${lastName}`;
