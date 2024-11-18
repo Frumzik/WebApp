@@ -57,7 +57,7 @@ function LoadApiData() {
 
     let notices = [];
     fetch(`https://test0123481.ru/api/user/profile/?${params}`, {
-        headers: { 'X-Telegram-Init-Data': initData },
+        headers: { 'X-Telegram-Init-Data': initData},
         method: "GET",
     })
     .then((response) => redirectNotAuthorized(response))
@@ -94,22 +94,6 @@ function LoadApiData() {
                             </div>`;
             document.getElementById("newsContainer").innerHTML += newsElement;
         }
-
-        document.getElementById('notification-link').addEventListener('click', function(event) {
-            event.preventDefault();
-            const popup = document.getElementById('popup');
-            if (popup.classList.contains('hidden')) {
-                popup.classList.remove('hidden');
-            } else {
-                popup.classList.add('hidden');
-            }
-
-            markNoticesAsRead();
-        });
-
-        document.getElementById('close-button').addEventListener('click', function() {
-            document.getElementById('popup').classList.add('hidden');
-        });
     })
     .catch((error) => console.error("Ошибка:", error));
 }
@@ -123,4 +107,21 @@ document.querySelectorAll('a').forEach(link => {
     }
 
     link.addEventListener('click', switchPages);
+});
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('notification-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        const popup = document.getElementById('popup');
+        if (popup.classList.contains('hidden')) {
+            popup.classList.remove('hidden');
+        } else {
+            popup.classList.add('hidden');
+        }
+        
+    markNoticesAsRead();
+    });
+
+    document.getElementById('close-button').addEventListener('click', function() {
+    document.getElementById('popup').classList.add('hidden');
+    });
 });

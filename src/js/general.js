@@ -17,7 +17,6 @@ function switchPages(event) {
     }
 
 }
-
 function markLinksAsTelegram() {
     let settings = document.getElementsByClassName('settings');
     if (settings.length > 0) {
@@ -39,12 +38,12 @@ function redirectNotAuthorized(response) {
 }
 
 const notificationMessages = {
-  buy: "Покупка",
-  sc: "Успешный вывод",
-  cn: "Отказ в выводе",
-  cr: "Заявка на вывод создана",
-  rf: "Пополнение счета",
-  bn: "Реферальный бонус",
+    buy: "Покупка",
+    sc: "Успешный вывод",
+    cn: "Отказ в выводе",
+    cr: "Заявка на вывод создана",
+    rf: "Пополнение счета",
+    bn: "Реферальный бонус",
 };
 
 function markNoticesAsRead() {
@@ -132,5 +131,8 @@ window.Telegram.WebApp.BackButton.onClick(() => {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    if(window.Telegram && window.Telegram.WebApp && Telegram.WebApp.expand){
+        Telegram.WebApp.expand();
+    }
     markLinksAsTelegram();
 });

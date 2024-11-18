@@ -1,5 +1,4 @@
 const initData = btoa(window.Telegram.WebApp.initData);
-
 function openModal(event) {
   let name = event.currentTarget.getElementsByClassName("seriesName")[0];
   let number = event.currentTarget.getElementsByClassName("seriesNumber")[0];
@@ -125,14 +124,7 @@ function loadApiData() {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const notificationMessages = {
-      buy: "Покупка",
-      sc: "Успешный вывод",
-      cn: "Отказ в выводе",
-      cr: "Заявка на вывод создана",
-      rf: "Пополнение счета",
-      bn: "Реферальный бонус",
-    };
+
     window.Telegram.WebApp.BackButton.show();
     window.Telegram.WebApp.BackButton.onClick(function () {
         window.Telegram.WebApp.BackButton.hide();
@@ -148,9 +140,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const popup = document.getElementById('popup');
       if (popup.classList.contains('hidden')) {
         popup.classList.remove('hidden');
-} else {
-  popup.classList.add('hidden');
-}
+      } else {
+          popup.classList.add('hidden');
+      }
 
 markNoticesAsRead();
 });

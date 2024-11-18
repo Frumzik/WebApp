@@ -23,7 +23,7 @@
                 </div>
                 <div class="about">
                     <div class="about__name"><span id="userName"></span></div>
-                    <div class="about__balancegive"><a id="open-modal" href="#"><span data-i18n="payment">пополнить баланс</span></a></div>
+                    <div class="about__balancegive"><a id="open-modal" href="#"><span data-i18n="payment"></span></a></div>
                 </div>
                 <div class="balance"><span id="balance"></span><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
                     width="15" height="15" viewBox="0 0 15 15" fill="none">
@@ -50,35 +50,38 @@
         <div class="referal-programm">
             <div class="referal-programm__maintext">
                 <img src="icons/group-add.svg" alt="referal">
-                <h2 class="h2-referal" data-i18n="referralProgram">Реферальная программа</h2>
+                <h2 class="h2-referal" data-i18n="referralProgram"></h2>
             </div>
             <div class="referal-programm__p" id="referralProgramText">
-                <p><span data-i18n="referralProgramText1">Приглашай в игру тех, кто хочет разобраться в себе, реализовать свои мечты, стать лучшей﻿ версией
-                    себя и наша игровая Вселенная отблагодарит тебя</span>!</p>
-                <p><span data-i18n="referralProgramText2">За каждого приглашенного и купившего игру друга, тебе будет начислено 10% звезд с любой покупки</span></p>
+                <p><span data-i18n="referralProgramText1"></span>!</p>
+                <p><span data-i18n="referralProgramText2"></span></p>
             </div>
         </div>
     </section>
     <section>
-        <div class="referal-link">
+        <div class="referal-link" >
             <div class="referal-link__maintext">
                 <img src="icons/link.svg" alt="link">
                 <h2 class="h2-referal"><span id="referralLink"></span></h2>
             </div>
             <div class="referal-link__p">
-                <h2 class="h2-referal" data-i18n="referalLinkTextH2">Как стать частью миссии и запустить изменения в твое﻿м окружении?</h2>
-                <p><span data-i18n="referalLinkText">Скопируй свою персональную ссылку и отправь ее другу.</span></p>
+                <h2 class="h2-referal" data-i18n="referalLinkTextH2"></h2>
+                <p><span data-i18n="referalLinkText"></span></p>
             </div>
-            <button class="referal-link__btn" id="copyBtn"><span data-i18n="copy">Скопировать</span></button>
+            <button class="referal-link__btn" id="copyBtn"><span>Скопировать</span></button>
+        </div>
+        <div id="toast" class="toast">
+            
+            <span><img src="img/copy.png" alt="copy">Реферальная ссылка скопирована.</span>
         </div>
     </section>
     <section>
         <div class="conclusion">
             <div class="conclusion__maintext">
                 <img src="icons/gift.svg" alt="logo">
-                <h2 class="h2-referal" data-i18n="conclusionH2">Зарабатывай вместе с нами!</h2>
+                <h2 class="h2-referal" data-i18n="conclusionH2"></h2>
             </div>
-            <h2 class="h2-referal" data-i18n="conclusion2H2">Твоя благодарность от Игровой Вселенной:</h2>
+            <h2 class="h2-referal" data-i18n="conclusion2H2"></h2>
             <div class="currency-block">
                 <div class="currency-amount">
                     <span id="referralBalance"></span>
@@ -93,7 +96,7 @@
             <div class="currency">
                 <div class="currency-container">
                     <input type="number" id="inputNumber"  placeholder="Сумма" class="amount-input" min="1" step="1" required />
-                    <button id="submitBtn" class="withdraw-button"><span data-i18n="withdraw">Вывести</span></button>
+                    <button id="submitBtn" class="withdraw-button"><span data-i18n="withdraw"></span></button>
                 </div>
                 <a href="#"><img src="icons/transaction.svg" alt="transaction"></a>
             </div>
@@ -116,7 +119,7 @@
             <div id="notification-text"></div>
         </div>
     </div>
-    <div id="modall" class="custom-modal">
+    <div id="modal" class="custom-modal">
         <div class="custom-modal-content">
             <div class="custom-close__btn">
                 <span class="custom-close">
