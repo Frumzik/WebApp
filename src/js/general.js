@@ -131,8 +131,8 @@ window.Telegram.WebApp.BackButton.onClick(() => {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    if(window.Telegram && window.Telegram.WebApp && Telegram.WebApp.expand){
-        Telegram.WebApp.expand();
+    if(window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.expand){
+        window.Telegram.WebApp.expand();
     }
     markLinksAsTelegram();
 });

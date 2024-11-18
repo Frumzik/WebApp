@@ -80,8 +80,8 @@ function loadApiData() {
             copyButton.textContent = 'Поделиться';
             copyButton.addEventListener("click", function() {
                 if (referralLink) {
-                    console.log('Рефка');
-                    window.Telegram.WebApp.shareLink(referralLink);
+                    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${encodeURIComponent('Привет')}`;
+                    window.location.href = telegramUrl;
                 }
             });
         } else {
