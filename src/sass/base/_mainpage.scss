@@ -84,22 +84,19 @@
 }
 .swiper-page1.swiper-container {
     width: 100%;
-    height: 9.23vh;
-    overflow: hidden;
     box-sizing: border-box;
 }
 
 .advertising {
     margin-top: 1.23vh;
     width: 100%;
-    margin: 0px 20px 0 20px;
     &__blocks {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         width: 20.27vw;
-        height: 9.36vh;
+        height: 9.26vh;
         border-radius: 10px;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
         background: var(--Miscellaneous-Sidebar-Fill---Selected, #fff);
@@ -411,5 +408,5 @@
     position: absolute;
     font-size: 40px;
     right: 10px;
-    top: -5px;
+    top: -8px;
 }
