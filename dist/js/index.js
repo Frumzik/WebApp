@@ -58,7 +58,7 @@ function LoadApiData() {
 
     let notices = [];
     fetch(`https://test0123481.ru/api/user/profile/?${params}`, {
-        headers: { 'X-Telegram-Init-Data':initData},
+        headers: { 'X-Telegram-Init-Data': initData },
         method: "GET",
     })
     .then((response) => redirectNotAuthorized(response))

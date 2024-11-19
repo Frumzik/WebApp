@@ -338,7 +338,7 @@
         margin-right: 1.5vw;
     }
     .logo {
-        margin-left: 1.5vw;
+        margin-left: 2vw;
         img {
             width: 43px;
             height: 43px;
@@ -856,9 +856,6 @@
         margin: 0 25% 0 25%;
         height: 100vh;
     }
-    .header__container {
-        padding-left:0;
-        }
     .popup{
         right: 25%;
         top: 75px;
@@ -1218,7 +1215,7 @@
             font-size: 1.05vw;
         }
         &__balancegive {
-            height: 3.7vh;
+            height: 3vh;
             padding-top: 0.4vh;
             font-size: 1.05vw;
         }
@@ -1229,6 +1226,7 @@
     .balance {
         font-size: 1vw;
         width: 8vw;
+        height: 5.7vh;
         svg {
             width: 2vw;
         }
