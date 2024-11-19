@@ -80,7 +80,7 @@ function loadApiData() {
             copyButton.textContent = 'Поделиться';
             copyButton.addEventListener("click", function() {
                 if (referralLink) {
-                    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(referralLink)}&text=${encodeURIComponent(referralLink)}`;
+                    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(referralLink)}`;
                     window.location.href = telegramUrl;
                 }
             });
