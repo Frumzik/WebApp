@@ -7,7 +7,7 @@ function sendAnswer(event) {
     seriesId = parseInt(seriesId);
     const answer = document.getElementById('answer-area').value;
 
-    fetch('https://test0123481.ru/api/series/answer/', {
+    fetch('/api/series/answer/', {
         headers: {'X-Telegram-Init-Data': initData},
         method: 'POST',
         body: JSON.stringify({
@@ -16,7 +16,7 @@ function sendAnswer(event) {
         }),
     });
 
-    window.location.href = 'https://test0123481.ru/saveanswers.html';
+    window.location.href = '/saveanswers.html';
 }
 
 function switchSlide(event, slideNumber) {
@@ -64,7 +64,7 @@ function loadApiData() {
     lang: i18next.language,
   }).toString();
 
-  fetch(`https://test0123481.ru/api/series/play/?series_id=${series_id}&${params}`, {
+  fetch(`/api/series/play/?series_id=${series_id}&${params}`, {
     headers: {
       "X-Telegram-Init-Data": initData,
       method: "GET",

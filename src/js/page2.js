@@ -21,7 +21,7 @@ modal.style.display = "none";
 
 function buySeries(event) {
   let series_id = document.getElementById("modal").dataset.series_id;
-  fetch("https://test0123481.ru/api/series/buy/", {
+  fetch("/api/series/buy/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -55,7 +55,7 @@ function loadApiData() {
         lang: i18next.language,
     }).toString();
 
-  fetch(`https://test0123481.ru/api/series/list/?${params}`, {
+  fetch(`/api/series/list/?${params}`, {
     headers: { "X-Telegram-Init-Data": initData},
     method: "GET",
   })
