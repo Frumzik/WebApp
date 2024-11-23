@@ -1,5 +1,3 @@
-const { init } = require("browser-sync");
-
 const modal = document.getElementById("modal");
 const btn = document.getElementById("open-modal");
 const span = document.getElementsByClassName("custom-close")[0];
@@ -57,7 +55,7 @@ function LoadApiData() {
     }).toString();
 
     let notices = [];
-    fetch(`https://test0123481.ru/api/user/profile/?${params}`, {
+    fetch(`/api/user/profile/?${params}`, {
         headers: { 'X-Telegram-Init-Data': initData },
         method: "GET",
     })

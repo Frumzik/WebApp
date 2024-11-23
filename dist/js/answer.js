@@ -10,7 +10,7 @@ function loadApiData() {
         lang: i18next.language,
     }).toString();
 
-    fetch(`https://test0123481.ru/api/series/history/?${params}`, {
+    fetch(`/api/series/history/?${params}`, {
         headers: { "X-Telegram-Init-Data": initData },
         method: "GET",
     })

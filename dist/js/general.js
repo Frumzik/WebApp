@@ -51,7 +51,7 @@ function markNoticesAsRead() {
     bellIcon.src = '/icons/material-symbols-light_notifications-unread-outline-rounded.svg';
 
     const initData = btoa(window.Telegram.WebApp.initData);
-    fetch('https://test0123481.ru/api/user/notice/read/', {
+    fetch('/api/user/notice/read/', {
         'method': 'POST',
         headers: {'X-Telegram-Init-Data': initData},
     })
@@ -111,6 +111,27 @@ function initLanguages(after) {
         i18next.on('languageChanged', updateLanguageContent());
     })
     .then(() => after());
+}
+
+function redirectOnPaymentPage(event) {
+    let amount = document.getElementById('amount').value;
+    if (!amount.match(/^\d+$/)) {
+        alert('Введите сумму для вывода средств');
+        return
+    }
+
+    const initData = btoa(window.Telegram.WebApp.initData);
+    fetch('/api/payment/create/', {
+        headers: {
+            'X-Telegram-Init-Data': initData,
+        },
+        method: "POST",
+        body: JSON.stringify({'amount': amount})
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        window.location.href = data.payUrl;
+    })
 }
 
 window.Telegram.WebApp.BackButton.onClick(() => {

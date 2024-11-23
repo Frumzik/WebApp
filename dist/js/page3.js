@@ -33,7 +33,7 @@ window.onclick = function(event) {
     } 
 }
 function loadApiData() {
-    fetch("https://test0123481.ru/api/referral/profile/", {
+    fetch("/api/referral/profile/", {
         headers: { 
             'X-Telegram-Init-Data': initData},
         method: "GET",
@@ -113,7 +113,7 @@ function loadApiData() {
                 return;
             }
 
-            fetch('https://test0123481.ru/api/referral/order/', {
+            fetch('/api/referral/order/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
