@@ -88,9 +88,15 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             popup.classList.add('hidden');
         }
-
+    
         markNoticesAsRead();
     });
+    
+    document.getElementById('close-button').addEventListener('click', function() {
+        const popup = document.getElementById('popup');
+        popup.classList.add('hidden');
+    });
+    
 });
 
 document.querySelectorAll('a').forEach(link => {
