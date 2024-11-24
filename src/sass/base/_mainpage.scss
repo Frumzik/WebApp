@@ -105,7 +105,6 @@
 }
 .swiper-container.swiper-page1 {
     width: 100%;
-    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -135,7 +134,7 @@
 
 .motivation {
     margin-top: 1.23vh;
-    height: 20.43vh;
+    height: 18.5vh;
     width: 100%;
     padding: 15px 10px;
     display: flex;
@@ -222,7 +221,7 @@
     margin-top: 1.3vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 14.4vh 14.4vh;
+    grid-template-rows: 13.7vh 13.7vh;
     gap: 1vh;
     padding-bottom: 10.99vh;
     &__blocks {
