@@ -6,8 +6,8 @@ const cryptoPaymentCheckbox = document.getElementById("crypto-payment");
 const amountInput = document.getElementById("amount");
 
 const swiper = new Swiper('.swiper-page1', {
-    slidesPerView: 4,
-    spaceBetween: 10,
+    slidesPerView: 'auto',
+    spaceBetween: 10, 
     freeMode: true,
     breakpoints: {
         768: { slidesPerView: 5 },
@@ -54,48 +54,32 @@ function LoadApiData() {
         headers: { 'X-Telegram-Init-Data': initData },
         method: "GET",
     })
-    .then((response) => redirectNotAuthorized(response))
-    .then((data) => {
-        const firstName = data.user.firstName.length > 10 ? data.user.firstName.slice(0, 10) : data.user.firstName;
-        const lastName = data.user.lastName 
-            ? (data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName)
-            : '';
-        const userName = `${firstName} ${lastName}`;
-        const balance = data.user.balance;
-        const name = data.series.name;
-        const number = data.series.number;
-        const progressValue = data.progress;
-        const newsArray = data.news;
+        .then((response) => redirectNotAuthorized(response))
+        .then((data) => {
+            const userName = `${data.user.firstName} ${data.user.lastName || ''}`;
+            document.getElementById("userName").innerHTML = userName;
+            document.getElementById("balance").textContent = data.user.balance;
 
-        notices = data.notices;
-        displayNotifications(notices);
+            const newsContainer = document.getElementById("newsContainer");
+            newsContainer.innerHTML = "";
 
-        document.getElementById("userName").innerHTML = userName;
-        document.getElementById("balance").textContent = balance;
-        document.getElementById("number").textContent = number;
-        document.getElementById("name").textContent = name;
-        document.getElementById("progress").style.width = progressValue * 100 + "%";
-        document.getElementById("avatarLink").src = data.user.avatarLink;
-        document.getElementById("communityLink").href = data.communityLink;
-        document.getElementById("iconLink").href = data.iconLink;
-        document.getElementById("supportLink").href = data.supportLink;
-
-        const newsContainer = document.getElementById("newsContainer");
-        newsContainer.innerHTML = "";
-
-        for (let i = 0; i < newsArray.length; i++) { 
-            let newsElement = `<div class="swiper-slide my-slide">
-                                <a href="${newsArray[i].telegraphLink}" class="advertising__blocks">
-                                    <img src='${newsArray[i].imageLink}' style='height: inherit; border-radius: 10px; width: 100%;'>
-                                </a>
-                            </div>`;
-            newsContainer.insertAdjacentHTML('beforeend', newsElement);
-        }
-
-        swiper.update();
-    })
-    .catch((error) => console.error("Ошибка:", error));
+            const newsArray = data.news;
+            newsArray.forEach((news) => {
+                const newsElement = document.createElement("div");
+                newsElement.classList.add("swiper-slide", "my-slide");
+                newsElement.innerHTML = `
+                    <a href="${news.telegraphLink}" class="advertising__blocks">
+                        <img src="${news.imageLink}" style="height: inherit; border-radius: 10px; width: 100%;">
+                    </a>
+                `;
+                newsContainer.appendChild(newsElement);
+            });
+            swiper.update();
+        })
+        .catch((error) => console.error("Ошибка:", error));
 }
+
+
 document.addEventListener("DOMContentLoaded", initLanguages(LoadApiData));
 i18next.on('languageChanged', LoadApiData);
 
