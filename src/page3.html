@@ -136,8 +136,9 @@
             <h2 data-i18n="sum">Введите сумму</h2>
             <input type="number" id="amount" class="mount-input" placeholder="Сумма">
             <div class="btn-1">
-                <button id="submit-button" class="submit-btn"><span data-i18n="topUpBalance">Пополнить
-                        баланс</span></button>
+                <button id="submit-button" class="submit-btn" onclick="redirectOnPaymentPage(event)">
+                    <span data-i18n="topUpBalance">Пополнить баланс</span>
+                    </button>
             </div>
         </div>
     </div>
