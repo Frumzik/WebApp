@@ -23,7 +23,7 @@
                 </div>
                 <div class="about">
                     <div class="about__name"><span id="userName"></span></div>
-                    <div class="about__balancegive"><a id="open-modal" href="#"><span data-i18n="payment">пополнить
+                    <div class="about__balancegive"><a id="open-payment-modal" href="#"><span data-i18n="payment">пополнить
                         баланс</span></a></div>
                 </div>
                 <div class="balance"><span id="balance"></span><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
@@ -70,27 +70,27 @@
             <div id="notification-text"></div>
         </div>
     </div>
-    <div id="modal" class="custom-modal">
-        <div class="custom-modal-content">
-            <div class="custom-close__btn">
-                <span class="custom-close">
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <div class="modal-close-btn">
+                <span class="modal-close">
                     <img src="icons/akar-icons_cross.svg" alt="icon">
                 </span>
             </div>
             <h2 data-i18n="selectPaymentMethod">Выберите способ оплаты</h2>
-            <div class="custom-payment-option" id="payment-option">
-                <input type="checkbox" id="crypto-payment" class="payment-checkbox" name="payment-method">
-                <label for="crypto-payment" class="cryptopay">
-                    <img src="icons/nimbus_money.svg" alt="icon" class="payment-icon"> <span data-i18n="pay">Оплата
-                        криптовалютой</span>
+            <div class="payment-option-container" id="paymentOption">
+                <input type="checkbox" id="cryptoPayment" class="paymentt-checkbox" name="paymentMethod">
+                <label for="cryptoPayment" class="crypto-payment-label">
+                    <img src="icons/nimbus_money.svg" alt="icon" class="paymentt-icon ">
+                    <span data-i18n="pay">Оплата криптовалютой</span>
                 </label>
             </div>
-
             <h2 data-i18n="sum">Введите сумму</h2>
-            <input type="number" id="amount" class="mount-input" placeholder="Сумма">
-            <div class="btn-1">
-                <button id="submit-button" class="submit-btn"><span data-i18n="topUpBalance">Пополнить
-                        баланс</span></button>
+            <input type="number" id="amount" class="payment-amount-input" placeholder="Сумма">
+            <div class="modal-button-container">
+                <button id="confirmPayment" class="confirm-payment-btn" onclick="redirectOnPaymentPage(event)">
+                    <span data-i18n="topUpBalance">Пополнить баланс</span>
+                </button>
             </div>
         </div>
     </div>

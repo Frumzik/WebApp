@@ -14,7 +14,6 @@ function openModal(event) {
   document.getElementById("modal-description").innerHTML = description;
   modal.style.display = "flex";
 }
-
 function closeModal() {
 modal.style.display = "none";
 }
@@ -163,6 +162,36 @@ if (event.target == modal) {
   closeModal();
 }
 };
+
 });
 
+const paymentModal = document.getElementById('paymentModal');
+const openPaymentModalBtn = document.getElementById('open-payment-modal');
+const modalCloseBtn = document.querySelector('.modal-close-btn');
+const confirmPaymentBtn = document.getElementById('confirmPayment');
+const paymentOption = document.getElementById("paymentOption");
+const cryptoPaymentCheckbox = document.getElementById("cryptoPayment");
+const amountInput = document.getElementById("amount");
 
+function openPaymentModal() {
+    paymentModal.style.display = 'flex';
+}
+
+function closePaymentModal() {
+    paymentModal.style.display = 'none'; 
+}
+
+openPaymentModalBtn.addEventListener('click', openPaymentModal);
+modalCloseBtn.addEventListener('click', closePaymentModal);
+window.addEventListener('click', function (event) {
+    if (event.target === paymentModal) {
+        closePaymentModal(); 
+    }
+});
+amountInput.addEventListener("input", function (event) {
+  this.value = this.value.replace(/[^0-9.]/g, '');
+});
+paymentOption.onclick = function() {
+  cryptoPaymentCheckbox.checked = !cryptoPaymentCheckbox.checked; 
+  paymentOption.classList.toggle("active", cryptoPaymentCheckbox.checked);
+}

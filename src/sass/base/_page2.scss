@@ -210,3 +210,117 @@
     font-style: normal;
     font-weight: 500;
 }
+.payment-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw; 
+    height: 100vh; 
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5); 
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-modal-content {
+    margin: 160px auto;
+    padding: 29px 31px;
+    border-radius: 10px;
+    border: 1px solid #1e96b1;
+    background: linear-gradient(102deg, #fffef6 11.35%, #cbebf1 102.05%);
+    width: 300px;
+    min-height: 300px;
+    h2 {
+        color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
+        text-align: center;
+        font-family: Firs;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+    }
+}
+
+.modal-close-btn {
+    position: relative;
+}
+.modal-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    cursor: pointer;
+}
+
+.payment-option-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid #cbebf1;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+.crypto-payment-label {
+    display: flex;
+    align-items: center;
+    span {
+        color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
+        font-family: Catamaran;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+    }
+}
+.payment-option-container.active {
+    border-color: #1e96b1;
+}
+
+.paymentt-checkbox {
+    display: none;
+}
+
+.paymentt-checkbox:checked + label {
+    border-color: #1e96b1;
+}
+
+.paymentt-icon {
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+}
+
+.payment-amount-input {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 10px;
+    border: 1px solid #1e96b1;
+    outline: none;
+    font-family: Onest;
+    font-size: 10px;
+}
+.modal-button-container {
+    display: flex;
+    justify-content: center;
+}
+.confirm-payment-btn {
+    width: 180px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #1e96b1;
+    background: #1e96b1;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    font-family: Onest;
+    font-size: 10px;
+    font-style: normal;
+}
+.confirm-payment-btn:hover {
+    background: #167788;
+}
