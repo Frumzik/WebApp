@@ -58,5 +58,9 @@
     "saveAnswers": "Saved answers",
     "answers1": "Question 1",
     "userAnswers1": "My goal is to complete all levels of the game and get to know myself better by answering different questions and getting closer to my true self.",
-    "seriesName": "Series"
+    "seriesName": "Series",
+    "changePassword": "Change password",
+    "newPassword": "New password*",
+    "usersPassword": "Your password*",
+    "retypePassword": "Confirm password*"
 }
