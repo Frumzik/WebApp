@@ -56,14 +56,32 @@ function LoadApiData() {
     })
         .then((response) => redirectNotAuthorized(response))
         .then((data) => {
-            const userName = `${data.user.firstName} ${data.user.lastName || ''}`;
+            const firstName = data.user.firstName.length > 10 ? data.user.firstName.slice(0, 10) : data.user.firstName;
+            const lastName = data.user.lastName
+                ? (data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName)
+                : '';
+            const userName = `${firstName} ${lastName}`;
+            const balance = data.user.balance;
+            const name = data.series.name;
+            const number = data.series.number;
+            const progressValue = data.progress;
+            const newsArray = data.news;
+            const notices = data.notices;
+
+            displayNotifications(notices);
             document.getElementById("userName").innerHTML = userName;
-            document.getElementById("balance").textContent = data.user.balance;
+            document.getElementById("balance").textContent = balance;
+            document.getElementById("number").textContent = number;
+            document.getElementById("name").textContent = name;
+            document.getElementById("progress").style.width = progressValue * 100 + "%";
+            document.getElementById("avatarLink").src = data.user.avatarLink;
+            document.getElementById("communityLink").href = data.communityLink;
+            document.getElementById("iconLink").href = data.iconLink;
+            document.getElementById("supportLink").href = data.supportLink;
 
             const newsContainer = document.getElementById("newsContainer");
             newsContainer.innerHTML = "";
 
-            const newsArray = data.news;
             newsArray.forEach((news) => {
                 const newsElement = document.createElement("div");
                 newsElement.classList.add("swiper-slide", "my-slide");
@@ -74,11 +92,11 @@ function LoadApiData() {
                 `;
                 newsContainer.appendChild(newsElement);
             });
+
             swiper.update();
         })
         .catch((error) => console.error("Ошибка:", error));
 }
-
 
 document.addEventListener("DOMContentLoaded", initLanguages(LoadApiData));
 i18next.on('languageChanged', LoadApiData);
