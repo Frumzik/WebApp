@@ -98,7 +98,7 @@ function initLanguages(after) {
     .use(i18nextHttpBackend)
     .init({
         backend: {
-            loadPath: '../json/{{lng}}.json'
+            loadPath: '/json/{{lng}}.json'
         },
         fallbackLng: "ru",
         detection: {
