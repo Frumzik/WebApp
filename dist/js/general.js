@@ -37,15 +37,6 @@ function redirectNotAuthorized(response) {
     }
 }
 
-const notificationMessages = {
-    buy: "Покупка",
-    sc: "Успешный вывод",
-    cn: "Отказ в выводе",
-    cr: "Заявка на вывод создана",
-    rf: "Пополнение счета",
-    bn: "Реферальный бонус",
-};
-
 function markNoticesAsRead() {
     let bellIcon = document.getElementById('bell-icon');
     bellIcon.src = '/icons/material-symbols-light_notifications-unread-outline-rounded.svg';
