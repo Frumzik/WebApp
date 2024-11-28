@@ -62,5 +62,13 @@
     "changePassword": "Change password",
     "newPassword": "New password*",
     "usersPassword": "Your password*",
-    "retypePassword": "Confirm password*"
+    "retypePassword": "Confirm password*",
+        "notifications": {
+        "buy": "Purchase",
+        "sc": "Successful withdrawal",
+        "cn": "Withdrawal declined",
+        "cr": "Withdrawal request created",
+        "rf": "Account top-up",
+        "bn": "Referral bonus"
+        }
 }

@@ -37,15 +37,6 @@ function redirectNotAuthorized(response) {
     }
 }
 
-const notificationMessages = {
-    buy: "Покупка",
-    sc: "Успешный вывод",
-    cn: "Отказ в выводе",
-    cr: "Заявка на вывод создана",
-    rf: "Пополнение счета",
-    bn: "Реферальный бонус",
-};
-
 function markNoticesAsRead() {
     let bellIcon = document.getElementById('bell-icon');
     bellIcon.src = '/icons/material-symbols-light_notifications-unread-outline-rounded.svg';
@@ -61,26 +52,26 @@ function displayNotifications(notices) {
     const notificationText = document.getElementById('notification-text');
     notificationText.innerHTML = '';
 
-    let readAllMessages = true;
+    let readAllMessages = true; 
+
     for (let i = 0; i < notices.length; i++) {
         const p = document.createElement('p');
         const noticeType = notices[i].text;
-        const message = notificationMessages[noticeType];
+        const message = i18next.t(`notifications.${noticeType}`);
 
         if (message !== undefined) {
             p.textContent = message;
-            notificationText.appendChild(p);
+            notificationText.appendChild(p); 
 
-            if (!notices[i].read) readAllMessages = false;
+            if (!notices[i].read) readAllMessages = false; 
         }
     }
 
     if (!readAllMessages) {
-        let bellIcon = document.getElementById('bell-icon');
+        const bellIcon = document.getElementById('bell-icon');
         bellIcon.src = '/icons/material_symbols_light_notifications_unread_outline_rounded_1.svg';
     }
 }
-
 function updateLanguageContent() {
     document.querySelectorAll("[data-i18n]").forEach((element) => {
         const key = element.getAttribute("data-i18n");
