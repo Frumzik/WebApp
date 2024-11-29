@@ -50,7 +50,7 @@ function LoadApiData() {
         lang: i18next.language,
     }).toString();
 
-    fetch(`/api/user/profile/?${params}`, {
+    fetch(`https://i-game.one/api/user/profile/?${params}`, {
         headers: { 'X-Telegram-Init-Data': initData },
         method: "GET",
     })

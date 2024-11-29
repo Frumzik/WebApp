@@ -52,18 +52,27 @@ function displayNotifications(notices) {
     const notificationText = document.getElementById('notification-text');
     notificationText.innerHTML = '';
 
-    let readAllMessages = true; 
-
+    let readAllMessages = true;
     for (let i = 0; i < notices.length; i++) {
         const p = document.createElement('p');
+
         const noticeType = notices[i].text;
         const message = i18next.t(`notifications.${noticeType}`);
 
         if (message !== undefined) {
-            p.textContent = message;
-            notificationText.appendChild(p); 
+            const textSpan = document.createElement('span');
+            textSpan.textContent = message;
 
-            if (!notices[i].read) readAllMessages = false; 
+            const dateSpan = document.createElement('span');
+            dateSpan.textContent = formatDateTime(notices[i].datetime);
+            dateSpan.style.fontSize = '0.85em'; 
+            dateSpan.style.color = '#999'; 
+
+            p.appendChild(textSpan); 
+            p.appendChild(dateSpan); 
+            notificationText.appendChild(p);
+
+            if (!notices[i].read) readAllMessages = false;
         }
     }
 
@@ -72,6 +81,13 @@ function displayNotifications(notices) {
         bellIcon.src = '/icons/material_symbols_light_notifications_unread_outline_rounded_1.svg';
     }
 }
+
+// Функция для форматирования даты и времени
+function formatDateTime(datetime) {
+    const date = new Date(datetime);
+    return date.toLocaleString(); // Локализованный формат даты и времени
+}
+
 function updateLanguageContent() {
     document.querySelectorAll("[data-i18n]").forEach((element) => {
         const key = element.getAttribute("data-i18n");
