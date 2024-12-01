@@ -70,5 +70,22 @@
         "cr": "Withdrawal request created",
         "rf": "Account top-up",
         "bn": "Referral bonus"
-        }
+        },
+    "resetPassword": "Reset password",
+    "resetPasswordButton": "Reset",
+    "singIn": "Sign in",
+    "signInButton": "Sign in",
+    "newQuestion": "new to iGame?",
+    "signUp": "Sign up",
+    "haveAccount": "Already have an account?",
+    "agreementText": "Consent to the provision and processing of personal data in accordance with the",
+    "agreementLink": "user agreement",
+    "passwordConfirm": "Password confirm*",
+    "lastName": "Surname*",
+    "name": "Name*",
+    "resetDone": "An email has been sent to your email with instructions for resetting your password. Please check your email.",
+    "resetDoneLink": "Go back to the login page",
+    "resetUnavailableMessage": "The password reset link is invalid. Please request a password reset again.",
+    "resetUnavailableLink": "Request a password reset",
+    "resetQuestion": "Forgot your password?"
 }

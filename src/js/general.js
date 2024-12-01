@@ -22,7 +22,7 @@ function markLinksAsTelegram() {
     if (settings.length > 0) {
         settings = settings[0];
         if (window.Telegram.WebApp.initData !== '') {
-            settings.href = '/auth/login/?telegram=true';
+            settings.href = '/auth/menu/?telegram=true';
         }
     }
 }
