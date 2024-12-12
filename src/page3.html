@@ -8,7 +8,8 @@
     <title>IGame</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://unpkg.com/i18next@latest/i18next.min.js"></script>
-    <script src="https://unpkg.com/i18next-browser-languagedetector@latest/i18nextBrowserLanguageDetector.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector@latest/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="https://unpkg.com/i18next-http-backend@latest/i18nextHttpBackend.min.js"></script>
     <script src="/js/general.js"></script>
     <script src="js/login.js"></script>
@@ -24,17 +25,19 @@
                 </div>
                 <div class="about">
                     <div class="about__name"><span id="userName"></span></div>
-                    <div class="about__balancegive"><a id="open-modal" href="#"><span data-i18n="payment"></span></a></div>
+                    <div class="about__balancegive"><a id="open-modal" href="#"><span data-i18n="payment"></span></a>
+                    </div>
                 </div>
                 <div class="balance"><span id="balance"></span><a href="#"><svg xmlns="http://www.w3.org/2000/svg"
-                    width="15" height="15" viewBox="0 0 15 15" fill="none">
+                            width="15" height="15" viewBox="0 0 15 15" fill="none">
                             <path
                                 d="M3.64062 13.125L4.65625 8.73438L1.25 5.78125L5.75 5.39062L7.5 1.25L9.25 5.39062L13.75 5.78125L10.3437 8.73438L11.3594 13.125L7.5 10.7969L3.64062 13.125Z"
                                 fill="#FBE30E" />
                         </svg></a></div>
                 <nav class="options">
                     <div class="notification" id="notification-link">
-                        <img src="icons/material-symbols-light_notifications-unread-outline-rounded.svg" alt="notification" id="bell-icon">
+                        <img src="icons/material-symbols-light_notifications-unread-outline-rounded.svg"
+                            alt="notification" id="bell-icon">
                     </div>
                     <a class="settings" href="/auth/menu">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
@@ -54,13 +57,13 @@
                 <h2 class="h2-referal" data-i18n="referralProgram"></h2>
             </div>
             <div class="referal-programm__p" id="referralProgramText">
-                <p><span data-i18n="referralProgramText1"></span>!</p>
+                <p><span data-i18n="referralProgramText1"></span></p>
                 <p><span data-i18n="referralProgramText2"></span></p>
             </div>
         </div>
     </section>
     <section>
-        <div class="referal-link" >
+        <div class="referal-link">
             <div class="referal-link__maintext">
                 <img src="icons/link.svg" alt="link">
                 <h2 class="h2-referal reflink"><span id="referralLink"></span></h2>
@@ -85,7 +88,9 @@
                 <div class="currency-amount">
                     <span id="referralBalance"></span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
-                        <path d="M4.86875 15.75L6.0875 10.4813L2 6.9375L7.4 6.46875L9.5 1.5L11.6 6.46875L17 6.9375L12.9125 10.4813L14.1312 15.75L9.5 12.9562L4.86875 15.75Z" fill="#FBE30E"/>
+                        <path
+                            d="M4.86875 15.75L6.0875 10.4813L2 6.9375L7.4 6.46875L9.5 1.5L11.6 6.46875L17 6.9375L12.9125 10.4813L14.1312 15.75L9.5 12.9562L4.86875 15.75Z"
+                            fill="#FBE30E" />
                     </svg>
                 </div>
                 <div class="dollar-equivalent">
@@ -94,12 +99,20 @@
             </div>
             <div class="currency">
                 <div class="currency-container">
-                    <input type="number" id="inputNumber"  placeholder="Сумма" class="amount-input" min="1" step="1" required />
-                    <button id="submitBtn" class="withdraw-button"><span data-i18n="withdraw"></span></button>
+                    <input type="number" id="inputNumber" placeholder="Сумма" class="amount-input" min="1" step="1" required />
+                    <button id="submitBtn" class="withdraw-button"><span data-i18n="withdraw">Вывести</span></button>
                 </div>
                 <a href="#"><img src="icons/transaction.svg" alt="transaction"></a>
             </div>
+            <div id="popupMessage" class="popup-message">
+                <span data-i18n="Your-withdrawal"></span>
+            </div>
+            <div class="wallet-container">
+                <label for="walletInput" class="wallet-label" data-i18n="wallet-link"></label>
+                <input type="text" id="walletInput" placeholder="Адрес кошелька" class="wallet-input" required />
+            </div>
         </div>
+        <div class="div"></div>
     </section>
     <div class="footer">
         <ul class="footer__list">
@@ -139,7 +152,7 @@
             <div class="btn-1">
                 <button id="submit-button" class="submit-btn" onclick="redirectOnPaymentPage(event)">
                     <span data-i18n="topUpBalance">Пополнить баланс</span>
-                    </button>
+                </button>
             </div>
         </div>
     </div>

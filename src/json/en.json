@@ -87,5 +87,7 @@
     "resetDoneLink": "Go back to the login page",
     "resetUnavailableMessage": "The password reset link is invalid. Please request a password reset again.",
     "resetUnavailableLink": "Request a password reset",
-    "resetQuestion": "Forgot your password?"
+    "resetQuestion": "Forgot your password?",
+    "Your-withdrawal": "Your withdrawal request has been sent",
+    "wallet-link": "Specify the USDT wallet of the BSC network for withdrawal of funds"
 }

@@ -100,40 +100,56 @@ function loadApiData() {
 
         const submitBtn = document.getElementById("submitBtn");
         const inputNumber = document.getElementById("inputNumber");
+        const walletInput = document.getElementById("walletInput");
+        const popupMessage = document.getElementById("popupMessage");
 
-        inputNumber.addEventListener("input", function() {
-            this.value = this.value.replace(/[^\d]/g, '');
-        });
-
-        submitBtn.addEventListener("click", function() {
-            let amount = inputNumber.value.trim();
-
-            if (!amount) {
-                alert('Пожалуйста, введите число.');
-                return;
-            }
-
-            fetch('/api/referral/order/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ amount: amount })
-            })
-            .then(response => {
-                redirectNotAuthorized(response);
-                if (response.ok) {
-                    console.log('204 OK');
-                } else if (response.status === 409) {
-                    console.error('409 Не достаточно средств');
-                } else {
-                    console.log('Ошибка сети');
+                function showPopupMessage() {
+                    popupMessage.classList.add("show");
+                    setTimeout(() => {
+                        popupMessage.classList.remove("show");
+                    }, 3000);
                 }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-            });
-        });
+
+                inputNumber.addEventListener("input", function () {
+                    this.value = this.value.replace(/[^\d]/g, "");
+                });
+
+                submitBtn.addEventListener("click", function () {
+                    let amount = inputNumber.value.trim();
+                    let address = walletInput.value.trim();
+
+                    if (!amount || !address) {
+                        alert("Пожалуйста, введите сумму и адрес кошелька.");
+                        return;
+                    }
+
+                    fetch("/api/referral/order/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            amount: amount, 
+                            address: address
+                        }),
+                    })
+                        .then((response) => {
+                            redirectNotAuthorized(response); 
+                            if (response.ok) {
+                                console.log("204 OK");
+                                showPopupMessage();
+                            } else if (response.status === 409) {
+                                console.error("409 Не достаточно средств");
+                            } else {
+                                console.log("Ошибка сети");
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Ошибка:", error);
+                        });
+                });
+
+        
     })
     .catch((error) => console.error("Ошибка:", error));
 }

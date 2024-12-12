@@ -82,10 +82,9 @@ function displayNotifications(notices) {
     }
 }
 
-// Функция для форматирования даты и времени
 function formatDateTime(datetime) {
     const date = new Date(datetime);
-    return date.toLocaleString(); // Локализованный формат даты и времени
+    return date.toLocaleString(); 
 }
 
 function updateLanguageContent() {

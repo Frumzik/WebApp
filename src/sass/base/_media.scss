@@ -1063,7 +1063,15 @@
             font-size: 1vw;
         }
     }
-
+    .wallet-label {
+        font-size: 14px;
+    }
+    .wallet-input{
+        font-size: 14px;
+    }
+    .wallet-input::placeholder{
+        font-size: 14px;
+    }
     .conclusion__maintext {
         margin-bottom: 0.6vh;
         img {
@@ -1084,9 +1092,6 @@
             position: relative;
             top: 2px;
         }
-    }
-    .conclusion {
-        height: 28vh;
     }
     .currency {
         margin-top: 1.5vh;
@@ -1383,6 +1388,9 @@
             width: 40px;
             height: 40px;
         }
+    }
+    .wallet-container{
+        margin-top: 8px;
     }
     .currency-block {
         width: 99%;
