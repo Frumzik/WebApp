@@ -72,7 +72,7 @@
                 <h2 class="h2-referal" data-i18n="referalLinkTextH2"></h2>
                 <p><span data-i18n="referalLinkText"></span></p>
             </div>
-            <button class="referal-link__btn" id="copyBtn"><span></span></button>
+            <button class="referal-link__btn" id="copyBtn" data-i18n="copy"></button>
         </div>
         <div id="toast" class="toast">
         </div>
@@ -99,8 +99,8 @@
             </div>
             <div class="currency">
                 <div class="currency-container">
-                    <input type="number" id="inputNumber" placeholder="Сумма" class="amount-input" min="1" step="1" required />
-                    <button id="submitBtn" class="withdraw-button"><span data-i18n="withdraw">Вывести</span></button>
+                    <input type="number" id="inputNumber" placeholder="Сумма" class="amount-input" min="1" step="1" required data-i18n="amount-placeholder" />
+                    <button id="submitBtn" class="withdraw-button"><span data-i18n="withdraw"></span></button>
                 </div>
                 <a href="#"><img src="icons/transaction.svg" alt="transaction"></a>
             </div>
@@ -109,7 +109,7 @@
             </div>
             <div class="wallet-container">
                 <label for="walletInput" class="wallet-label" data-i18n="wallet-link"></label>
-                <input type="text" id="walletInput" placeholder="Адрес кошелька" class="wallet-input" required />
+                <input type="text" id="walletInput" placeholder="Адрес кошелька" class="wallet-input" required  data-i18n="wallet-placeholder" />
             </div>
         </div>
         <div class="div"></div>
@@ -148,7 +148,7 @@
             </div>
 
             <h2 data-i18n="sum">Введите сумму</h2>
-            <input type="number" id="amount" class="mount-input" placeholder="Сумма">
+            <input type="number" id="amount" class="mount-input" placeholder="Сумма" required data-i18n="amount-placeholder">
             <div class="btn-1">
                 <button id="submit-button" class="submit-btn" onclick="redirectOnPaymentPage(event)">
                     <span data-i18n="topUpBalance">Пополнить баланс</span>

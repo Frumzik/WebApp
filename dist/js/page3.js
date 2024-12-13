@@ -33,125 +33,64 @@ window.onclick = function(event) {
     } 
 }
 function loadApiData() {
-    fetch("/api/referral/profile/", {
-        headers: { 
-            'X-Telegram-Init-Data': initData},
+    fetch("https://i-game.one/api/referral/profile/", {
+        headers: {
+            'X-Telegram-Init-Data': 'cXVlcnlfaWQ9QUFHUWUxZ3pBQUFBQUpCN1dETlZ4OWY2JnVzZXI9JTdCJTIyaWQlMjIlM0E4NjE0MzY4MTYlMkMlMjJmaXJzdF9uYW1lJTIyJTNBJTIyJUUyJTlEJTk0JTIyJTJDJTIybGFzdF9uYW1lJTIyJTNBJTIyJTIyJTJDJTIydXNlcm5hbWUlMjIlM0ElMjJ0cmFwX3NoYXJrayUyMiUyQyUyMmxhbmd1YWdlX2NvZGUlMjIlM0ElMjJydSUyMiUyQyUyMmFsbG93c193cml0ZV90b19wbSUyMiUzQXRydWUlMkMlMjJwaG90b191cmwlMjIlM0ElMjJodHRwcyUzQSU1QyUyRiU1QyUyRnQubWUlNUMlMkZpJTVDJTJGdXNlcnBpYyU1QyUyRjMyMCU1QyUyRmpybnp3R1RFdVN6LUh5M291eXNLZC1jNFdIZUlvT1ZOakZfWnhPb0RZTlkuc3ZnJTIyJTdEJmF1dGhfZGF0ZT0xNzMyNzkyMzc0JnNpZ25hdHVyZT1mUWk0VFhhNFZ6ZERGR3ExV25ra1g4LXZqQzh3cEl5M2dqY0pWQk5SYWRGNF92OGxvOXRFakt5dmkta2xPeDdvWVZaeFNBUUx3b1JIbkhyQzlGVXpBUSZoYXNoPWQ0OTY4YTAxODU2ZDg2YzNhNWM0MTFmNjdkNmVkMTJjMjUzNjQ1ODQxMWMwNDdiNzMwNzMzMDVmMmUxZmZhYjY='
+        },
         method: "GET",
     })
     .then((response) => redirectNotAuthorized(response))
     .then((data) => {
         const firstName = data.user.firstName.length > 10 ? data.user.firstName.slice(0, 10) : data.user.firstName;
-        let lastName;
-        if (data.user.lastName === null) lastName = '';
-        else lastName = data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName;
+        const lastName = data.user.lastName 
+            ? data.user.lastName.length > 10 ? data.user.lastName.slice(0, 10) : data.user.lastName 
+            : '';
         const userName = `${firstName} ${lastName}`;
-        const balance = data.user.balance;
         const referralLink = data.referralLink;
-        const referralBalance = data.referralBalance;
-        const referralBalanceInDollars = data.referralBalanceInDollars;
-        notices = data.notices;
-        displayNotifications(notices);
 
-        document.getElementById("userName").innerHTML = userName;
-        document.getElementById("referralLink").innerHTML = referralLink;
-        document.getElementById("referralBalance").innerHTML = referralBalance;
-        document.getElementById("referralBalanceInDollars").innerHTML = referralBalanceInDollars;
-        document.getElementById("balance").textContent = balance;
+        document.getElementById("userName").textContent = userName;
+        document.getElementById("referralLink").textContent = referralLink;
         document.getElementById("avatarLink").src = data.user.avatarLink;
 
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.innerHTML = '';
-            const imgIcon = document.createElement("img");
-            imgIcon.setAttribute("class", "toast-icon");
-            imgIcon.setAttribute("src", "../img/copy.png"); 
-            imgIcon.setAttribute("alt", "Icon");
-            const toastText = document.createElement("span");
-            toastText.textContent = message;
-            toast.appendChild(imgIcon);
-            toast.appendChild(toastText);
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2500);
-        }
-
         const copyButton = document.getElementById("copyBtn");
-
         if (window.Telegram.WebApp.initData !== '') {
-            copyButton.textContent = 'Поделиться';
-            copyButton.addEventListener("click", function() {
+            copyButton.setAttribute('data-i18n', 'share');
+            copyButton.addEventListener("click", function () {
                 if (referralLink) {
                     const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(referralLink)}`;
                     window.location.href = telegramUrl;
                 }
             });
         } else {
-            copyButton.textContent = 'Cкопировать';
-            copyButton.addEventListener("click", function() {
+            copyButton.setAttribute('data-i18n', 'copy'); 
+            copyButton.addEventListener("click", function () {
                 if (referralLink) {
-                    navigator.clipboard.writeText(referralLink).then(function() {
-                        showToast('Реферальная ссылка скопирована.');
-                        console.log('Реферальная ссылка скопирована.');
-                    }).catch(function(error) {
+                    navigator.clipboard.writeText(referralLink).then(function () {
+                        showToast('toast.copySuccess'); 
+                    }).catch(function (error) {
                         console.error('Ошибка при копировании: ', error);
                     });
                 }
             });
         }
-
-        const submitBtn = document.getElementById("submitBtn");
-        const inputNumber = document.getElementById("inputNumber");
-        const walletInput = document.getElementById("walletInput");
-        const popupMessage = document.getElementById("popupMessage");
-
-                function showPopupMessage() {
-                    popupMessage.classList.add("show");
-                    setTimeout(() => {
-                        popupMessage.classList.remove("show");
-                    }, 3000);
-                }
-
-                inputNumber.addEventListener("input", function () {
-                    this.value = this.value.replace(/[^\d]/g, "");
-                });
-
-                submitBtn.addEventListener("click", function () {
-                    let amount = inputNumber.value.trim();
-                    let address = walletInput.value.trim();
-
-                    if (!amount || !address) {
-                        alert("Пожалуйста, введите сумму и адрес кошелька.");
-                        return;
-                    }
-
-                    fetch("/api/referral/order/", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            amount: amount, 
-                            address: address
-                        }),
-                    })
-                        .then((response) => {
-                            redirectNotAuthorized(response); 
-                            if (response.ok) {
-                                console.log("204 OK");
-                                showPopupMessage();
-                            } else if (response.status === 409) {
-                                console.error("409 Не достаточно средств");
-                            } else {
-                                console.log("Ошибка сети");
-                            }
-                        })
-                        .catch((error) => {
-                            console.error("Ошибка:", error);
-                        });
-                });
-
-        
     })
     .catch((error) => console.error("Ошибка:", error));
+}
+
+function showToast(messageKey) {
+    const toast = document.getElementById('toast');
+    toast.innerHTML = ''; 
+    const imgIcon = document.createElement("img");
+    imgIcon.setAttribute("class", "toast-icon");
+    imgIcon.setAttribute("src", "../img/copy.png");
+    imgIcon.setAttribute("alt", "Icon");
+    const toastText = document.createElement("span");
+    toastText.setAttribute('data-i18n', messageKey); 
+    toast.appendChild(imgIcon);
+    toast.appendChild(toastText);
+    updateLanguageContent();
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
 
