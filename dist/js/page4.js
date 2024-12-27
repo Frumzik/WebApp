@@ -7,8 +7,8 @@ function sendAnswer(event) {
     seriesId = parseInt(seriesId);
     const answer = document.getElementById('answer-area').value;
 
-    fetch('/api/series/answer/', {
-        headers: {'X-Telegram-Init-Data': initData},
+    fetch('https://i-game.one/api/series/answer/', {
+        headers: {'X-Telegram-Init-Data': 'cXVlcnlfaWQ9QUFHUWUxZ3pBQUFBQUpCN1dETlZ4OWY2JnVzZXI9JTdCJTIyaWQlMjIlM0E4NjE0MzY4MTYlMkMlMjJmaXJzdF9uYW1lJTIyJTNBJTIyJUUyJTlEJTk0JTIyJTJDJTIybGFzdF9uYW1lJTIyJTNBJTIyJTIyJTJDJTIydXNlcm5hbWUlMjIlM0ElMjJ0cmFwX3NoYXJrayUyMiUyQyUyMmxhbmd1YWdlX2NvZGUlMjIlM0ElMjJydSUyMiUyQyUyMmFsbG93c193cml0ZV90b19wbSUyMiUzQXRydWUlMkMlMjJwaG90b191cmwlMjIlM0ElMjJodHRwcyUzQSU1QyUyRiU1QyUyRnQubWUlNUMlMkZpJTVDJTJGdXNlcnBpYyU1QyUyRjMyMCU1QyUyRmpybnp3R1RFdVN6LUh5M291eXNLZC1jNFdIZUlvT1ZOakZfWnhPb0RZTlkuc3ZnJTIyJTdEJmF1dGhfZGF0ZT0xNzMyNzkyMzc0JnNpZ25hdHVyZT1mUWk0VFhhNFZ6ZERGR3ExV25ra1g4LXZqQzh3cEl5M2dqY0pWQk5SYWRGNF92OGxvOXRFakt5dmkta2xPeDdvWVZaeFNBUUx3b1JIbkhyQzlGVXpBUSZoYXNoPWQ0OTY4YTAxODU2ZDg2YzNhNWM0MTFmNjdkNmVkMTJjMjUzNjQ1ODQxMWMwNDdiNzMwNzMzMDVmMmUxZmZhYjY='},
         method: 'POST',
         body: JSON.stringify({
             'seriesId': seriesId,
@@ -179,6 +179,18 @@ function loadApiData() {
                     </div>
                 `;
         }
+        else if (page.text === "" && page.videoLink === null && page.imageLink === null && page.audio !== null) {
+          container.innerHTML += `
+              <div id="player-container">
+                  <div class="play-pause-btn">
+                      <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                      <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                  </div>
+                  <div id="waveform-${page.audio.replace(/[^a-zA-Z0-9]/g, '_')}"></div>
+                  <div class="time-display" id="currentTime-${page.audio.replace(/[^a-zA-Z0-9]/g, '_')}">00:00</div>
+              </div>
+          `;
+        }
       }
     });
 
@@ -208,3 +220,48 @@ document.querySelectorAll('a').forEach(link => {
 
     link.addEventListener('click', switchPages);
 });
+
+    // Инициализация Wavesurfer
+    const wave = WaveSurfer.create({
+      container: `#waveform-${page.audioLink.replace(/[^a-zA-Z0-9]/g, '_')}`,
+      waveColor: '#d3d3d3',
+      progressColor: '#a9a9a9',
+      height: 40,
+      responsive: true,
+      barWidth: 2,
+      cursorWidth: 0,
+  });
+
+  // Загрузка аудио
+  wave.load(page.audioLink);
+
+  // Обновление времени
+  wave.on('audioprocess', () => {
+      const currentTime = wave.getCurrentTime();
+      const minutes = Math.floor(currentTime / 60).toString().padStart(2, '0');
+      const seconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
+      document.getElementById(`currentTime-${page.audioLink.replace(/[^a-zA-Z0-9]/g, '_')}`).textContent = `${minutes}:${seconds}`;
+  });
+
+  // Управление воспроизведением
+  const playPauseBtn = container.querySelector(`#waveform-${page.audioLink.replace(/[^a-zA-Z0-9]/g, '_')}`).parentElement.querySelector('.play-pause-btn');
+  playPauseBtn.addEventListener('click', () => {
+      if (wave.isPlaying()) {
+          wave.pause();
+          playPauseBtn.querySelector('#playIcon').style.display = 'block';
+          playPauseBtn.querySelector('#pauseIcon').style.display = 'none';
+          playPauseBtn.classList.remove('pause');
+      } else {
+          wave.play();
+          playPauseBtn.querySelector('#playIcon').style.display = 'none';
+          playPauseBtn.querySelector('#pauseIcon').style.display = 'block';
+          playPauseBtn.classList.add('pause');
+      }
+  });
+
+  // Завершение воспроизведения
+  wave.on('finish', () => {
+      playPauseBtn.querySelector('#playIcon').style.display = 'block';
+      playPauseBtn.querySelector('#pauseIcon').style.display = 'none';
+      playPauseBtn.classList.remove('pause');
+  });

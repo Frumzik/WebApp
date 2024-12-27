@@ -1,3 +1,5 @@
+const { init } = require("browser-sync");
+
 const modal = document.getElementById("modal");
 const btn = document.getElementById("open-modal");
 const span = document.getElementsByClassName("custom-close")[0];
