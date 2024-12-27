@@ -33,7 +33,7 @@ window.onclick = function(event) {
     } 
 }
 function loadApiData() {
-    fetch("https://i-game.one/api/referral/profile/", {
+    fetch("/api/referral/profile/", {
         headers: {
             'X-Telegram-Init-Data': initData
         },

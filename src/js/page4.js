@@ -189,7 +189,7 @@ function loadApiData() {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-   initLanguages(loadApiData);
+  initLanguages(loadApiData);
 });
 
 document.addEventListener("keydown", function (event) {
