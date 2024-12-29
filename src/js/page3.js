@@ -47,8 +47,14 @@ function loadApiData() {
             : '';
         const userName = `${firstName} ${lastName}`;
         const referralLink = data.referralLink;
+        const balance = data.user.balance;
+        const referralBalance = data.referralBalance;
+        const referralBalanceInDollars = data.referralBalanceInDollars;
 
         document.getElementById("userName").textContent = userName;
+        document.getElementById("balance").textContent = balance;
+        document.getElementById("referralBalance").textContent = referralBalance;
+        document.getElementById("referralBalanceInDollars").textContent = referralBalanceInDollars;
         document.getElementById("referralLink").textContent = referralLink;
         document.getElementById("avatarLink").src = data.user.avatarLink;
 
@@ -62,17 +68,55 @@ function loadApiData() {
                 }
             });
         } else {
-            copyButton.setAttribute('data-i18n', 'copy'); 
+            copyButton.setAttribute('data-i18n', 'copy');
             copyButton.addEventListener("click", function () {
                 if (referralLink) {
                     navigator.clipboard.writeText(referralLink).then(function () {
-                        showToast('toast.copySuccess'); 
+                        showToast('toast.copySuccess');
                     }).catch(function (error) {
                         console.error('Ошибка при копировании: ', error);
                     });
                 }
             });
         }
+
+        inputNumber.addEventListener("input", function() {
+            this.value = this.value.replace(/[^\d]/g, '');
+        });
+
+        submitBtn.addEventListener("click", function() {
+            let amount = inputNumber.value.trim();
+            let address = document.getElementById('walletInput').value;
+
+            if (!amount) {
+                alert('Пожалуйста, введите число.');
+                return;
+            }
+
+            fetch('/api/referral/order/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ amount: amount, address: address })
+            })
+            .then(response => {
+                redirectNotAuthorized(response);
+                if (response.ok) {
+                    console.log('204 OK');
+                    alert('Ваша заявка отправлена');
+                    window.location.reload();
+                } else if (response.status === 409) {
+                    console.error('409 Не достаточно средств');
+                    alert('Недостаточно средств');
+                } else {
+                    console.log('Ошибка сети');
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+            });
+        });
     })
     .catch((error) => console.error("Ошибка:", error));
 }
