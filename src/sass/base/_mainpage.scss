@@ -151,13 +151,13 @@
         &_title {
             color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
             font-family: Firs;
-            font-size: 3.5vw;
+            font-size: 3.3vw;
             font-weight: 500;
         }
         &_subtitle {
             color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
             font-family: Catamaran;
-            font-size: 2.7vw;
+            font-size: 2.6vw;
             font-weight: 400;
         }
     }
@@ -185,7 +185,7 @@
     &__title {
         color: #344b57;
         font-family: Firs;
-        font-size: 4vw;
+        font-size: 3.8vw;
         font-style: normal;
         font-weight: 500;
     }
@@ -205,7 +205,7 @@
     &__subtitle {
         color: #344b57;
         font-family: Firs;
-        font-size: 4vw;
+        font-size: 3.8vw;
         font-weight: 500;
         svg {
             position: relative;
@@ -235,7 +235,7 @@
         display: flex;
         justify-content: center;
         color: #344b57;
-        font-size: 4vw;
+        font-size: 3.8vw;
         font-style: normal;
         font-weight: 500;
         align-items: center;
@@ -312,7 +312,7 @@
         color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
         text-align: center;
         font-family: Firs;
-        font-size: 15px;
+        font-size: 13px;
         font-style: normal;
         font-weight: 500;
     }
@@ -346,7 +346,7 @@
     span {
         color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
         font-family: Catamaran;
-        font-size: 12px;
+        font-size: 11px;
         font-style: normal;
         font-weight: 400;
     }
