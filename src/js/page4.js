@@ -112,6 +112,7 @@ function loadApiData() {
                     <img class="swiper-slide__image" src="${page.imageLink}" alt="Image">
                     <div class="text-container"><pre>${page.text}</pre></div>
                     <div class="buttons-container">
+                    ${buttonsHTML}
                     </div>
                 </div>
                 `;

@@ -112,6 +112,7 @@ function loadApiData() {
                     <img class="swiper-slide__image" src="${page.imageLink}" alt="Image">
                     <div class="text-container"><pre>${page.text}</pre></div>
                     <div class="buttons-container">
+                    ${buttonsHTML}
                     </div>
                 </div>
                 `;
@@ -223,7 +224,7 @@ document.querySelectorAll('a').forEach(link => {
 
     // Инициализация Wavesurfer
     const wave = WaveSurfer.create({
-      container: `#waveform-${page.audioLink.replace(/[^a-zA-Z0-9]/g, '_')}`,
+      container: `#waveform-${page.audio.replace(/[^a-zA-Z0-9]/g, '_')}`,
       waveColor: '#d3d3d3',
       progressColor: '#a9a9a9',
       height: 40,
@@ -233,18 +234,18 @@ document.querySelectorAll('a').forEach(link => {
   });
 
   // Загрузка аудио
-  wave.load(page.audioLink);
+  wave.load(page.audio);
 
   // Обновление времени
   wave.on('audioprocess', () => {
       const currentTime = wave.getCurrentTime();
       const minutes = Math.floor(currentTime / 60).toString().padStart(2, '0');
       const seconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
-      document.getElementById(`currentTime-${page.audioLink.replace(/[^a-zA-Z0-9]/g, '_')}`).textContent = `${minutes}:${seconds}`;
+      document.getElementById(`currentTime-${page.audio.replace(/[^a-zA-Z0-9]/g, '_')}`).textContent = `${minutes}:${seconds}`;
   });
 
   // Управление воспроизведением
-  const playPauseBtn = container.querySelector(`#waveform-${page.audioLink.replace(/[^a-zA-Z0-9]/g, '_')}`).parentElement.querySelector('.play-pause-btn');
+  const playPauseBtn = container.querySelector(`#waveform-${page.audio.replace(/[^a-zA-Z0-9]/g, '_')}`).parentElement.querySelector('.play-pause-btn');
   playPauseBtn.addEventListener('click', () => {
       if (wave.isPlaying()) {
           wave.pause();
