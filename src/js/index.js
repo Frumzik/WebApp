@@ -53,7 +53,7 @@ function LoadApiData() {
     }).toString();
 
     fetch(`/api/user/profile/?${params}`, {
-        headers: { 'X-Telegram-Init-Data': initData},
+        headers: {'X-Telegram-Init-Data': initData},
         method: "GET",
     })
         .then((response) => redirectNotAuthorized(response))

@@ -34,9 +34,7 @@ window.onclick = function(event) {
 }
 function loadApiData() {
     fetch("/api/referral/profile/", {
-        headers: {
-            'X-Telegram-Init-Data': initData
-        },
+        headers: {'X-Telegram-Init-Data': initData},
         method: "GET",
     })
     .then((response) => redirectNotAuthorized(response))
