@@ -5,12 +5,17 @@ function sendAnswer(event) {
     let url = new URL(currentUrl);
     let seriesId = url.searchParams.get('series_id');
     seriesId = parseInt(seriesId);
-    const answer = document.getElementById('answer-area').value;
 
-    fetch('https://i-game.one/api/series/answer/', {
+    const answer = document.getElementById('answer-area').value.trim();
+    if (!answer) {
+        console.error('Answer is empty');
+        return;
+    }
+
+    fetch('/api/series/answer/', {
         headers: {
             'Content-Type': 'application/json',
-            'X-Telegram-Init-Data': 'cXVlcnlfaWQ9QUFHUWUxZ3pBQUFBQUpCN1dETlZ4OWY2JnVzZXI9JTdCJTIyaWQlMjIlM0E4NjE0MzY4MTYlMkMlMjJmaXJzdF9uYW1lJTIyJTNBJTIyJUUyJTlEJTk0JTIyJTJDJTIybGFzdF9uYW1lJTIyJTNBJTIyJTIyJTJDJTIydXNlcm5hbWUlMjIlM0ElMjJ0cmFwX3NoYXJrayUyMiUyQyUyMmxhbmd1YWdlX2NvZGUlMjIlM0ElMjJydSUyMiUyQyUyMmFsbG93c193cml0ZV90b19wbSUyMiUzQXRydWUlMkMlMjJwaG90b191cmwlMjIlM0ElMjJodHRwcyUzQSU1QyUyRiU1QyUyRnQubWUlNUMlMkZpJTVDJTJGdXNlcnBpYyU1QyUyRjMyMCU1QyUyRmpybnp3R1RFdVN6LUh5M291eXNLZC1jNFdIZUlvT1ZOakZfWnhPb0RZTlkuc3ZnJTIyJTdEJmF1dGhfZGF0ZT0xNzMyNzkyMzc0JnNpZ25hdHVyZT1mUWk0VFhhNFZ6ZERGR3ExV25ra1g4LXZqQzh3cEl5M2dqY0pWQk5SYWRGNF92OGxvOXRFakt5dmkta2xPeDdvWVZaeFNBUUx3b1JIbkhyQzlGVXpBUSZoYXNoPWQ0OTY4YTAxODU2ZDg2YzNhNWM0MTFmNjdkNmVkMTJjMjUzNjQ1ODQxMWMwNDdiNzMwNzMzMDVmMmUxZmZhYjY='
+            'X-Telegram-Init-Data': initData,
         },
         method: 'POST',
         body: JSON.stringify({
@@ -19,9 +24,11 @@ function sendAnswer(event) {
         }),
     })
         .then(response => {
+            console.log('Response status:', response.status);
             if (!response.ok) {
-                console.error('Failed to send answer:', response.status);
-                throw new Error('Failed to send answer');
+                return response.json().then(error => {
+                    console.error('Error details:', error);
+                });
             }
             return response.json();
         })
@@ -31,6 +38,7 @@ function sendAnswer(event) {
         })
         .catch(error => console.error('Error sending answer:', error));
 }
+
 
 function switchSlide(event, slideNumber) {
     swiper.slideTo(slideNumber);
@@ -45,13 +53,15 @@ const swiper = new Swiper(".swiper-container", {
     on: {
         slideChange: function () {
             const footer = document.querySelector(".footer");
-            const activeSlideClasses = this.slides[this.activeIndex]?.classList || [];
-
-            if (activeSlideClasses.contains("slide-without-footer")) {
-                footer.style.display = "none";
-            } else {
-                footer.style.display = "block";
+            if (!footer) {
+                return;
             }
+
+            const activeSlide = this.slides[this.activeIndex];
+            if (!activeSlide) {
+                return;
+            }
+            footer.style.display = activeSlide.classList.contains("slide-without-footer") ? "none" : "block";
         },
     },
 });
@@ -65,9 +75,9 @@ function loadApiData() {
         lang: i18next.language,
     }).toString();
 
-    fetch(`https://i-game.one/api/series/play/?series_id=${series_id}&${params}`, {
+    fetch(`/api/series/play/?series_id=${series_id}&${params}`, {
         headers: {
-            "X-Telegram-Init-Data": 'cXVlcnlfaWQ9QUFHUWUxZ3pBQUFBQUpCN1dETlZ4OWY2JnVzZXI9JTdCJTIyaWQlMjIlM0E4NjE0MzY4MTYlMkMlMjJmaXJzdF9uYW1lJTIyJTNBJTIyJUUyJTlEJTk0JTIyJTJDJTIybGFzdF9uYW1lJTIyJTNBJTIyJTIyJTJDJTIydXNlcm5hbWUlMjIlM0ElMjJ0cmFwX3NoYXJrayUyMiUyQyUyMmxhbmd1YWdlX2NvZGUlMjIlM0ElMjJydSUyMiUyQyUyMmFsbG93c193cml0ZV90b19wbSUyMiUzQXRydWUlMkMlMjJwaG90b191cmwlMjIlM0ElMjJodHRwcyUzQSU1QyUyRiU1QyUyRnQubWUlNUMlMkZpJTVDJTJGdXNlcnBpYyU1QyUyRjMyMCU1QyUyRmpybnp3R1RFdVN6LUh5M291eXNLZC1jNFdIZUlvT1ZOakZfWnhPb0RZTlkuc3ZnJTIyJTdEJmF1dGhfZGF0ZT0xNzMyNzkyMzc0JnNpZ25hdHVyZT1mUWk0VFhhNFZ6ZERGR3ExV25ra1g4LXZqQzh3cEl5M2dqY0pWQk5SYWRGNF92OGxvOXRFakt5dmkta2xPeDdvWVZaeFNBUUx3b1JIbkhyQzlGVXpBUSZoYXNoPWQ0OTY4YTAxODU2ZDg2YzNhNWM0MTFmNjdkNmVkMTJjMjUzNjQ1ODQxMWMwNDdiNzMwNzMzMDVmMmUxZmZhYjY='
+            "X-Telegram-Init-Data": initData
         },
         method: "GET",
     })
@@ -89,7 +99,7 @@ function loadApiData() {
 
                 if (page.videoLink) {
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
-                        <iframe src='${page.videoLink}' class='video-full-size' frameborder='0' allowfullscreen></iframe>
+                        <iframe src='${page.videoLink}' class='video-full-size' frameborder='0' allowfullscreen style="margin-right: 10px;margin-left: 10px;"></iframe>
                     </div>`;
                 } else if (page.imageLink && page.text) {
                     slideHTML = `<div class='swiper-slide'>
@@ -123,7 +133,6 @@ function loadApiData() {
                 } else if (page.text && page.isAnswerPage) {
                     const sendButtonText = i18next.language.startsWith("ru") ? 'Отправить' : 'Send';
                     const responseLabelText = i18next.language.startsWith("ru") ? 'Запишите свой ответ:' : 'Write down your answer:';
-
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
                         <div class='exercise-text'><pre>${page.text}</pre></div>
                         <div class='response-block'>
