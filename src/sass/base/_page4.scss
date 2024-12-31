@@ -132,14 +132,18 @@ html {
     flex-direction: column;
     justify-content: flex-start;
     margin: 8vw 0vh 0px 0vw;
-    line-height: 20px;
+    line-height: 4vw;
     width: 84.27vw;
     font-size: 3.7vw;
-    p {
+    pre {
         margin-bottom: 15px;
     }
-    p:last-child {
+    pre:last-child {
         margin-bottom: 25px;
+    }
+    pre{
+        white-space: pre-wrap;
+        word-wrap: break-word;
     }
 }
 .response-block {
