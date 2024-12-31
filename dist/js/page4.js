@@ -1,58 +1,3 @@
-const initData = btoa(window.Telegram.WebApp.initData);
-
-function sendAnswer(event) {
-    let currentUrl = window.location.href;
-    let url = new URL(currentUrl);
-    let seriesId = url.searchParams.get('series_id');
-    seriesId = parseInt(seriesId);
-    const answer = document.getElementById('answer-area').value;
-
-    fetch('/api/series/answer/', {
-        headers: {'X-Telegram-Init-Data': initData},
-        method: 'POST',
-        body: JSON.stringify({
-            'seriesId': seriesId,
-            'answer': answer,
-        }),
-    }).then(response => {
-        if (!response.ok) {
-            console.error('Failed to send answer:', response.status);
-        }
-    }).catch(error => console.error('Error sending answer:', error));
-
-    window.location.href = '/saveanswers.html';
-}
-
-function switchSlide(event, slideNumber) {
-    const slideIndex = slideNumber;
-    swiper.slideTo(slideIndex);
-}
-
-const swiper = new Swiper(".swiper-container", {
-    direction: "horizontal",
-    slidesPerView: 1,
-    spaceBetween: 0,
-    loop: false,
-    allowTouchMove: true,
-    on: {
-        slideChange: function () {
-            const footer = document.querySelector(".footer");
-
-            if (this.slides.length === 0) {
-                swiper.update();
-            }
-
-            const activeSlideClasses = this.slides[this.activeIndex].classList;
-
-            if (activeSlideClasses.contains("slide-without-footer")) {
-                footer.style.display = "none";
-            } else {
-                footer.style.display = "block";
-            }
-        },
-    },
-});
-
 function loadApiData() {
     let url = new URL(window.location.href);
     let series_id = url.searchParams.get("series_id");
@@ -63,7 +8,7 @@ function loadApiData() {
     }).toString();
 
     fetch(`/api/series/play/?series_id=${series_id}&${params}`, {
-        headers: {"X-Telegram-Init-Data": initData},
+        headers: {"X-Telegram-Init-Data": initData },
         method: "GET",
     })
         .then((response) => {
@@ -74,66 +19,146 @@ function loadApiData() {
             return response.json();
         })
         .then((data) => {
-            console.log("Fetched series data:", data); // Debugging log
             const pages = data["pages"];
-            const container = document.getElementById("main-container");
+            const container = document.querySelector(".swiper-wrapper");
 
-            // Clear the container to prevent duplicate slides
-            container.innerHTML = "";
+            container.innerHTML = ""; // Очищаем контейнер
 
-            for (let i = 0; i < pages.length; i++) {
-                let page = pages[i];
+            pages.forEach((page, index) => {
+                let slideHTML = "";
 
-                let sendButtonText = i18next.language.startsWith("ru") ? 'Отправить' : 'Send';
-                let responseLabelText = i18next.language.startsWith("ru") ? 'Запишите свой ответ:' : 'Write down your answer:';
-
-                if (page.isAnswerPage) {
-                    container.innerHTML += `<div class="swiper-slide slide-without-footer">
-                        <div class="exercise-text"><pre>${page.text}</pre></div>
-                        <div class="response-block">
-                            <p class="response-label">${responseLabelText}</p>
-                            <textarea class="response-input" id="answer-area"></textarea>
-                            <button class="response-button" onclick="sendAnswer(event)">${sendButtonText}</button>
+                if (page.videoLink) {
+                    slideHTML = `<div class='swiper-slide slide-without-footer'>
+                        <iframe src='${page.videoLink}' class='video-full-size' frameborder='0' allowfullscreen></iframe>
+                    </div>`;
+                } else if (page.imageLink && page.text) {
+                    slideHTML = `<div class='swiper-slide'>
+                        <img src='${page.imageLink}' class='half-image'>
+                        <div class='text-container'><pre>${page.text}</pre></div>
+                    </div>`;
+                } else if (page.imageLink && page.audio) {
+                    slideHTML = `<div class='swiper-slide'>
+                        <img src='${page.imageLink}' class='half-image'>
+                        <div id='player-container'>
+                            <div class='play-pause-btn' id='play-pause-${index}'>
+                                <svg id='playIcon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><polygon points='5,3 19,12 5,21'></polygon></svg>
+                                <svg id='pauseIcon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' style='display: none;'><rect x='6' y='4' width='4' height='16'></rect><rect x='14' y='4' width='4' height='16'></rect></svg>
+                            </div>
+                            <div id='waveform-${index}'></div>
+                            <div class='time-display' id='time-display-${index}'>00:00</div>
                         </div>
                     </div>`;
-                } else if (page.text !== "" && page.videoLink === null && page.imageLink !== null) {
-                    container.innerHTML += `<div class="swiper-slide">
-                        <img class="swiper-slide__image" src="${page.imageLink}" alt="Image">
-                        <div class="text-container"><pre>${page.text}</pre></div>
+                } else if (page.text && page.audio) {
+                    slideHTML = `<div class='swiper-slide'>
+                        <div class='text-container'><pre>${page.text}</pre></div>
+                        <div id='player-container'>
+                            <div class='play-pause-btn' id='play-pause-${index}'>
+                                <svg id='playIcon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><polygon points='5,3 19,12 5,21'></polygon></svg>
+                                <svg id='pauseIcon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' style='display: none;'><rect x='6' y='4' width='4' height='16'></rect><rect x='14' y='4' width='4' height='16'></rect></svg>
+                            </div>
+                            <div id='waveform-${index}'></div>
+                            <div class='time-display' id='time-display-${index}'>00:00</div>
+                        </div>
                     </div>`;
-                } else if (page.text !== "" && page.videoLink === null && page.imageLink === null) {
-                    let buttonsHTML = page.buttons.map(button => {
-                        return `<button class="buttons-container__btn" onclick="switchSlide(event, ${button.nextPageNumber})">${button.text}</button>`;
+                } else if (page.text && page.isAnswerPage) {
+                    const sendButtonText = i18next.language.startsWith("ru") ? 'Отправить' : 'Send';
+                    const responseLabelText = i18next.language.startsWith("ru") ? 'Запишите свой ответ:' : 'Write down your answer:';
+
+                    slideHTML = `<div class='swiper-slide slide-without-footer'>
+                        <div class='exercise-text'><pre>${page.text}</pre></div>
+                        <div class='response-block'>
+                            <p class='response-label'>${responseLabelText}</p>
+                            <textarea class='response-input' id='answer-area'></textarea>
+                            <button class='response-button' onclick='sendAnswer(event)'>${sendButtonText}</button>
+                        </div>
+                    </div>`;}
+                    else if (page.imageLink && page.buttons) {
+                    const buttonsHTML = page.buttons.map(button => {
+                        return `<div class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber})'>${button.text}</div>`;
                     }).join('');
 
-                    container.innerHTML += `<div class="swiper-slide">
-                        <div class="text-container"><pre>${page.text}</pre></div>
-                        <div class="buttons-container">${buttonsHTML}</div>
-                    </div>`;
-                } else if (page.text === "" && page.videoLink !== null) {
-                    container.innerHTML += `<div class="swiper-slide slide-without-footer">
-                        <iframe src="${page.videoLink}" class="video-full-size" frameborder="0" allowfullscreen></iframe>
-                    </div>`;
-                } else if (page.text === "" && page.videoLink === null && page.imageLink !== null) {
-                    container.innerHTML += `<div class="swiper-slide">
-                        <img class="swiper-slide__image" src="${page.imageLink}" alt="Image">
+                    slideHTML = `<div class='swiper-slide'>
+                        <img src='${page.imageLink}' class='center-image'>
+                        <div class='buttons-container'>${buttonsHTML}</div>
                     </div>`;
                 }
-            }
 
-            swiper.update();
+                container.innerHTML += slideHTML;
+
+                if (page.audio) {
+                    setTimeout(() => {
+                        const wave = WaveSurfer.create({
+                            container: `#waveform-${index}`,
+                            waveColor: '#d3d3d3',
+                            progressColor: '#a9a9a9',
+                            height: 40,
+                            responsive: true,
+                            barWidth: 2,
+                            cursorWidth: 0,
+                        });
+
+                        wave.load(page.audio);
+
+                        const playPauseBtn = document.getElementById(`play-pause-${index}`);
+                        playPauseBtn.addEventListener('click', () => {
+                            if (wave.isPlaying()) {
+                                wave.pause();
+                                playPauseBtn.querySelector('#playIcon').style.display = 'block';
+                                playPauseBtn.querySelector('#pauseIcon').style.display = 'none';
+                            } else {
+                                wave.play();
+                                playPauseBtn.querySelector('#playIcon').style.display = 'none';
+                                playPauseBtn.querySelector('#pauseIcon').style.display = 'block';
+                            }
+                        });
+
+                        wave.on('audioprocess', () => {
+                            const currentTime = wave.getCurrentTime();
+                            const minutes = Math.floor(currentTime / 60).toString().padStart(2, '0');
+                            const seconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
+                            document.getElementById(`time-display-${index}`).textContent = `${minutes}:${seconds}`;
+                        });
+
+                        wave.on('finish', () => {
+                            playPauseBtn.querySelector('#playIcon').style.display = 'block';
+                            playPauseBtn.querySelector('#pauseIcon').style.display = 'none';
+                        });
+                    }, 0);
+                }
+            });
+
+            setTimeout(() => swiper.update(), 100); // Обновляем Swiper после добавления слайдов
         })
-        .catch((error) => console.error("Error loading API data:", error));
+        .catch(error => console.error("Error loading API data:", error));
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     initLanguages(loadApiData);
 });
-
 document.addEventListener("keydown", function (event) {
     if (event.code === "ArrowRight") {
-        swiper.slideNext();
+        swiper.slideNext(); 
     } else if (event.code === "ArrowLeft") {
-        swiper.slidePrev();
+        swiper.slidePrev(); 
     }
+});
+const swiper = new Swiper('.swiper-container', {
+    direction: 'horizontal',
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: false,
+    allowTouchMove: true,
+    on: {
+        slideChange: function () {
+            const footer = document.querySelector('.footer');
+            const activeSlideClasses = this.slides[this.activeIndex]?.classList || [];
+
+            if (activeSlideClasses.contains('slide-without-footer')) {
+                footer.style.display = 'none';
+            } else {
+                footer.style.display = 'block';
+            }
+        },
+    },
+    
 });
