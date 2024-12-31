@@ -1,3 +1,61 @@
+const initData = btoa(window.Telegram.WebApp.initData);
+
+function sendAnswer(event) {
+    let currentUrl = window.location.href;
+    let url = new URL(currentUrl);
+    let seriesId = url.searchParams.get('series_id');
+    seriesId = parseInt(seriesId);
+    const answer = document.getElementById('answer-area').value;
+
+    fetch('/api/series/answer/', {
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Telegram-Init-Data': initData
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            'seriesId': seriesId,
+            'answer': answer,
+        }),
+    })
+        .then(response => {
+            if (!response.ok) {
+                console.error('Failed to send answer:', response.status);
+                throw new Error('Failed to send answer');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Answer sent successfully:', data);
+            window.location.href = '/saveanswers.html';
+        })
+        .catch(error => console.error('Error sending answer:', error));
+}
+
+function switchSlide(event, slideNumber) {
+    swiper.slideTo(slideNumber);
+}
+
+const swiper = new Swiper(".swiper-container", {
+    direction: "horizontal",
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: false,
+    allowTouchMove: true,
+    on: {
+        slideChange: function () {
+            const footer = document.querySelector(".footer");
+            const activeSlideClasses = this.slides[this.activeIndex]?.classList || [];
+
+            if (activeSlideClasses.contains("slide-without-footer")) {
+                footer.style.display = "none";
+            } else {
+                footer.style.display = "block";
+            }
+        },
+    },
+});
+
 function loadApiData() {
     let url = new URL(window.location.href);
     let series_id = url.searchParams.get("series_id");
@@ -8,7 +66,9 @@ function loadApiData() {
     }).toString();
 
     fetch(`/api/series/play/?series_id=${series_id}&${params}`, {
-        headers: {"X-Telegram-Init-Data": initData },
+        headers: {
+            "X-Telegram-Init-Data": initData
+        },
         method: "GET",
     })
         .then((response) => {
@@ -22,7 +82,7 @@ function loadApiData() {
             const pages = data["pages"];
             const container = document.querySelector(".swiper-wrapper");
 
-            container.innerHTML = ""; // Очищаем контейнер
+            container.innerHTML = "";
 
             pages.forEach((page, index) => {
                 let slideHTML = "";
@@ -71,15 +131,19 @@ function loadApiData() {
                             <textarea class='response-input' id='answer-area'></textarea>
                             <button class='response-button' onclick='sendAnswer(event)'>${sendButtonText}</button>
                         </div>
-                    </div>`;}
-                    else if (page.imageLink && page.buttons) {
+                    </div>`;
+                } else if (page.imageLink && page.buttons) {
                     const buttonsHTML = page.buttons.map(button => {
-                        return `<div class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber})'>${button.text}</div>`;
+                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber})'>${button.text}</button>`;
                     }).join('');
 
                     slideHTML = `<div class='swiper-slide'>
                         <img src='${page.imageLink}' class='center-image'>
                         <div class='buttons-container'>${buttonsHTML}</div>
+                    </div>`;
+                } else if (page.text && page.imageLink === null && page.videoLink === null && page.audio === null) {
+                    slideHTML = `<div class='swiper-slide'>
+                        <div class='text-container'><pre>${page.text}</pre></div>
                     </div>`;
                 }
 
@@ -127,38 +191,19 @@ function loadApiData() {
                 }
             });
 
-            setTimeout(() => swiper.update(), 100); // Обновляем Swiper после добавления слайдов
+            setTimeout(() => swiper.update(), 100);
         })
         .catch(error => console.error("Error loading API data:", error));
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     initLanguages(loadApiData);
-});
-document.addEventListener("keydown", function (event) {
-    if (event.code === "ArrowRight") {
-        swiper.slideNext(); 
-    } else if (event.code === "ArrowLeft") {
-        swiper.slidePrev(); 
-    }
-});
-const swiper = new Swiper('.swiper-container', {
-    direction: 'horizontal',
-    slidesPerView: 1,
-    spaceBetween: 0,
-    loop: false,
-    allowTouchMove: true,
-    on: {
-        slideChange: function () {
-            const footer = document.querySelector('.footer');
-            const activeSlideClasses = this.slides[this.activeIndex]?.classList || [];
 
-            if (activeSlideClasses.contains('slide-without-footer')) {
-                footer.style.display = 'none';
-            } else {
-                footer.style.display = 'block';
-            }
-        },
-    },
-    
+    document.addEventListener("keydown", function (event) {
+        if (event.code === "ArrowRight") {
+            swiper.slideNext();
+        } else if (event.code === "ArrowLeft") {
+            swiper.slidePrev();
+        }
+    });
 });
