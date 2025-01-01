@@ -133,6 +133,9 @@ function loadApiData() {
                 } else if (page.text && page.isAnswerPage) {
                     const sendButtonText = i18next.language.startsWith("ru") ? 'Отправить' : 'Send';
                     const responseLabelText = i18next.language.startsWith("ru") ? 'Запишите свой ответ:' : 'Write down your answer:';
+                    const buttonsHTML = page.buttons.map(button => {
+                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber})'>${button.text}</button>`;
+                    }).join('');
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
                         <div class='exercise-text'><pre>${page.text}</pre></div>
                         <div class='response-block'>
@@ -140,6 +143,7 @@ function loadApiData() {
                             <textarea class='response-input' id='answer-area'></textarea>
                             <button class='response-button' onclick='sendAnswer(event)'>${sendButtonText}</button>
                         </div>
+                        <div class='buttons-container'>${buttonsHTML}</div>
                     </div>`;
                 } else if (page.imageLink && page.buttons) {
                     const buttonsHTML = page.buttons.map(button => {
@@ -160,19 +164,31 @@ function loadApiData() {
 
                 if (page.audio) {
                     setTimeout(() => {
+                        const waveformContainer = document.querySelector(`#waveform-${index}`);
+                        if (!waveformContainer) {
+                            return;
+                        }
                         const wave = WaveSurfer.create({
                             container: `#waveform-${index}`,
                             waveColor: '#d3d3d3',
-                            progressColor: '#a9a9a9',
-                            height: 40,
-                            responsive: true,
-                            barWidth: 2,
-                            cursorWidth: 0,
+                            progressColor: '#a9a9a9', 
+                            height: 40, 
+                            responsive: true, 
+                            barWidth: 2, 
+                            cursorWidth: 0, 
                         });
-
                         wave.load(page.audio);
-
+                        wave.on('ready', () => {
+                            console.log(`Файл ${page.audio} успешно загружен для #waveform-${index}`);
+                        });
+                        wave.on('error', (e) => {
+                            console.error(`Ошибка Wavesurfer для #waveform-${index}:`, e);
+                        });
                         const playPauseBtn = document.getElementById(`play-pause-${index}`);
+                        if (!playPauseBtn) {
+                            console.error(`Кнопка Play/Pause #play-pause-${index} не найдена.`);
+                            return;
+                        }
                         playPauseBtn.addEventListener('click', () => {
                             if (wave.isPlaying()) {
                                 wave.pause();
@@ -184,19 +200,20 @@ function loadApiData() {
                                 playPauseBtn.querySelector('#pauseIcon').style.display = 'block';
                             }
                         });
-
                         wave.on('audioprocess', () => {
                             const currentTime = wave.getCurrentTime();
                             const minutes = Math.floor(currentTime / 60).toString().padStart(2, '0');
                             const seconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
-                            document.getElementById(`time-display-${index}`).textContent = `${minutes}:${seconds}`;
+                            const timeDisplay = document.getElementById(`time-display-${index}`);
+                            if (timeDisplay) {
+                                timeDisplay.textContent = `${minutes}:${seconds}`;
+                            }
                         });
-
                         wave.on('finish', () => {
                             playPauseBtn.querySelector('#playIcon').style.display = 'block';
                             playPauseBtn.querySelector('#pauseIcon').style.display = 'none';
                         });
-                    }, 0);
+                    }, 200);
                 }
             });
 

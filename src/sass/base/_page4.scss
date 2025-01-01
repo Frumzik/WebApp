@@ -90,7 +90,7 @@ html {
 }
 
 
-#waveform {
+div[id^="waveform-"] {
     flex-grow: 1;
     margin: 0 10px;
     height: 40px;
