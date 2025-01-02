@@ -12,10 +12,10 @@ function sendAnswer(event) {
         return;
     }
 
-    fetch('https://i-game.one/api/series/answer/', {
+    fetch('/api/series/answer/', {
         headers: {
             'Content-Type': 'application/json',
-            'X-Telegram-Init-Data': 'cXVlcnlfaWQ9QUFHUWUxZ3pBQUFBQUpCN1dETlZ4OWY2JnVzZXI9JTdCJTIyaWQlMjIlM0E4NjE0MzY4MTYlMkMlMjJmaXJzdF9uYW1lJTIyJTNBJTIyJUUyJTlEJTk0JTIyJTJDJTIybGFzdF9uYW1lJTIyJTNBJTIyJTIyJTJDJTIydXNlcm5hbWUlMjIlM0ElMjJ0cmFwX3NoYXJrayUyMiUyQyUyMmxhbmd1YWdlX2NvZGUlMjIlM0ElMjJydSUyMiUyQyUyMmFsbG93c193cml0ZV90b19wbSUyMiUzQXRydWUlMkMlMjJwaG90b191cmwlMjIlM0ElMjJodHRwcyUzQSU1QyUyRiU1QyUyRnQubWUlNUMlMkZpJTVDJTJGdXNlcnBpYyU1QyUyRjMyMCU1QyUyRmpybnp3R1RFdVN6LUh5M291eXNLZC1jNFdIZUlvT1ZOakZfWnhPb0RZTlkuc3ZnJTIyJTdEJmF1dGhfZGF0ZT0xNzMyNzkyMzc0JnNpZ25hdHVyZT1mUWk0VFhhNFZ6ZERGR3ExV25ra1g4LXZqQzh3cEl5M2dqY0pWQk5SYWRGNF92OGxvOXRFakt5dmkta2xPeDdvWVZaeFNBUUx3b1JIbkhyQzlGVXpBUSZoYXNoPWQ0OTY4YTAxODU2ZDg2YzNhNWM0MTFmNjdkNmVkMTJjMjUzNjQ1ODQxMWMwNDdiNzMwNzMzMDVmMmUxZmZhYjY=',
+            'X-Telegram-Init-Data': initData,
         },
         method: 'POST',
         body: JSON.stringify({
@@ -75,9 +75,9 @@ function loadApiData() {
         lang: i18next.language,
     }).toString();
 
-    fetch(`https://i-game.one/api/series/play/?series_id=${series_id}&${params}`, {
+    fetch(`/api/series/play/?series_id=${series_id}&${params}`, {
         headers: {
-            "X-Telegram-Init-Data": 'cXVlcnlfaWQ9QUFHUWUxZ3pBQUFBQUpCN1dETlZ4OWY2JnVzZXI9JTdCJTIyaWQlMjIlM0E4NjE0MzY4MTYlMkMlMjJmaXJzdF9uYW1lJTIyJTNBJTIyJUUyJTlEJTk0JTIyJTJDJTIybGFzdF9uYW1lJTIyJTNBJTIyJTIyJTJDJTIydXNlcm5hbWUlMjIlM0ElMjJ0cmFwX3NoYXJrayUyMiUyQyUyMmxhbmd1YWdlX2NvZGUlMjIlM0ElMjJydSUyMiUyQyUyMmFsbG93c193cml0ZV90b19wbSUyMiUzQXRydWUlMkMlMjJwaG90b191cmwlMjIlM0ElMjJodHRwcyUzQSU1QyUyRiU1QyUyRnQubWUlNUMlMkZpJTVDJTJGdXNlcnBpYyU1QyUyRjMyMCU1QyUyRmpybnp3R1RFdVN6LUh5M291eXNLZC1jNFdIZUlvT1ZOakZfWnhPb0RZTlkuc3ZnJTIyJTdEJmF1dGhfZGF0ZT0xNzMyNzkyMzc0JnNpZ25hdHVyZT1mUWk0VFhhNFZ6ZERGR3ExV25ra1g4LXZqQzh3cEl5M2dqY0pWQk5SYWRGNF92OGxvOXRFakt5dmkta2xPeDdvWVZaeFNBUUx3b1JIbkhyQzlGVXpBUSZoYXNoPWQ0OTY4YTAxODU2ZDg2YzNhNWM0MTFmNjdkNmVkMTJjMjUzNjQ1ODQxMWMwNDdiNzMwNzMzMDVmMmUxZmZhYjY='
+            "X-Telegram-Init-Data": initData
         },
         method: "GET",
     })
@@ -134,7 +134,7 @@ function loadApiData() {
                     const sendButtonText = i18next.language.startsWith("ru") ? 'Отправить' : 'Send';
                     const responseLabelText = i18next.language.startsWith("ru") ? 'Запишите свой ответ:' : 'Write down your answer:';
                     const buttonsHTML = page.buttons.map(button => {
-                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber})'>${button.text}</button>`;
+                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber - 1})'>${button.text}</button>`;
                     }).join('');
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
                         <div class='exercise-text'><pre>${page.text}</pre></div>
@@ -147,7 +147,7 @@ function loadApiData() {
                     </div>`;
                 } else if (page.imageLink && page.buttons) {
                     const buttonsHTML = page.buttons.map(button => {
-                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber})'>${button.text}</button>`;
+                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber - 1})'>${button.text}</button>`;
                     }).join('');
 
                     slideHTML = `<div class='swiper-slide'>

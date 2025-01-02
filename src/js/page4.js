@@ -134,7 +134,7 @@ function loadApiData() {
                     const sendButtonText = i18next.language.startsWith("ru") ? 'Отправить' : 'Send';
                     const responseLabelText = i18next.language.startsWith("ru") ? 'Запишите свой ответ:' : 'Write down your answer:';
                     const buttonsHTML = page.buttons.map(button => {
-                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber})'>${button.text}</button>`;
+                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber - 1})'>${button.text}</button>`;
                     }).join('');
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
                         <div class='exercise-text'><pre>${page.text}</pre></div>
@@ -147,7 +147,7 @@ function loadApiData() {
                     </div>`;
                 } else if (page.imageLink && page.buttons) {
                     const buttonsHTML = page.buttons.map(button => {
-                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber})'>${button.text}</button>`;
+                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber - 1})'>${button.text}</button>`;
                     }).join('');
 
                     slideHTML = `<div class='swiper-slide'>
