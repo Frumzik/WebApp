@@ -1,12 +1,12 @@
 const initData = btoa(window.Telegram.WebApp.initData);
 
-function sendAnswer(event) {
+function sendAnswer(event, inputId) {
     let currentUrl = window.location.href;
     let url = new URL(currentUrl);
     let seriesId = url.searchParams.get('series_id');
     seriesId = parseInt(seriesId);
 
-    const answer = document.getElementById('answer-area').value.trim();
+    const answer = document.getElementById(inputId).value.trim();
     if (!answer) {
         console.error('Answer is empty');
         return;
@@ -34,10 +34,11 @@ function sendAnswer(event) {
         })
         .then(data => {
             console.log('Answer sent successfully:', data);
-            window.location.href = '/saveanswers.html';
+            window.location.href = '/saveanswers.html'; 
         })
         .catch(error => console.error('Error sending answer:', error));
 }
+
 
 
 function switchSlide(event, slideNumber) {
@@ -133,17 +134,17 @@ function loadApiData() {
                 } else if (page.text && page.isAnswerPage) {
                     const sendButtonText = i18next.language.startsWith("ru") ? 'Отправить' : 'Send';
                     const responseLabelText = i18next.language.startsWith("ru") ? 'Запишите свой ответ:' : 'Write down your answer:';
-                    const buttonsHTML = page.buttons.map(button => {
-                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber - 1})'>${button.text}</button>`;
-                    }).join('');
+                
+                    // Уникальный id для textarea
+                    const uniqueId = `answer-area-${series_id}-${index}-${Date.now()}`;
+                
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
                         <div class='exercise-text'><pre>${page.text}</pre></div>
                         <div class='response-block'>
                             <p class='response-label'>${responseLabelText}</p>
-                            <textarea class='response-input' id='answer-area'></textarea>
-                            <button class='response-button' onclick='sendAnswer(event)'>${sendButtonText}</button>
+                            <textarea class='response-input' id='${uniqueId}'></textarea>
+                            <button class='response-button' onclick='sendAnswer(event, "${uniqueId}")'>${sendButtonText}</button>
                         </div>
-                        <div class='buttons-container'>${buttonsHTML}</div>
                     </div>`;
                 } else if (page.imageLink && page.buttons) {
                     const buttonsHTML = page.buttons.map(button => {
