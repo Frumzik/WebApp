@@ -1,17 +1,35 @@
 const initData = btoa(window.Telegram.WebApp.initData);
 
-function sendAnswer(event, inputId) {
-    let currentUrl = window.location.href;
-    let url = new URL(currentUrl);
-    let seriesId = url.searchParams.get('series_id');
-    seriesId = parseInt(seriesId);
 
-    const answer = document.getElementById(inputId).value.trim();
-    if (!answer) {
-        console.error('Answer is empty');
+function sendAnswer(event) {
+    event.preventDefault(); // Отключаем стандартное поведение кнопки отправки
+
+    // Ищем ближайший блок ответа, связанный с этой кнопкой
+    const responseBlock = event.target.closest('.response-block');
+    if (!responseBlock) {
+        console.error('Блок ответа не найден!');
         return;
     }
 
+    // Находим поле ввода внутри этого блока
+    const answerInput = responseBlock.querySelector('.response-input');
+    if (!answerInput) {
+        console.error('Поле ввода ответа не найдено!');
+        return;
+    }
+
+    const answer = answerInput.value.trim(); // Получаем текст ответа
+    if (!answer) {
+        console.error('Ответ пустой');
+        return;
+    }
+
+    // Получаем идентификатор серии
+    const currentUrl = window.location.href;
+    const url = new URL(currentUrl);
+    const seriesId = parseInt(url.searchParams.get('series_id'), 10);
+
+    // Отправка данных на сервер
     fetch('/api/series/answer/', {
         headers: {
             'Content-Type': 'application/json',
@@ -27,17 +45,20 @@ function sendAnswer(event, inputId) {
             console.log('Response status:', response.status);
             if (!response.ok) {
                 return response.json().then(error => {
-                    console.error('Error details:', error);
+                    console.error('Ошибка отправки:', error);
                 });
             }
             return response.json();
         })
         .then(data => {
-            console.log('Answer sent successfully:', data);
-            window.location.href = '/saveanswers.html'; 
+            console.log('Ответ успешно отправлен:', data);
+            answerInput.value = ''; // Очищаем поле после отправки
+            alert('Ваш ответ отправлен!'); // Добавляем уведомление об успехе
         })
-        .catch(error => console.error('Error sending answer:', error));
+        .catch(error => console.error('Ошибка при отправке:', error));
 }
+
+
 
 
 
@@ -68,30 +89,30 @@ const swiper = new Swiper(".swiper-container", {
 });
 
 function loadApiData() {
-    let url = new URL(window.location.href);
-    let series_id = url.searchParams.get("series_id");
-    series_id = parseInt(series_id);
+    const url = new URL(window.location.href);
+    const seriesId = parseInt(url.searchParams.get('series_id'), 10);
 
-    const params = new URLSearchParams({
-        lang: i18next.language,
-    }).toString();
+    const params = new URLSearchParams({ lang: i18next.language }).toString();
 
-    fetch(`/api/series/play/?series_id=${series_id}&${params}`, {
-        headers: {
-            "X-Telegram-Init-Data": initData
-        },
+    fetch(`/api/series/play/?series_id=${seriesId}&${params}`, {
+        headers: { "X-Telegram-Init-Data": initData },
         method: "GET",
     })
-        .then((response) => {
+        .then(response => {
             if (!response.ok) {
                 console.error("API responded with status:", response.status);
                 throw new Error("Failed to fetch series data");
             }
             return response.json();
         })
-        .then((data) => {
+        .then(data => {
             const pages = data["pages"];
             const container = document.querySelector(".swiper-wrapper");
+
+            if (!pages || pages.length === 0) {
+                container.innerHTML = "<p>Нет доступных вопросов для отображения.</p>";
+                return;
+            }
 
             container.innerHTML = "";
 
@@ -134,19 +155,20 @@ function loadApiData() {
                 } else if (page.text && page.isAnswerPage) {
                     const sendButtonText = i18next.language.startsWith("ru") ? 'Отправить' : 'Send';
                     const responseLabelText = i18next.language.startsWith("ru") ? 'Запишите свой ответ:' : 'Write down your answer:';
-                
-                    // Уникальный id для textarea
-                    const uniqueId = `answer-area-${series_id}-${index}-${Date.now()}`;
-                
+                    const buttonsHTML = page.buttons.map(button => {
+                        return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber - 1})'>${button.text}</button>`;
+                    }).join('');
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
                         <div class='exercise-text'><pre>${page.text}</pre></div>
                         <div class='response-block'>
                             <p class='response-label'>${responseLabelText}</p>
-                            <textarea class='response-input' id='${uniqueId}'></textarea>
-                            <button class='response-button' onclick='sendAnswer(event, "${uniqueId}")'>${sendButtonText}</button>
+                            <textarea class='response-input'></textarea>
+                            <button class='response-button' onclick='sendAnswer(event)'>${sendButtonText}</button>
                         </div>
+                        <div class='buttons-container'>${buttonsHTML}</div>
                     </div>`;
-                } else if (page.imageLink && page.buttons) {
+                }
+                else if (page.imageLink && page.buttons) {
                     const buttonsHTML = page.buttons.map(button => {
                         return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber - 1})'>${button.text}</button>`;
                     }).join('');
@@ -162,65 +184,11 @@ function loadApiData() {
                 }
 
                 container.innerHTML += slideHTML;
-
-                if (page.audio) {
-                    setTimeout(() => {
-                        const waveformContainer = document.querySelector(`#waveform-${index}`);
-                        if (!waveformContainer) {
-                            return;
-                        }
-                        const wave = WaveSurfer.create({
-                            container: `#waveform-${index}`,
-                            waveColor: '#d3d3d3',
-                            progressColor: '#a9a9a9', 
-                            height: 40, 
-                            responsive: true, 
-                            barWidth: 2, 
-                            cursorWidth: 0, 
-                        });
-                        wave.load(page.audio);
-                        wave.on('ready', () => {
-                            console.log(`Файл ${page.audio} успешно загружен для #waveform-${index}`);
-                        });
-                        wave.on('error', (e) => {
-                            console.error(`Ошибка Wavesurfer для #waveform-${index}:`, e);
-                        });
-                        const playPauseBtn = document.getElementById(`play-pause-${index}`);
-                        if (!playPauseBtn) {
-                            console.error(`Кнопка Play/Pause #play-pause-${index} не найдена.`);
-                            return;
-                        }
-                        playPauseBtn.addEventListener('click', () => {
-                            if (wave.isPlaying()) {
-                                wave.pause();
-                                playPauseBtn.querySelector('#playIcon').style.display = 'block';
-                                playPauseBtn.querySelector('#pauseIcon').style.display = 'none';
-                            } else {
-                                wave.play();
-                                playPauseBtn.querySelector('#playIcon').style.display = 'none';
-                                playPauseBtn.querySelector('#pauseIcon').style.display = 'block';
-                            }
-                        });
-                        wave.on('audioprocess', () => {
-                            const currentTime = wave.getCurrentTime();
-                            const minutes = Math.floor(currentTime / 60).toString().padStart(2, '0');
-                            const seconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
-                            const timeDisplay = document.getElementById(`time-display-${index}`);
-                            if (timeDisplay) {
-                                timeDisplay.textContent = `${minutes}:${seconds}`;
-                            }
-                        });
-                        wave.on('finish', () => {
-                            playPauseBtn.querySelector('#playIcon').style.display = 'block';
-                            playPauseBtn.querySelector('#pauseIcon').style.display = 'none';
-                        });
-                    }, 200);
-                }
             });
 
-            setTimeout(() => swiper.update(), 100);
+            swiper.update(); // Обновляем swiper после добавления слайдов
         })
-        .catch(error => console.error("Error loading API data:", error));
+        .catch(error => console.error("Ошибка загрузки данных:", error));
 }
 
 document.addEventListener("DOMContentLoaded", function () {
