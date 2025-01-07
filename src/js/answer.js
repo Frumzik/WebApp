@@ -6,11 +6,11 @@ function loadApiData() {
         return;
     }
 
-    const lang = 'ru'; // Язык по умолчанию
+    const lang = 'ru';
 
     fetch(`/api/series/history/?lang=${lang}`, {
         headers: {
-            "X-Telegram-Init-Data":initData,
+            "X-Telegram-Init-Data": initData,
         },
         method: "GET",
     })
@@ -21,14 +21,17 @@ function loadApiData() {
             return response.json();
         })
         .then(data => {
-            const answersArray = (data.answers || []).filter(answerObj => answerObj.series.id === seriesId);
+            const answersArray = (data.answers || []).filter(answerObj => answerObj.series && answerObj.series.id === seriesId);
 
             const modalNumber = document.getElementById('modalNumber');
             const modalName = document.getElementById('modalName');
+
             if (answersArray.length && modalNumber && modalName) {
                 const seriesWord = lang === 'ru' ? 'СЕРИЯ' : 'SERIES';
                 modalNumber.innerText = `${seriesWord} ${answersArray[0].series.number}`;
                 modalName.innerText = `«${answersArray[0].series.name}»`;
+            } else {
+                console.warn("Нет данных для отображения модального окна.");
             }
 
             const answersList = document.getElementById('answers-list');
@@ -37,28 +40,35 @@ function loadApiData() {
                 return;
             }
 
-            answersList.innerHTML = ""; // Очищаем контейнер
+            answersList.innerHTML = "";
 
             if (answersArray.length === 0) {
                 answersList.innerHTML = "<p>Нет сохранённых ответов для этой серии.</p>";
                 return;
             }
 
+            // Создаем блоки ответов и добавляем их в контейнер
             answersArray.forEach((answerObj, index) => {
                 const answer = answerObj.answer || "Ответ отсутствует";
                 const questionWord = lang === 'ru' ? 'Вопрос' : 'Question';
 
-                answersList.innerHTML += `
-                    <div class="answer-answer">
-                        <h2 class="answer-answer-title"><span>${questionWord} ${index + 1}</span></h2>
-                        <p  id="answer-text">${answer}</p>
-                    </div>
+                const answerBlock = document.createElement('div');
+                answerBlock.classList.add('answer-answer');
+
+                answerBlock.innerHTML = `
+                    <h2 class="answer-answer-title"><span>${questionWord} ${index + 1}</span></h2>
+                    <p id="answer-text">${answer}</p>
                 `;
+
+                answersList.appendChild(answerBlock);
             });
         })
         .catch(error => {
             console.error("Ошибка загрузки данных:", error);
-            document.getElementById('answers-list').innerHTML = `<p>${error.message}</p>`;
+            const answersList = document.getElementById('answers-list');
+            if (answersList) {
+                answersList.innerHTML = `<p>${error.message}</p>`;
+            }
         });
 }
 
