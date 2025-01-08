@@ -1,3 +1,4 @@
+const initData = btoa(window.Telegram.WebApp.initData);
 function loadApiData() {
     const seriesId = parseInt(new URL(window.location.href).searchParams.get('series_id'), 10);
 
