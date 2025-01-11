@@ -22,6 +22,7 @@
     "toast": {
         "copySuccess": "Реферальная ссылка скопирована."
     },
+    "answerSent": "Ответ отправлен",
     "amount-placeholder": "Сумма",
     "registrationTexttelegram":"Регистрация через телеграм",
     "wallet-placeholder": "Адрес кошелька",

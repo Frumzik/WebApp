@@ -192,3 +192,30 @@ div[id^="waveform-"] {
     border-radius: 10px;
     background: linear-gradient(271deg, #edebf7 -35.22%, #ecd3f8 37.21%, #cbebf1 168.81%);
 }
+
+#toast {
+    visibility: hidden;
+    min-width: 350px;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    font-family: Onest;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#toast.show {
+    visibility: visible;
+    opacity: 1;
+}

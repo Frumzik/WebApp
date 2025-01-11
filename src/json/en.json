@@ -22,6 +22,7 @@
     "toast": {
         "copySuccess": "Referral link copied."
     },
+    "answerSent": "Answer sent",
     "amount-placeholder": "Amount",
     "registrationTexttelegram":"Registration via telegram",
     "wallet-placeholder": "Wallet address",

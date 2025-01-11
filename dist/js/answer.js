@@ -48,16 +48,15 @@ function loadApiData() {
                 return;
             }
 
-            // Создаем блоки ответов и добавляем их в контейнер
-            answersArray.forEach((answerObj, index) => {
+            answersArray.forEach((answerObj) => {
                 const answer = answerObj.answer || "Ответ отсутствует";
-                const questionWord = lang === 'ru' ? 'Вопрос' : 'Question';
+                const question = answerObj.question || "Вопрос не найден"; 
 
                 const answerBlock = document.createElement('div');
                 answerBlock.classList.add('answer-answer');
 
                 answerBlock.innerHTML = `
-                    <h2 class="answer-answer-title"><span>${questionWord} ${index + 1}</span></h2>
+                    <h2 class="answer-answer-title"><span>${question}</span></h2>
                     <p id="answer-text">${answer}</p>
                 `;
 
