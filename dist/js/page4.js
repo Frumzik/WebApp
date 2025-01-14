@@ -120,7 +120,7 @@ function loadApiData() {
     const params = new URLSearchParams({ lang: i18next.language }).toString();
 
     fetch(`/api/series/play/?series_id=${seriesId}&${params}`, {
-        headers: { "X-Telegram-Init-Data": initData },
+        headers: { "X-Telegram-Init-Data":initData },
         method: "GET",
     })
         .then(response => {
@@ -202,7 +202,7 @@ function loadApiData() {
                         <div class='buttons-container'>${buttonsHTML}</div>
                     </div>`;
                 } else if (page.text && page.imageLink === null && page.videoLink === null && page.audio === null) {
-                    slideHTML = `<div class='swiper-slide'>
+                    slideHTML = `<div class='swiper-slide' style="justify-content: center;">
                         <div class='text-container'><pre>${page.text}</pre></div>
                     </div>`;
                 }
@@ -223,9 +223,65 @@ function loadApiData() {
                 }
 
                 container.innerHTML += slideHTML;
+                if (page.audio) {
+                    setTimeout(() => {
+                        const waveformContainer = document.querySelector(`#waveform-${index}`);
+                        if (!waveformContainer) {
+                            console.error(`Контейнер #waveform-${index} не найден.`);
+                            return;
+                        }
+                
+                        const wave = WaveSurfer.create({
+                            container: `#waveform-${index}`,
+                            waveColor: '#d3d3d3',
+                            progressColor: '#a9a9a9',
+                            height: 40,
+                            responsive: true,
+                            barWidth: 2,
+                            cursorWidth: 0,
+                        });
+                
+                        console.log(`Загрузка файла ${page.audio}`);
+                        wave.load(page.audio);
+                
+                        wave.on('ready', () => console.log(`Волны готовы для #waveform-${index}`));
+                        wave.on('error', (e) => console.error(`Ошибка Wavesurfer для #waveform-${index}:`, e));
+                
+                        const playPauseBtn = document.getElementById(`play-pause-${index}`);
+                        if (!playPauseBtn) {
+                            console.error(`Кнопка Play/Pause не найдена для слайда ${index}.`);
+                            return;
+                        }
+                
+                        playPauseBtn.addEventListener('click', () => {
+                            if (wave.isPlaying()) {
+                                wave.pause();
+                                playPauseBtn.querySelector('#playIcon').style.display = 'block';
+                                playPauseBtn.querySelector('#pauseIcon').style.display = 'none';
+                            } else {
+                                wave.play();
+                                playPauseBtn.querySelector('#playIcon').style.display = 'none';
+                                playPauseBtn.querySelector('#pauseIcon').style.display = 'block';
+                            }
+                        });
+                
+                        wave.on('audioprocess', () => {
+                            const currentTime = wave.getCurrentTime();
+                            const minutes = Math.floor(currentTime / 60).toString().padStart(2, '0');
+                            const seconds = Math.floor(currentTime % 60).toString().padStart(2, '0');
+                            document.getElementById(`time-display-${index}`).textContent = `${minutes}:${seconds}`;
+                        });
+                
+                        wave.on('finish', () => {
+                            playPauseBtn.querySelector('#playIcon').style.display = 'block';
+                            playPauseBtn.querySelector('#pauseIcon').style.display = 'none';
+                        });
+                    }, 200);  // Увеличил задержку для надежности
+                }
+                
             });
 
-            swiper.update(); 
+            setTimeout(() => swiper.update(), 100); 
         })
         .catch(error => console.error("Ошибка загрузки данных:", error));
 }

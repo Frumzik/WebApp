@@ -269,6 +269,15 @@
         p:last-child {
             margin-top: 1.5vw;
         }
+        pre{
+            color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-weight: 400;
+            line-height: 4vw;
+            font-family: Catamaran;
+            font-size: 2.8vw;
+        }
     }
     #player-container {
         width: 73vw;
@@ -286,13 +295,9 @@
     .exercise-text {
         margin-top: 5vh;
         width: 73vw;
-        font-size: 3.5vw;
-        line-height: 30px;
-        p {
-            margin-bottom: 2vh;
-        }
-        p:last-child {
-            margin-bottom: 25px;
+        pre{
+            font-size: 3.5vw;
+            line-height: 30px;
         }
     }
     .response-block {
@@ -535,6 +540,15 @@
         font-size: 3vw;
         p:last-child {
             margin-top: 1.5vw;
+        }
+        pre{
+            color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-weight: 400;
+            line-height: 4vw;
+            font-family: Catamaran;
+            font-size: 3vw;
         }
     }
     #player-container {
@@ -817,6 +831,15 @@
         p:last-child {
             margin-top: 1vw;
         }
+        pre{
+            color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-weight: 400;     
+            line-height: 30px;
+            font-family: Catamaran;
+            font-size: 2.3vw;
+        }
     }
     #player-container {
         width: 65vw;
@@ -835,13 +858,10 @@
     .exercise-text {
         margin-top: 3.6vh;
         width: 63vw;
-        font-size: 2.5vw;
-        line-height: 35px;
-        p {
-            margin-bottom: 1vh;
-        }
-        p:last-child {
-            margin-bottom: 25px;
+
+        pre{
+            font-size: 2.5vw;
+            line-height: 35px;
         }
     }
     .response-block {
@@ -1125,6 +1145,15 @@
         p:last-child {
             margin-top: 0.5vw;
         }
+        pre{
+            color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-weight: 400;     
+            line-height: 22px;
+            font-family: Catamaran;
+            font-size: 1.6vw;
+        }
     }
     #player-container {
         width: 40vw;
@@ -1144,13 +1173,9 @@
     .exercise-text {
         margin-top: 3.6vh;
         width: 45vw;
-        font-size: 1.4vw;
-        line-height: 30px;
-        p {
-            margin-bottom: 1vh;
-        }
-        p:last-child {
-            margin-bottom: 30px;
+        pre{
+            font-size: 1.4vw;
+            line-height: 25px;
         }
     }
     .response-block {
@@ -1216,6 +1241,15 @@
         line-height: 30px;
         p:last-child {
             margin-top: 0.5vw;
+        }
+        pre{
+            color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-weight: 400;     
+            line-height: 30px;
+            font-family: Catamaran;
+            font-size: 1.3vw;
         }
     }
     .logo {
@@ -1452,13 +1486,10 @@
     .exercise-text {
         margin-top: 3.6vh;
         width: 40vw;
-        font-size: 1.2vw;
-        line-height: 30px;
-        p {
-            margin-bottom: 1vh;
-        }
-        p:last-child {
-            margin-bottom: 30px;
+        pre {
+            font-family: Catamaran;
+            font-size: 1.2vw;
+            line-height: 30px;
         }
     }
     .response-block {
