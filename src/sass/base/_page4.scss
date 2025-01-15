@@ -22,10 +22,12 @@ html {
     max-width: 100%;
     object-fit: contain;
 }
-
+.swiper-slide__image.half-image{
+max-height: 50%;
+}
 .text-container {
     margin: 8vw 0 0 0;
-    width: 84.27vw;
+    width: 70vw;
     color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
     font-family: Catamaran;
     font-size: 3.7vw;
@@ -37,7 +39,7 @@ html {
         word-wrap: break-word;
         font-weight: 400;
         line-height: 4vw;
-        font-size: 3.7vw;
+        font-size: 3vw;
         font-family: Catamaran;
     }
 }
@@ -133,7 +135,7 @@ div[id^="waveform-"] {
     flex-direction: column;
     justify-content: flex-start;
     margin: 8vw 0vh 0px 0vw;
-    line-height: 4vw;
+    line-height: 3vw;
     width: 84.27vw;
     font-size: 3.7vw;
     pre {
@@ -192,6 +194,7 @@ div[id^="waveform-"] {
     cursor: pointer;
     border-radius: 10px;
     background: linear-gradient(271deg, #edebf7 -35.22%, #ecd3f8 37.21%, #cbebf1 168.81%);
+    font-family: Firs;
 }
 
 #toast {

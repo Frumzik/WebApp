@@ -265,7 +265,7 @@
     .text-container {
         margin-top: 3vw;
         width: 73vw;
-        font-size: 2.8vw;
+        margin-left: -55px;
         p:last-child {
             margin-top: 1.5vw;
         }
@@ -274,9 +274,10 @@
             white-space: pre-wrap;
             word-wrap: break-word;
             font-weight: 400;
-            line-height: 4vw;
+            line-height: 3vw;
             font-family: Catamaran;
-            font-size: 2.8vw;
+            font-size: 2.5vw;
+
         }
     }
     #player-container {
@@ -294,22 +295,23 @@
     }
     .exercise-text {
         margin-top: 5vh;
-        width: 73vw;
+        width: 55vw;
         pre{
-            font-size: 3.5vw;
-            line-height: 30px;
+            font-size: 2.5vw;
+            line-height: 3vw;
         }
     }
     .response-block {
-        width: 73vw;
+        width: 55vw;
         height: 30.61vh;
     }
     .response-label {
-        font-size: 3.5vw;
+        font-size: 2.3vw;
     }
     .response-input {
     }
     .response-button {
+        font-size: 2.3vw;
         height: 5vh;
     }
 }
@@ -534,21 +536,31 @@
         width: 85vw;
         height: 40vh;
     }
+    .swiper-slide__image.half-image{
+    width: 55vw;
+    }
     .text-container {
         margin-top: 4vw;
-        width: 75vw;
+        width: 55vw;
         font-size: 3vw;
         p:last-child {
             margin-top: 1.5vw;
         }
+        margin-left: 0px;
         pre{
             color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
             white-space: pre-wrap;
             word-wrap: break-word;
             font-weight: 400;
-            line-height: 4vw;
+            line-height: 2.7vw;
             font-family: Catamaran;
-            font-size: 3vw;
+            font-size: 2.2vw;
+        }
+    }
+    .exercise-text {
+        pre{
+            font-size: 2.2vw;
+            line-height: 2.7vw;
         }
     }
     #player-container {
@@ -558,7 +570,7 @@
         margin-top: 3vh;
     }
     .buttons-container__btn {
-        width: 75vw;
+        width: 73vw;
     }
     .custom-modal-content {
         h2 {
@@ -823,22 +835,24 @@
         width: 75vw;
         height: 40vh;
     }
+    .swiper-slide__image.half-image{
+        width: 500px;
+    }
     .text-container {
         margin-top: 2vw;
-        width: 65vw;
-        font-size: 2.3vw;
-        line-height: 30px;
+        width: 500px;
         p:last-child {
             margin-top: 1vw;
         }
+        margin-right: 10px;
         pre{
             color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
             white-space: pre-wrap;
             word-wrap: break-word;
             font-weight: 400;     
-            line-height: 30px;
+            line-height: 27px;
             font-family: Catamaran;
-            font-size: 2.3vw;
+            font-size: 2vw;
         }
     }
     #player-container {
@@ -849,7 +863,7 @@
     }
     .buttons-container__btn {
         font-size: 2vw;
-        width: 65vw;
+        width: 500px;
     }
     .exercise {
         width: 63vw;
@@ -857,25 +871,25 @@
     }
     .exercise-text {
         margin-top: 3.6vh;
-        width: 63vw;
+        width: 500px;
 
         pre{
-            font-size: 2.5vw;
-            line-height: 35px;
+            font-size: 2vw;
+            line-height: 27px;
         }
     }
     .response-block {
-        width: 63vw;
+        width: 500px;
         height: 27.61vh;
     }
     .response-label {
-        font-size: 2.5vw;
+        font-size: 2vw;
     }
     .response-input {
-        font-size: 2.5vw;
+        font-size: 2vw;
     }
     .response-button {
-        font-size: 2.5vw;
+        font-size: 2vw;
         height: 6vh;
     }
 }
@@ -1137,22 +1151,27 @@
         width: 45vw;
         height: 40vh;
     }
+    .swiper-slide__image.half-image{
+        width: 44vw;
+        height: 60%;
+    }
     .text-container {
         margin-top: 1vw;
-        width: 40vw;
+        width: 44vw;
         font-size: 1.6vw;
         line-height: 22px;
         p:last-child {
             margin-top: 0.5vw;
         }
+        margin-left: 10px;
         pre{
             color: var(--Miscellaneous-Floating-Tab---Text-Unselected, #000);
             white-space: pre-wrap;
             word-wrap: break-word;
             font-weight: 400;     
-            line-height: 22px;
+            line-height: 25px;
             font-family: Catamaran;
-            font-size: 1.6vw;
+            font-size: 1.4vw;
         }
     }
     #player-container {
@@ -1163,7 +1182,7 @@
     }
     .buttons-container__btn {
         font-size: 1.3vw;
-        width: 40vw;
+        width: 44vw;
         height: 6.5vh;
     }
     .exercise {
@@ -1219,7 +1238,7 @@
     }
     .buttons-container__btn {
         font-size: 1.5vw;
-        width: 40vw;
+        width: 30vw;
         height: 5.5vh;
     }
     .motivation {
@@ -1234,11 +1253,13 @@
         width: 50vw;
         height: 45vh;
     }
+    .swiper-slide__image.half-image{
+        width: 30vw;
+    }
     .text-container {
         margin-top: 1.5vw;
-        width: 40vw;
-        font-size: 1.3vw;
-        line-height: 30px;
+        width: 30vw;
+        margin-right:10px;
         p:last-child {
             margin-top: 0.5vw;
         }
@@ -1249,7 +1270,7 @@
             font-weight: 400;     
             line-height: 30px;
             font-family: Catamaran;
-            font-size: 1.3vw;
+            font-size: 1.2vw;
         }
     }
     .logo {
@@ -1480,12 +1501,12 @@
         }
     }
     .exercise {
-        width: 40vw;
+        width: 30vw;
         font-size: 1.6vw;
     }
     .exercise-text {
         margin-top: 3.6vh;
-        width: 40vw;
+        width: 30vw;
         pre {
             font-family: Catamaran;
             font-size: 1.2vw;
@@ -1493,17 +1514,17 @@
         }
     }
     .response-block {
-        width: 40vw;
+        width: 30vw;
         height: 35vh;
     }
     .response-label {
-        font-size: 1.4vw;
+        font-size: 1.2vw;
     }
     .response-input {
-        font-size: 1.4vw;
+        font-size: 1.2vw;
     }
     .response-button {
-        font-size: 1.4vw;
+        font-size: 1.2vw;
         height: 6vh;
     }
 }

@@ -140,18 +140,23 @@ function loadApiData() {
             }
 
             container.innerHTML = "";
+            const baseUrl = "https://i-game.one";
 
             pages.forEach((page, index) => {
                 let slideHTML = "";
-
+                const imageLink = page.imageLink ? `${baseUrl}${page.imageLink}` : null; // Добавляем базовый URL
                 if (page.videoLink) {
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
                         <iframe src='${page.videoLink}' class='video-full-size' frameborder='0' allowfullscreen style="margin-right: 10px;margin-left: 10px;"></iframe>
                     </div>`;
                 } else if (page.imageLink && page.text) {
                     slideHTML = `<div class='swiper-slide'>
-                        <img class="swiper-slide__image" src="${page.imageLink}" alt="Image">
+                        <img class="swiper-slide__image half-image" src="${imageLink}" alt="Image" style="object-fit: cover;">
                         <div class='text-container'><pre>${page.text}</pre></div>
+                    </div>`;
+                } else if (page.imageLink) {
+                    slideHTML = `<div class='swiper-slide'>
+                        <img class="swiper-slide__image" src="${imageLink}" alt="Image" style="height:90%;">
                     </div>`;
                 } else if (page.imageLink && page.audio) {
                     slideHTML = `<div class='swiper-slide'>
