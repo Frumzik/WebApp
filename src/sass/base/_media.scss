@@ -36,6 +36,9 @@
     .popup{
         right: 10%;
     }
+    .swiper-slide__image.third-two-image{
+        width: 55vw;
+        }
     .popup-content{
         font-size: 13px;
     }
@@ -328,6 +331,17 @@
     }
     .answer-answer-title {
         font-size: 20px;
+    }
+    .swiper-slide__image.third-two-image{
+        width: 500px;
+        }
+    .icon-container{
+        bottom: 50px; 
+        right: 30px;
+            svg{
+                width: 80px;
+                height: 80px;
+            }
     }
 
     .video-half-size {
@@ -916,6 +930,9 @@
         }
         
     }
+    .swiper-slide__image.third-two-image{
+        width: 45vw;
+        }
     .answer-answer-title {
         margin-top: 15px;
         font-size: 18px;
@@ -1232,6 +1249,9 @@
         }
         
     }
+    .swiper-slide__image.third-two-image{
+        width: 30vw;
+        }
     .answer-answer-title {
         font-size: 25px;
     }

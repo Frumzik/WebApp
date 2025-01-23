@@ -16,14 +16,30 @@ html {
     align-items: center;
     background: linear-gradient(102deg, #fffef6 11.35%, #edebf7 102.05%);
 }
-
+.icon-container{
+    position: absolute; 
+    bottom: 50px; 
+    right: 30px;
+    z-index: 100;
+        svg{
+            width: 50px;
+            height: 50px;
+        }
+}
 .swiper-slide__image {
     max-height: 90%;
     max-width: 100%;
     object-fit: contain;
 }
+.video-full-size {
+    height: 90%;
+    width: 80%;
+}
 .swiper-slide__image.half-image{
 max-height: 50%;
+}
+.swiper-slide__image.third-two-image{
+    height: 66%;
 }
 .text-container {
     margin: 8vw 0 0 0;
