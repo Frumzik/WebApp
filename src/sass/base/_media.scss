@@ -262,9 +262,10 @@
     }
 
     .swiper-slide__image {
-        width: 80vw;
+        width: 55vw;
         height: 40vh;
     }
+
     .text-container {
         margin-top: 3vw;
         width: 73vw;
@@ -328,6 +329,9 @@
             font-size: 15px;
         }
         
+    }
+    .swiper-slide__image.butt{
+        width: 500px;
     }
     .answer-answer-title {
         font-size: 20px;
@@ -944,7 +948,10 @@
         width: 10.5vw;
         margin-right: 2vw;
     }
-
+    .swiper-slide__image.butt{
+        width: 44vw;
+        height: 50%;
+    }
     .about {
         width: 15vw;
         &__balancegive {
@@ -1462,6 +1469,9 @@
             width: 40px;
             height: 40px;
         }
+    }
+    .swiper-slide__image.butt{
+        width: 30vw;
     }
     .wallet-container{
         margin-top: 8px;

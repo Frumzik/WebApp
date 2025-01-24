@@ -167,8 +167,8 @@ function loadApiData() {
                     </div>`;
                 } else if (page.imageLink && page.text && page.isBigImage) {
                     slideHTML = `<div class='swiper-slide'>
-                        <img class="swiper-slide__image third-two-image" src="${page.imageLink}" alt="Image" style="object-fit: cover;">
-                        <div class='text-container'><pre>${page.text}</pre></div>
+                        <img class="swiper-slide__image third-two-image" src="${page.imageLink}" alt="Image">
+                        <div class='text-container three'><pre>${page.text}</pre></div>
                         ${iconHTML}
                     </div>`;
                 } else if (page.imageLink && page.text) {
@@ -182,7 +182,7 @@ function loadApiData() {
                         return `<button class="buttons-container__btn" onclick='switchSlide(event, ${button.nextPageNumber - 1})'>${button.text}</button>`;
                     }).join('');
                     slideHTML = `<div class='swiper-slide'>
-                        <img class="swiper-slide__image" src="${page.imageLink}" alt="Image">
+                        <img class="swiper-slide__image butt" src="${page.imageLink}" alt="Image" style="object-fit: cover;">
                         <div class='buttons-container'>${buttonsHTML}</div>
                         ${iconHTML}
                     </div>`;
@@ -230,7 +230,7 @@ function loadApiData() {
                     </div>`;
                 } else if (page.imageLink) {
                     slideHTML = `<div class='swiper-slide'>
-                        <img class="swiper-slide__image" src="${page.imageLink}" alt="Image" style="height:90%;">
+                        <img class="swiper-slide__image" src="${page.imageLink}" alt="Image" style="height:66%;">
                         ${iconHTML}
                     </div>`;
                 }else if (page.text && page.imageLink === null && page.videoLink === null && page.audio === null) {
