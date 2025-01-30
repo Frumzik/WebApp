@@ -184,7 +184,6 @@ function loadApiData() {
                     slideHTML = `<div class='swiper-slide'>
                         <img class="swiper-slide__image butt" src="${page.imageLink}" alt="Image" style="object-fit: cover;">
                         <div class='buttons-container'>${buttonsHTML}</div>
-                        ${iconHTML}
                     </div>`;
                 } else if (page.imageLink && page.audio) {
                     slideHTML = `<div class='swiper-slide'>
@@ -226,7 +225,6 @@ function loadApiData() {
                             <button class='response-button' onclick='sendAnswer(event)'>${sendButtonText}</button>
                         </div>
                         <div class='buttons-container'>${buttonsHTML}</div>
-                        ${iconHTML}
                     </div>`;
                 } else if (page.imageLink) {
                     slideHTML = `<div class='swiper-slide'>
@@ -299,8 +297,12 @@ function loadApiData() {
                 }
                 
             });
-
-            setTimeout(() => swiper.update(), 100); 
+            setTimeout(() => {
+                swiper.update();
+                if (swiper.activeIndex === 0) {
+                    showPopup();
+                }
+            }, 300);
         })
         .catch(error => console.error("Ошибка загрузки данных:", error));
 }
@@ -308,7 +310,10 @@ function loadApiData() {
 
 document.addEventListener("DOMContentLoaded", function () {
     initLanguages(loadApiData);
-
+    let button = document.querySelector(".VideoPlayerEmbed__button");
+    if (button) {
+        button.remove();
+    }
     let toastContainer = document.getElementById('toast');
     if (!toastContainer) {
         toastContainer = document.createElement('div');
@@ -324,3 +329,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+let isPopupShown = false;
+
+function showPopup() {
+    if (isPopupShown) return;
+    isPopupShown = true;
+
+    const userLang = navigator.language.startsWith("ru") ? "ru" : "en";
+
+    const messages = {
+        ru: "Свайп влево для перехода на следующую страницу",
+        en: "Swipe left to go to the next page.",
+    };
+
+    const popup = document.createElement("div");
+    popup.className = "swipe-popup";
+    popup.textContent = messages[userLang];
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.classList.add("show");
+    }, 10);
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+        popup.classList.add("hide");
+        setTimeout(() => {
+            popup.remove();
+        }, 300);
+    }, 3000);
+}

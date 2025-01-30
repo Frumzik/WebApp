@@ -169,6 +169,7 @@ div[id^="waveform-"] {
 .response-block {
     width: 84.27vw;
     height: 27.61vh;
+    min-height: 200px;
     padding: 15px 10px 15px 15px;
     display: flex;
     flex-direction: column;
@@ -201,7 +202,15 @@ div[id^="waveform-"] {
 .response-input:focus {
     outline: none;
 }
-
+// .overlay {
+//     position: absolute;
+//     left: 13%;
+//     bottom: 11.3vh;
+//     width: 75vw;
+//     height: 50px; /* Закроет кнопку */
+//     background-color: black; /* Невидимый слой */
+//     pointer-events: none;
+// }
 .response-button {
     height: 4.19vh;
     padding: 7px 4vw;
@@ -212,6 +221,7 @@ div[id^="waveform-"] {
     border-radius: 10px;
     background: linear-gradient(271deg, #edebf7 -35.22%, #ecd3f8 37.21%, #cbebf1 168.81%);
     font-family: Firs;
+    min-height: 35px;
 }
 
 #toast {
@@ -239,4 +249,35 @@ div[id^="waveform-"] {
 #toast.show {
     visibility: visible;
     opacity: 1;
+}
+
+
+
+
+.swipe-popup {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    min-width: 350px;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.swipe-popup.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.swipe-popup.hide {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
 }
