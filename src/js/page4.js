@@ -342,21 +342,21 @@ function showPopup() {
         en: "Swipe left to go to the next page.",
     };
 
-    const popup = document.createElement("div");
-    popup.className = "swipe-popup";
-    popup.textContent = messages[userLang];
+    const popupup = document.createElement("div");
+    popupup.className = "swipe-popup";
+    popupup.textContent = messages[userLang];
 
     document.body.appendChild(popup);
 
     setTimeout(() => {
-        popup.classList.add("show");
+        popupup.classList.add("show");
     }, 10);
 
     setTimeout(() => {
-        popup.classList.remove("show");
-        popup.classList.add("hide");
+        popupup.classList.remove("show");
+        popupup.classList.add("hide");
         setTimeout(() => {
-            popup.remove();
+            popupup.remove();
         }, 300);
     }, 3000);
 }
