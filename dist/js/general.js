@@ -147,13 +147,19 @@ window.Telegram.WebApp.BackButton.onClick(() => {
         backHistory = JSON.parse(backHistory);
         let backUrl = backHistory.pop();
 
-        if (backHistory.length === 0) window.Telegram.WebApp.BackButton.hide();
+        if (!backUrl.includes(window.location.origin)) {
+            backUrl = sessionStorage.getItem('appHomeUrl');
+        }
+
+        if (backHistory.length === 0) {
+            window.Telegram.WebApp.BackButton.hide();
+        }
+        
         sessionStorage.setItem('pageHistory', JSON.stringify(backHistory));
         window.location.href = backUrl;
+    } else {
+        window.Telegram.WebApp.BackButton.hide();
     }
-
-    else window.Telegram.WebApp.BackButton.hide();
-
 });
 
 
