@@ -202,15 +202,17 @@ div[id^="waveform-"] {
 .response-input:focus {
     outline: none;
 }
-// .overlay {
-//     position: absolute;
-//     left: 13%;
-//     bottom: 11.3vh;
-//     width: 75vw;
-//     height: 50px; /* Закроет кнопку */
-//     background-color: black; /* Невидимый слой */
-//     pointer-events: none;
-// }
+.overlay {
+    position: absolute;
+    left: 12%;
+    bottom: 11vh;
+    width: 77vw;
+    height: 50px;
+    z-index: 99;
+    background-color: rgb(0, 0, 0);
+    pointer-events: auto;
+    display: none;
+}
 .response-button {
     height: 4.19vh;
     padding: 7px 4vw;

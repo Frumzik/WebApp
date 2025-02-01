@@ -33,6 +33,11 @@
         margin: 0px 10% 0 10%;
         height: 100vh;
     }
+    .overlay {
+        left: 12%;
+        bottom: 11vh;
+        width: 75vw;
+    }
     .popup{
         right: 10%;
     }
@@ -321,6 +326,11 @@
     }
 }
 @media (min-width: 768px) {
+    .overlay {
+        left: 13%;
+        bottom: 11vh;
+        width: 74vw;
+    }
     .header__container {
     padding-left:20px;
     }
@@ -607,6 +617,11 @@
     }
 }
 @media (min-width: 992px) {
+    .overlay {
+        left: 8%;
+        bottom: 11vh;
+        width: 84vw;
+    }
         body {
         margin: 0 15% 0 15%;
         height: 100vh;
@@ -914,6 +929,12 @@
     body {
         margin: 0 25% 0 25%;
         height: 100vh;
+    }
+    .overlay {
+        left: 35%;
+        bottom: 10.4vh;
+        width: 29.3vw;
+        height: 60px;
     }
     .popup{
         right: 25%;
@@ -1558,6 +1579,12 @@
     }
 }
 @media (min-width: 1600px) {
+    .overlay {
+        left: 35%;
+        bottom: 10.4vh;
+        width: 30vw;
+        height: 60px;
+    }
     .logo{
         margin-top: 20px;
     }

@@ -119,8 +119,8 @@ function loadApiData() {
 
     const params = new URLSearchParams({ lang: i18next.language }).toString();
 
-    fetch(`/api/series/play/?series_id=${seriesId}&${params}`, {
-        headers: { "X-Telegram-Init-Data": initData},
+    fetch(`https://i-game.one/api/series/play/?series_id=${seriesId}&${params}`, {
+        headers: { "X-Telegram-Init-Data": 'cXVlcnlfaWQ9QUFHUWUxZ3pBQUFBQUpCN1dETlZ4OWY2JnVzZXI9JTdCJTIyaWQlMjIlM0E4NjE0MzY4MTYlMkMlMjJmaXJzdF9uYW1lJTIyJTNBJTIyJUUyJTlEJTk0JTIyJTJDJTIybGFzdF9uYW1lJTIyJTNBJTIyJTIyJTJDJTIydXNlcm5hbWUlMjIlM0ElMjJ0cmFwX3NoYXJrayUyMiUyQyUyMmxhbmd1YWdlX2NvZGUlMjIlM0ElMjJydSUyMiUyQyUyMmFsbG93c193cml0ZV90b19wbSUyMiUzQXRydWUlMkMlMjJwaG90b191cmwlMjIlM0ElMjJodHRwcyUzQSU1QyUyRiU1QyUyRnQubWUlNUMlMkZpJTVDJTJGdXNlcnBpYyU1QyUyRjMyMCU1QyUyRmpybnp3R1RFdVN6LUh5M291eXNLZC1jNFdIZUlvT1ZOakZfWnhPb0RZTlkuc3ZnJTIyJTdEJmF1dGhfZGF0ZT0xNzMyNzkyMzc0JnNpZ25hdHVyZT1mUWk0VFhhNFZ6ZERGR3ExV25ra1g4LXZqQzh3cEl5M2dqY0pWQk5SYWRGNF92OGxvOXRFakt5dmkta2xPeDdvWVZaeFNBUUx3b1JIbkhyQzlGVXpBUSZoYXNoPWQ0OTY4YTAxODU2ZDg2YzNhNWM0MTFmNjdkNmVkMTJjMjUzNjQ1ODQxMWMwNDdiNzMwNzMzMDVmMmUxZmZhYjY='},
         method: "GET",
     })
         .then(response => {
@@ -162,6 +162,7 @@ function loadApiData() {
                 let slideHTML = "";
                 if (page.videoLink) {
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
+                    <div class="overlay"></div>
                         <iframe src='${page.videoLink}' class='video-full-size' frameborder='0' allowfullscreen style="margin-right: 10px;margin-left: 10px;"></iframe>
                         ${iconHTML}
                     </div>`;
@@ -303,6 +304,16 @@ function loadApiData() {
                     showPopup();
                 }
             }, 300);
+            setTimeout(() => {
+                const iframe = document.querySelector(".video-full-size");
+                const overlay = document.querySelector(".overlay");
+            
+                if (iframe) {
+                    iframe.onload = function () {
+                        overlay.style.display = "block"; // Показываем overlay после загрузки iframe
+                    };
+                }
+            }, 200); 
         })
         .catch(error => console.error("Ошибка загрузки данных:", error));
 }
