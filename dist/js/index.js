@@ -50,8 +50,8 @@ function LoadApiData() {
         lang: i18next.language,
     }).toString();
 
-    fetch(`/api/user/profile/?${params}`, {
-        headers: {'X-Telegram-Init-Data': initData},
+    fetch(`https://i-game.one/api/user/profile/?${params}`, {
+        headers: {'X-Telegram-Init-Data': 'cXVlcnlfaWQ9QUFHUWUxZ3pBQUFBQUpCN1dETlZ4OWY2JnVzZXI9JTdCJTIyaWQlMjIlM0E4NjE0MzY4MTYlMkMlMjJmaXJzdF9uYW1lJTIyJTNBJTIyJUUyJTlEJTk0JTIyJTJDJTIybGFzdF9uYW1lJTIyJTNBJTIyJTIyJTJDJTIydXNlcm5hbWUlMjIlM0ElMjJ0cmFwX3NoYXJrayUyMiUyQyUyMmxhbmd1YWdlX2NvZGUlMjIlM0ElMjJydSUyMiUyQyUyMmFsbG93c193cml0ZV90b19wbSUyMiUzQXRydWUlMkMlMjJwaG90b191cmwlMjIlM0ElMjJodHRwcyUzQSU1QyUyRiU1QyUyRnQubWUlNUMlMkZpJTVDJTJGdXNlcnBpYyU1QyUyRjMyMCU1QyUyRmpybnp3R1RFdVN6LUh5M291eXNLZC1jNFdIZUlvT1ZOakZfWnhPb0RZTlkuc3ZnJTIyJTdEJmF1dGhfZGF0ZT0xNzMyNzkyMzc0JnNpZ25hdHVyZT1mUWk0VFhhNFZ6ZERGR3ExV25ra1g4LXZqQzh3cEl5M2dqY0pWQk5SYWRGNF92OGxvOXRFakt5dmkta2xPeDdvWVZaeFNBUUx3b1JIbkhyQzlGVXpBUSZoYXNoPWQ0OTY4YTAxODU2ZDg2YzNhNWM0MTFmNjdkNmVkMTJjMjUzNjQ1ODQxMWMwNDdiNzMwNzMzMDVmMmUxZmZhYjY='},
         method: "GET",
     })
         .then((response) => redirectNotAuthorized(response))
@@ -86,8 +86,8 @@ function LoadApiData() {
                 const newsElement = document.createElement("div");
                 newsElement.classList.add("swiper-slide", "my-slide");
                 newsElement.innerHTML = `
-                    <a href="https://${news.telegraphLink}" class="advertising__blocks">
-                        <img src="https://${news.imageLink}" style="height: inherit; border-radius: 10px; width: 100%;">
+                    <a href="${news.telegraphLink}" class="advertising__blocks">
+                        <img src="${news.imageLink}" style="height: inherit; border-radius: 10px; width: 100%;">
                     </a>
                 `;
                 newsContainer.appendChild(newsElement);
