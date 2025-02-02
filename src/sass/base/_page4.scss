@@ -31,10 +31,10 @@ html {
     max-width: 100%;
     object-fit: contain;
 }
-.video-full-size {
-    height: 90%;
-    width: 80%;
-}
+// .video-full-size {
+//     height: 90%;
+//     width: 80%;
+// }
 .swiper-slide__image.half-image{
 max-height: 50%;
 }
@@ -283,3 +283,10 @@ div[id^="waveform-"] {
     opacity: 0;
     transform: translateX(-50%) translateY(20px);
 }
+
+.video-full-size{
+    width: 90vh;
+    height: 80vh; /* Полноэкранное отображение */
+    overflow: hidden;
+}
+

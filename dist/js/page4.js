@@ -160,13 +160,32 @@ function loadApiData() {
             pages.forEach((page, index) => {
                 // const imageLink = page.imageLink ? `${baseUrl}${page.imageLink}` : null;
                 let slideHTML = "";
+                // if (page.videoLink) {
+                //     slideHTML = `<div class='swiper-slide slide-without-footer'>
+                //     <div class="overlay"></div>
+                //         <iframe src='${page.videoLink}?noreactions=1' class='video-full-size' frameborder='0' allowfullscreen style="margin-right: 10px;margin-left: 10px;"></iframe>
+                //         ${iconHTML}
+                //     </div>`;
+                // }
                 if (page.videoLink) {
+                    // Используем тестовую ссылку на видео Vimeo
+                    const videoId = "917918511"; // ID тестового видео
+                
+                    // Создаём iframe с плеером Vimeo
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
-                    <div class="overlay"></div>
-                        <iframe src='${page.videoLink}' class='video-full-size' frameborder='0' allowfullscreen style="margin-right: 10px;margin-left: 10px;"></iframe>
+                        
+                        <iframe class='video-full-size' 
+                            src="https://player.vimeo.com/video/${videoId}?autoplay=1"
+                            frameborder="0" 
+                            allow="autoplay; fullscreen;
+                            picture-in-picture" 
+                            allowfullscreen
+                            >
+                        </iframe>
                         ${iconHTML}
                     </div>`;
-                } else if (page.imageLink && page.text && page.isBigImage) {
+                }
+                else if (page.imageLink && page.text && page.isBigImage) {
                     slideHTML = `<div class='swiper-slide'>
                         <img class="swiper-slide__image third-two-image" src="${page.imageLink}" alt="Image">
                         <div class='text-container three'><pre>${page.text}</pre></div>
