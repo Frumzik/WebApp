@@ -1,5 +1,3 @@
-const { init } = require("browser-sync");
-
 const initData = btoa(window.Telegram.WebApp.initData);
 
 function showToast(message) {
