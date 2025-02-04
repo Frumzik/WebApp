@@ -1,3 +1,5 @@
+const { init } = require("browser-sync");
+
 const initData = btoa(window.Telegram.WebApp.initData);
 
 function showToast(message) {
@@ -172,18 +174,41 @@ function loadApiData() {
                     const videoId = "917918511"; // ID тестового видео
                 
                     // Создаём iframe с плеером Vimeo
+                    // slideHTML = `<div class='swiper-slide slide-without-footer'>
+                    //     <iframe class='video-full-size' 
+                    //         src="https://player.vimeo.com/video/${videoId}?autoplay=1"   самый первый вариант
+                    //         frameborder="0"  
+                    //         allow="autoplay; fullscreen;
+                    //         picture-in-picture" 
+                    //         allowfullscreen
+                    //         >
+                    //     </iframe>
+                    //     ${iconHTML}
+                    // </div>`;
+
+
+                    // slideHTML = `<div class='swiper-slide slide-without-footer'>
+                    //         <iframe class='video-full-size' 
+                    //             src="https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&playsinline=1"    вариант с отключением звука
+                    //             frameborder="0"  
+                    //             allow="autoplay; fullscreen; picture-in-picture" 
+                    //             allowfullscreen
+                    //             muted
+                    //             playsinline>
+                    //         </iframe>
+                    //         ${iconHTML}
+                    //     </div>`;
                     slideHTML = `<div class='swiper-slide slide-without-footer'>
-                        
-                        <iframe class='video-full-size' 
-                            src="https://player.vimeo.com/video/${videoId}?autoplay=1"
-                            frameborder="0" 
-                            allow="autoplay; fullscreen;
-                            picture-in-picture" 
-                            allowfullscreen
-                            >
-                        </iframe>
-                        ${iconHTML}
-                    </div>`;
+                            <iframe id="vimeo-player"
+                                class="video-full-size"
+                                src="https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1"
+                                frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                    ${iconHTML}
+                </div>`;
+                    
                 }
                 else if (page.imageLink && page.text && page.isBigImage) {
                     slideHTML = `<div class='swiper-slide'>
@@ -340,6 +365,20 @@ function loadApiData() {
 
 document.addEventListener("DOMContentLoaded", function () {
     initLanguages(loadApiData);
+
+
+    setTimeout(() => {
+        var iframe = document.getElementById("vimeo-player");
+        var player = new Vimeo.Player(iframe);
+
+        player.ready().then(function() {
+            player.play().catch(function(error) {
+                console.log("Не удалось запустить видео. Требуется клик пользователя.");
+            });
+        });
+    }, 1);
+
+
     let button = document.querySelector(".VideoPlayerEmbed__button");
     if (button) {
         button.remove();
