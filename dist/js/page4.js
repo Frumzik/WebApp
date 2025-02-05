@@ -119,8 +119,8 @@ function loadApiData() {
 
     const params = new URLSearchParams({ lang: i18next.language }).toString();
 
-    fetch(`/api/series/play/?series_id=${seriesId}&${params}`, {
-        headers: { "X-Telegram-Init-Data": initData},
+    fetch(`https://i-game.one/api/series/play/?series_id=${seriesId}&${params}`, {
+        headers: { "X-Telegram-Init-Data": 'cXVlcnlfaWQ9QUFHUWUxZ3pBQUFBQUpCN1dETlZ4OWY2JnVzZXI9JTdCJTIyaWQlMjIlM0E4NjE0MzY4MTYlMkMlMjJmaXJzdF9uYW1lJTIyJTNBJTIyJUUyJTlEJTk0JTIyJTJDJTIybGFzdF9uYW1lJTIyJTNBJTIyJTIyJTJDJTIydXNlcm5hbWUlMjIlM0ElMjJ0cmFwX3NoYXJrayUyMiUyQyUyMmxhbmd1YWdlX2NvZGUlMjIlM0ElMjJydSUyMiUyQyUyMmFsbG93c193cml0ZV90b19wbSUyMiUzQXRydWUlMkMlMjJwaG90b191cmwlMjIlM0ElMjJodHRwcyUzQSU1QyUyRiU1QyUyRnQubWUlNUMlMkZpJTVDJTJGdXNlcnBpYyU1QyUyRjMyMCU1QyUyRmpybnp3R1RFdVN6LUh5M291eXNLZC1jNFdIZUlvT1ZOakZfWnhPb0RZTlkuc3ZnJTIyJTdEJmF1dGhfZGF0ZT0xNzMyNzkyMzc0JnNpZ25hdHVyZT1mUWk0VFhhNFZ6ZERGR3ExV25ra1g4LXZqQzh3cEl5M2dqY0pWQk5SYWRGNF92OGxvOXRFakt5dmkta2xPeDdvWVZaeFNBUUx3b1JIbkhyQzlGVXpBUSZoYXNoPWQ0OTY4YTAxODU2ZDg2YzNhNWM0MTFmNjdkNmVkMTJjMjUzNjQ1ODQxMWMwNDdiNzMwNzMzMDVmMmUxZmZhYjY='},
         method: "GET",
     })
         .then(response => {
@@ -196,16 +196,18 @@ function loadApiData() {
                     //         </iframe>
                     //         ${iconHTML}
                     //     </div>`;
-                    slideHTML = `<div class='swiper-slide slide-without-footer'>
-                            <iframe id="vimeo-player"
-                                class="video-full-size"
-                                src="https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1"
-                                frameborder="0"
-                                allow="autoplay; fullscreen; picture-in-picture"
-                                allowfullscreen>
-                            </iframe>
-                    ${iconHTML}
-                </div>`;
+                    slideHTML = `<div class="swiper-slide slide-without-footer">
+                                    <iframe id="vimeo-player"
+                                            class="video-full-size"
+                                            src="https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1"
+                                            frameborder="0"
+                                            allow="autoplay; fullscreen; picture-in-picture"
+                                            allowfullscreen>
+                                    </iframe>
+                                    ${iconHTML}
+                                </div>
+                    
+                `;
                     
                 }
                 else if (page.imageLink && page.text && page.isBigImage) {
@@ -346,16 +348,6 @@ function loadApiData() {
                     showPopup();
                 }
             }, 300);
-            setTimeout(() => {
-                const iframe = document.querySelector(".video-full-size");
-                const overlay = document.querySelector(".overlay");
-            
-                if (iframe) {
-                    iframe.onload = function () {
-                        overlay.style.display = "block";
-                    };
-                }
-            }, 200); 
         })
         .catch(error => console.error("Ошибка загрузки данных:", error));
 }
@@ -365,16 +357,16 @@ document.addEventListener("DOMContentLoaded", function () {
     initLanguages(loadApiData);
 
 
-    setTimeout(() => {
-        var iframe = document.getElementById("vimeo-player");
-        var player = new Vimeo.Player(iframe);
+    // setTimeout(() => {
+    //     var iframe = document.getElementById("vimeo-player");
+    //     var player = new Vimeo.Player(iframe);
 
-        player.ready().then(function() {
-            player.play().catch(function(error) {
-                console.log("Не удалось запустить видео. Требуется клик пользователя.");
-            });
-        });
-    }, 1);
+    //     player.ready().then(function() {
+    //         player.play().catch(function(error) {
+    //             console.log("Не удалось запустить видео. Требуется клик пользователя.");
+    //         });
+    //     });
+    // }, 1);
 
 
     let button = document.querySelector(".VideoPlayerEmbed__button");
@@ -398,32 +390,68 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 let isPopupShown = false;
 
-function showPopup() {
-    if (isPopupShown) return;
-    isPopupShown = true;
+// function showPopup() {
+//     if (isPopupShown) return;
+//     isPopupShown = true;
 
-    const userLang = navigator.language.startsWith("ru") ? "ru" : "en";
+//     const userLang = navigator.language.startsWith("ru") ? "ru" : "en";
 
-    const messages = {
-        ru: "Свайп влево для перехода на следующую страницу",
-        en: "Swipe left to go to the next page.",
-    };
+//     const messages = {
+//         ru: "Свайп влево для перехода на следующую страницу",
+//         en: "Swipe left to go to the next page.",
+//     };
 
-    const popupup = document.createElement("div");
-    popupup.className = "swipe-popup";
-    popupup.textContent = messages[userLang];
+//     const popupup = document.createElement("div");
+//     popupup.className = "swipe-popup";
+//     popupup.textContent = messages[userLang];
 
-    document.body.appendChild(popupup);
+//     document.body.appendChild(popupup);
 
-    setTimeout(() => {
-        popupup.classList.add("show");
-    }, 10);
+//     setTimeout(() => {
+//         popupup.classList.add("show");
+//     }, 10);
 
-    setTimeout(() => {
-        popupup.classList.remove("show");
-        popupup.classList.add("hide");
-        setTimeout(() => {
-            popupup.remove();
-        }, 300);
-    }, 3000);
-}
+//     setTimeout(() => {
+//         popupup.classList.remove("show");
+//         popupup.classList.add("hide");
+//         setTimeout(() => {
+//             popupup.remove();
+//         }, 300);
+//     }, 3000);
+// }
+
+
+
+document.addEventListener("click", function firstUserAction() {
+    var iframe = document.getElementById("vimeo-player");
+
+    if (iframe) {
+        var player = new Vimeo.Player(iframe);
+
+        player.ready().then(function() {
+            console.log("Работает");
+            player.play().catch(function(error) {
+                console.log("Автовоспроизведение заблокировано. Требуется клик пользователя.");
+            });
+        });
+    }
+
+    document.removeEventListener("click", firstUserAction);
+});
+
+document.addEventListener("touchstart", function firstTouchAction() {
+    var iframe = document.getElementById("vimeo-player");
+
+    if (iframe) {
+        var player = new Vimeo.Player(iframe);
+
+        player.ready().then(function() {
+            console.log("Работает");
+            player.play().catch(function(error) {
+                console.log("Автовоспроизведение заблокировано. Требуется клик пользователя.");
+            });
+        });
+    }
+
+    document.removeEventListener("touchstart", firstTouchAction);
+});
