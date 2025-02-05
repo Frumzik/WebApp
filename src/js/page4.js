@@ -390,35 +390,35 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 let isPopupShown = false;
 
-// function showPopup() {
-//     if (isPopupShown) return;
-//     isPopupShown = true;
+function showPopup() {
+    if (isPopupShown) return;
+    isPopupShown = true;
 
-//     const userLang = navigator.language.startsWith("ru") ? "ru" : "en";
+    const userLang = navigator.language.startsWith("ru") ? "ru" : "en";
 
-//     const messages = {
-//         ru: "Свайп влево для перехода на следующую страницу",
-//         en: "Swipe left to go to the next page.",
-//     };
+    const messages = {
+        ru: "Свайп влево для перехода на следующую страницу",
+        en: "Swipe left to go to the next page.",
+    };
 
-//     const popupup = document.createElement("div");
-//     popupup.className = "swipe-popup";
-//     popupup.textContent = messages[userLang];
+    const popupup = document.createElement("div");
+    popupup.className = "swipe-popup";
+    popupup.textContent = messages[userLang];
 
-//     document.body.appendChild(popupup);
+    document.body.appendChild(popupup);
 
-//     setTimeout(() => {
-//         popupup.classList.add("show");
-//     }, 10);
+    setTimeout(() => {
+        popupup.classList.add("show");
+    }, 10);
 
-//     setTimeout(() => {
-//         popupup.classList.remove("show");
-//         popupup.classList.add("hide");
-//         setTimeout(() => {
-//             popupup.remove();
-//         }, 300);
-//     }, 3000);
-// }
+    setTimeout(() => {
+        popupup.classList.remove("show");
+        popupup.classList.add("hide");
+        setTimeout(() => {
+            popupup.remove();
+        }, 300);
+    }, 3000);
+}
 
 
 
