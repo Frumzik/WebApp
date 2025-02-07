@@ -119,8 +119,8 @@ function loadApiData() {
 
     const params = new URLSearchParams({ lang: i18next.language }).toString();
 
-    fetch(`https://i-game.one/api/series/play/?series_id=${seriesId}&${params}`, {
-        headers: { "X-Telegram-Init-Data": 'cXVlcnlfaWQ9QUFHUWUxZ3pBQUFBQUpCN1dETlZ4OWY2JnVzZXI9JTdCJTIyaWQlMjIlM0E4NjE0MzY4MTYlMkMlMjJmaXJzdF9uYW1lJTIyJTNBJTIyJUUyJTlEJTk0JTIyJTJDJTIybGFzdF9uYW1lJTIyJTNBJTIyJTIyJTJDJTIydXNlcm5hbWUlMjIlM0ElMjJ0cmFwX3NoYXJrayUyMiUyQyUyMmxhbmd1YWdlX2NvZGUlMjIlM0ElMjJydSUyMiUyQyUyMmFsbG93c193cml0ZV90b19wbSUyMiUzQXRydWUlMkMlMjJwaG90b191cmwlMjIlM0ElMjJodHRwcyUzQSU1QyUyRiU1QyUyRnQubWUlNUMlMkZpJTVDJTJGdXNlcnBpYyU1QyUyRjMyMCU1QyUyRmpybnp3R1RFdVN6LUh5M291eXNLZC1jNFdIZUlvT1ZOakZfWnhPb0RZTlkuc3ZnJTIyJTdEJmF1dGhfZGF0ZT0xNzMyNzkyMzc0JnNpZ25hdHVyZT1mUWk0VFhhNFZ6ZERGR3ExV25ra1g4LXZqQzh3cEl5M2dqY0pWQk5SYWRGNF92OGxvOXRFakt5dmkta2xPeDdvWVZaeFNBUUx3b1JIbkhyQzlGVXpBUSZoYXNoPWQ0OTY4YTAxODU2ZDg2YzNhNWM0MTFmNjdkNmVkMTJjMjUzNjQ1ODQxMWMwNDdiNzMwNzMzMDVmMmUxZmZhYjY='},
+    fetch(`/api/series/play/?series_id=${seriesId}&${params}`, {
+        headers: { "X-Telegram-Init-Data": initData},
         method: "GET",
     })
         .then(response => {
@@ -160,54 +160,18 @@ function loadApiData() {
             pages.forEach((page, index) => {
                 // const imageLink = page.imageLink ? `${baseUrl}${page.imageLink}` : null;
                 let slideHTML = "";
-                // if (page.videoLink) {
-                //     slideHTML = `<div class='swiper-slide slide-without-footer'>
-                //     <div class="overlay"></div>
-                //         <iframe src='${page.videoLink}?noreactions=1' class='video-full-size' frameborder='0' allowfullscreen style="margin-right: 10px;margin-left: 10px;"></iframe>
-                //         ${iconHTML}
-                //     </div>`;
-                // }
+
                 if (page.videoLink) {
-                    // Используем тестовую ссылку на видео Vimeo
-                    const videoId = "917918511"; // ID тестового видео
-                
-                    // Создаём iframe с плеером Vimeo
-                    // slideHTML = `<div class='swiper-slide slide-without-footer'>
-                    //     <iframe class='video-full-size' 
-                    //         src="https://player.vimeo.com/video/${videoId}?autoplay=1"   самый первый вариант
-                    //         frameborder="0"  
-                    //         allow="autoplay; fullscreen;
-                    //         picture-in-picture" 
-                    //         allowfullscreen
-                    //         >
-                    //     </iframe>
-                    //     ${iconHTML}
-                    // </div>`;
-
-
-                    // slideHTML = `<div class='swiper-slide slide-without-footer'>
-                    //         <iframe class='video-full-size' 
-                    //             src="https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1&playsinline=1"    вариант с отключением звука
-                    //             frameborder="0"  
-                    //             allow="autoplay; fullscreen; picture-in-picture" 
-                    //             allowfullscreen
-                    //             muted
-                    //             playsinline>
-                    //         </iframe>
-                    //         ${iconHTML}
-                    //     </div>`;
                     slideHTML = `<div class="swiper-slide slide-without-footer">
                                     <iframe id="vimeo-player"
                                             class="video-full-size"
-                                            src="https://player.vimeo.com/video/${videoId}?autoplay=1&muted=1"
+                                            src="${page.videoLink}?autoplay=1&muted=1"
                                             frameborder="0"
                                             allow="autoplay; fullscreen; picture-in-picture"
                                             allowfullscreen>
                                     </iframe>
                                     ${iconHTML}
-                                </div>
-                    
-                `;
+                                </div>`;
                     
                 }
                 else if (page.imageLink && page.text && page.isBigImage) {
@@ -355,18 +319,6 @@ function loadApiData() {
 
 document.addEventListener("DOMContentLoaded", function () {
     initLanguages(loadApiData);
-
-
-    // setTimeout(() => {
-    //     var iframe = document.getElementById("vimeo-player");
-    //     var player = new Vimeo.Player(iframe);
-
-    //     player.ready().then(function() {
-    //         player.play().catch(function(error) {
-    //             console.log("Не удалось запустить видео. Требуется клик пользователя.");
-    //         });
-    //     });
-    // }, 1);
 
 
     let button = document.querySelector(".VideoPlayerEmbed__button");
